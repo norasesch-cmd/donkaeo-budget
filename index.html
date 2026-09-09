@@ -9,12 +9,15 @@
 :root{--pri:#1e5aa8;--pri2:#123f78;--bg:#eef2f7;--line:#cfd8e3;--ok:#1a7f45;--no:#c0392b;--wait:#b8860b}
 *{box-sizing:border-box}
 body{margin:0;font-family:'Sarabun',sans-serif;background:var(--bg);color:#1b2430;font-size:16px}
-header{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;padding:14px 20px}
-header h1{margin:0;font-size:20px}
-header p{margin:2px 0 0;font-size:13px;opacity:.85}
+header{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header h1{margin:0;font-size:19px}
+header p{margin:2px 0 0;font-size:12.5px;opacity:.85}
+.who{font-size:13px;text-align:right;line-height:1.4}
+.who b{display:block;font-size:14px}
 nav{background:#fff;border-bottom:1px solid var(--line);padding:0 12px;display:flex;gap:4px;flex-wrap:wrap;position:sticky;top:0;z-index:20}
 nav button{background:none;border:none;padding:12px 16px;font-family:inherit;font-size:15px;cursor:pointer;border-bottom:3px solid transparent;color:#4a5a6a}
 nav button.on{color:var(--pri);border-color:var(--pri);font-weight:600}
+nav button[hidden]{display:none}
 main{max-width:1250px;margin:16px auto;padding:0 12px}
 .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
 .card h3{margin:0 0 12px;font-size:17px;color:var(--pri2);border-left:4px solid var(--pri);padding-left:8px}
@@ -27,11 +30,11 @@ input:focus,select:focus,textarea:focus{outline:2px solid #9fc2ea;border-color:v
 textarea{resize:vertical}
 .btn{background:var(--pri);color:#fff;border:none;padding:9px 18px;border-radius:6px;font-family:inherit;font-size:15px;cursor:pointer}
 .btn:hover{background:var(--pri2)}
-.btn.gh{background:#fff;color:var(--pri);border:1px solid var(--pri)}
-.btn.gh:hover{background:#eef4fc}
+.btn.gh{background:#fff;color:var(--pri);border:1px solid var(--pri)}.btn.gh:hover{background:#eef4fc}
 .btn.dg{background:#c0392b}.btn.dg:hover{background:#96271b}
 .btn.gr{background:#1a7f45}.btn.gr:hover{background:#136033}
 .btn.sm{padding:5px 11px;font-size:13px}
+.btn.wh{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.5)}
 .item{border:1px solid var(--line);border-radius:8px;margin-bottom:14px;overflow:hidden}
 .item>.hd{background:#f3f7fc;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:var(--pri2)}
 .item>.bd{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -53,12 +56,24 @@ table.list th{background:#f3f7fc;color:var(--pri2)}
 .carry-note{font-size:12px;color:#0b6b3a;background:#e8f7ee;border:1px solid #b9e3c9;border-radius:5px;padding:4px 8px;margin-top:4px}
 input.carry{background:#eef7f1!important;border-color:#b9e3c9!important;color:#0b6b3a}
 .modebox{background:#f3f7fc;border:1px solid #b9cfe8;border-radius:6px;padding:8px 10px;font-size:13px;color:var(--pri2);margin-top:6px}
+.cloud{font-size:12px;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45)}
+/* ---------- LOGIN ---------- */
+#gate{position:fixed;inset:0;z-index:500;background:linear-gradient(135deg,#123f78,#1e5aa8);display:flex;align-items:center;justify-content:center;padding:16px}
+.gbox{background:#fff;border-radius:14px;padding:26px;width:100%;max-width:420px;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.gbox h2{margin:0 0 4px;font-size:20px;color:var(--pri2)}
+.gbox p.sub{margin:0 0 18px;font-size:13px;color:#7a8899}
+.gbox .row{margin-bottom:10px}
+.gerr{background:#fdecea;border:1px solid #f5b7b1;color:#a5281b;padding:8px 10px;border-radius:6px;font-size:13.5px;margin-bottom:10px;display:none}
+.gtab{display:flex;gap:6px;margin-bottom:16px}
+.gtab button{flex:1;padding:9px;border:1px solid var(--line);background:#f7fafd;border-radius:7px;font-family:inherit;font-size:14px;cursor:pointer;color:#54657a}
+.gtab button.on{background:var(--pri);color:#fff;border-color:var(--pri);font-weight:600}
 /* ---------- เอกสาร ---------- */
 #doc{background:#dfe6ee;padding:14px 0}
 .sheet{background:#fff;width:21cm;min-height:29.7cm;margin:0 auto 18px;padding:1.27cm 2cm 1.27cm 3cm;
   font-family:'TH SarabunIT๙','TH SarabunIT9','TH SarabunPSK','Sarabun',sans-serif;
   font-size:16pt;line-height:1.15;color:#000;box-shadow:0 2px 10px rgba(0,0,0,.15)}
-.sheet .memohd{text-align:center;font-size:29pt;font-weight:700;letter-spacing:6px;margin:0 0 2px}
+.garuda{width:1.5cm;height:1.5cm;object-fit:contain;display:block;margin:0 0 2px}
+.sheet .memohd{text-align:center;font-size:29pt;font-weight:700;letter-spacing:6px;margin:-0.9cm 0 2px}
 .lb{font-weight:700;font-size:20pt}
 .rowline{display:flex;gap:6px;align-items:flex-end;margin-bottom:0}
 .fill{flex:1;border-bottom:1px dotted #000;padding:0 4px;font-size:16pt;min-height:24px}
@@ -73,30 +88,58 @@ table.doc th{text-align:center;font-weight:700}
 .opinion{margin-top:10px}
 @media print{
   body{background:#fff}
-  .noprint,#errbox{display:none!important}
+  .noprint,#errbox,header,nav{display:none!important}
   main{max-width:none;padding:0;margin:0}
   #doc{background:#fff;padding:0}
   .sheet{width:auto;min-height:auto;margin:0;padding:0;box-shadow:none;page-break-after:always}
   @page{size:A4 portrait;margin:1.27cm 2cm 1.27cm 3cm}
 }
 .tabpane{display:none}.tabpane.on{display:block}
-.lock{max-width:420px;margin:60px auto;text-align:center}
 #errbox{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#c0392b;color:#fff;padding:10px 14px;font-size:14px;white-space:pre-wrap;line-height:1.4}
 #errbox b{display:block;margin-bottom:2px}
+.gpreview{width:70px;height:70px;object-fit:contain;border:1px dashed var(--line);border-radius:6px;background:#fafcfe;padding:4px}
 </style>
 </head>
 <body>
 
+<!-- ================= LOGIN GATE ================= -->
+<div id="gate">
+  <div class="gbox">
+    <h2>ระบบบันทึกการโอนงบประมาณรายจ่าย</h2>
+    <p class="sub">เทศบาลเมืองดอนแก้ว อำเภอแม่ริม จังหวัดเชียงใหม่</p>
+    <div class="gtab">
+      <button type="button" id="tabSignin" class="on" data-gt="in">เข้าสู่ระบบ</button>
+      <button type="button" id="tabSignup" data-gt="up">สมัครสมาชิก</button>
+    </div>
+    <div class="gerr" id="gerr"></div>
+    <div class="row" id="rowName" style="display:none"><label>ชื่อ-นามสกุล</label><input id="g_name" placeholder="เช่น นางสาวกรรณิกา  กาบจอก"></div>
+    <div class="row" id="rowDept" style="display:none"><label>ส่วนราชการ (กอง/สำนัก)</label><input id="g_dept" placeholder="เช่น กองสวัสดิการสังคม"></div>
+    <div class="row"><label>อีเมล</label><input type="email" id="g_email" autocomplete="username"></div>
+    <div class="row"><label>รหัสผ่าน</label><input type="password" id="g_pw" autocomplete="current-password" placeholder="อย่างน้อย 6 ตัวอักษร"></div>
+    <div style="height:6px"></div>
+    <button type="button" class="btn" style="width:100%" id="gBtn">เข้าสู่ระบบ</button>
+    <p class="hint" style="margin:12px 0 0;text-align:center" id="gNote">ผู้ใช้คนแรกของระบบจะได้สิทธิ์ผู้ดูแลระบบอัตโนมัติ</p>
+  </div>
+</div>
+
 <header>
-  <h1>ระบบบันทึกการโอนงบประมาณรายจ่าย</h1>
-  <p>เทศบาลเมืองดอนแก้ว อำเภอแม่ริม จังหวัดเชียงใหม่ · ระเบียบ มท. ว่าด้วยวิธีการงบประมาณของ อปท. พ.ศ. 2563 ข้อ 26 / ข้อ 27</p>
+  <div>
+    <h1>ระบบบันทึกการโอนงบประมาณรายจ่าย</h1>
+    <p>เทศบาลเมืองดอนแก้ว · ระเบียบ มท. ว่าด้วยวิธีการงบประมาณของ อปท. พ.ศ. 2563 ข้อ 26 / ข้อ 27</p>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span class="cloud" id="cloudState">•</span>
+    <div class="who"><b id="uName">—</b><span id="uRole">—</span></div>
+    <button type="button" class="btn wh sm" data-act="logout">ออกจากระบบ</button>
+  </div>
 </header>
 
 <nav class="noprint">
   <button type="button" class="on" data-tab="new">➕ บันทึกการโอนใหม่</button>
   <button type="button" data-tab="list">📋 ทะเบียนการโอน</button>
-  <button type="button" data-tab="admin">🔐 ผู้ดูแลระบบ</button>
-  <button type="button" data-tab="setting">⚙️ ตั้งค่าผู้ลงนาม</button>
+  <button type="button" data-tab="admin" id="navAdmin" hidden>🔐 อนุมัติ (ผู้ดูแล)</button>
+  <button type="button" data-tab="users" id="navUsers" hidden>👥 ผู้ใช้งาน</button>
+  <button type="button" data-tab="setting" id="navSetting" hidden>⚙️ ตั้งค่าผู้ลงนาม</button>
 </nav>
 
 <main>
@@ -110,7 +153,7 @@ table.doc th{text-align:center;font-weight:700}
       <div><label>เลขที่หนังสือ /</label><input id="f_no2" placeholder="306"></div>
       <div><label>วันที่บันทึก</label><input type="date" id="f_date"></div>
       <div><label>ปีงบประมาณ พ.ศ.</label><input id="f_year" value="2568"></div>
-      <div><label>ครั้งที่โอน (ถ้าทราบ)</label><input id="f_seq" placeholder="ผู้ดูแลระบบกำหนดได้"></div>
+      <div><label>ครั้งที่โอน <span class="hint">(ผู้ดูแลกำหนด)</span></label><input id="f_seq" placeholder="ผู้ดูแลระบบกำหนดได้"></div>
       <div><label>โทรศัพท์</label><input id="f_tel" value="0-5312-1585"></div>
       <div><label>เรื่อง</label><input id="f_subject" value="ขอพิจารณาอนุมัติโอนงบประมาณรายจ่าย"></div>
     </div>
@@ -151,37 +194,46 @@ table.doc th{text-align:center;font-weight:700}
   <div class="card">
     <h3>ทะเบียนคุมการโอนงบประมาณรายจ่าย</h3>
     <div class="grid g4" style="margin-bottom:12px">
-      <div><label>ค้นหา</label><input id="q_kw" placeholder="กอง / แผนงาน / โครงการ"></div>
+      <div><label>ค้นหา</label><input id="q_kw" placeholder="กอง / แผนงาน / โครงการ / ผู้บันทึก"></div>
       <div><label>ปีงบประมาณ</label><input id="q_year" placeholder="2568"></div>
       <div><label>สถานะ</label><select id="q_st"><option value="">ทั้งหมด</option><option value="draft">ร่าง</option><option value="wait">รออนุมัติ</option><option value="ok">อนุมัติแล้ว</option><option value="no">ไม่อนุมัติ</option></select></div>
       <div style="align-self:end;display:flex;gap:6px;flex-wrap:wrap">
         <button type="button" class="btn gh sm" data-act="csv">⬇ CSV</button>
         <button type="button" class="btn gh sm" data-act="backup">💾 สำรอง</button>
-        <button type="button" class="btn gh sm" data-act="restore">📂 นำเข้า</button>
       </div>
     </div>
     <div style="overflow:auto"><table class="list" id="tblist"></table></div>
-    <input type="file" id="fileIn" accept=".json" style="display:none">
   </div>
 </div>
 
 <!-- ========== TAB ADMIN ========== -->
 <div class="tabpane" id="tab-admin">
-  <div id="adminLock" class="card lock">
-    <h3 style="border:none;padding:0">เข้าสู่ระบบผู้ดูแล</h3>
-    <input type="password" id="pw" placeholder="รหัสผ่านผู้ดูแลระบบ">
-    <div style="height:10px"></div><button type="button" class="btn" data-act="login">เข้าสู่ระบบ</button>
-    <p class="hint">รหัสเริ่มต้น: admin1234 (เปลี่ยนได้ในแท็บตั้งค่า)</p>
+  <div class="card"><h3>อนุมัติ / กำหนดครั้งที่และวันที่โอนงบประมาณ <span class="hint">(เฉพาะผู้ดูแลระบบ)</span></h3>
+    <div style="overflow:auto"><table class="list" id="tbadmin"></table></div>
   </div>
-  <div id="adminBody" style="display:none">
-    <div class="card"><h3>อนุมัติ / กำหนดครั้งที่และวันที่โอนงบประมาณ</h3>
-      <div style="overflow:auto"><table class="list" id="tbadmin"></table></div>
-    </div>
+</div>
+
+<!-- ========== TAB USERS ========== -->
+<div class="tabpane" id="tab-users">
+  <div class="card"><h3>จัดการผู้ใช้งานและสิทธิ์ <span class="hint">(เฉพาะผู้ดูแลระบบ)</span></h3>
+    <div style="overflow:auto"><table class="list" id="tbusers"></table></div>
   </div>
 </div>
 
 <!-- ========== TAB SETTING ========== -->
 <div class="tabpane" id="tab-setting">
+  <div class="card"><h3>ตราครุฑหัวบันทึกข้อความ</h3>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <img id="garudaPrev" class="gpreview" alt="ตราครุฑ">
+      <div style="flex:1;min-width:240px">
+        <label>อัปโหลดไฟล์ตราครุฑ (PNG พื้นหลังโปร่งใส แนะนำ 300×300 px)</label>
+        <input type="file" id="garudaFile" accept="image/png,image/jpeg,image/svg+xml">
+        <p class="hint" style="margin:6px 0 0">ระบบมีตราครุฑแบบร่างให้ชั่วคราว — แนะนำอัปโหลดไฟล์ตราครุฑราชการเพื่อความถูกต้อง · ขนาดในเอกสาร 1.5 ซม. มุมบนซ้าย</p>
+        <div style="height:8px"></div>
+        <button type="button" class="btn gh sm" data-act="garuda-reset">↺ ใช้ตราครุฑเริ่มต้น</button>
+      </div>
+    </div>
+  </div>
   <div class="card"><h3>ผู้ลงนามในเอกสาร</h3>
     <div class="grid g2">
       <div><label>ผู้เสนอ (ชื่อ)</label><input id="s_p1n"></div>
@@ -192,9 +244,9 @@ table.doc th{text-align:center;font-weight:700}
       <div><label>ตำแหน่ง</label><input id="s_p3t"></div>
       <div><label>ผู้อนุมัติ</label><input id="s_p4n"></div>
       <div><label>ตำแหน่ง</label><input id="s_p4t"></div>
-      <div><label>รหัสผ่านผู้ดูแลระบบ</label><input id="s_pw"></div>
     </div>
     <div style="height:12px"></div><button type="button" class="btn" data-act="save-setting">💾 บันทึกการตั้งค่า</button>
+    <p class="hint" style="margin-top:8px">การตั้งค่านี้มีผลกับผู้ใช้ทุกคนในระบบ</p>
   </div>
 </div>
 
@@ -209,38 +261,59 @@ table.doc th{text-align:center;font-weight:700}
 </div>
 </main>
 
-<script>
-(function(){
-"use strict";
+<script type="module">
+/* ============================================================
+   1) ใส่ค่า Firebase ของคุณตรงนี้  (ถ้าเว้นว่าง ระบบจะทำงานออฟไลน์)
+   ============================================================ */
+const FIREBASE_CONFIG = {
+  apiKey:            "AIzaSyBtxv5kNXF4gC6B0O7XA0le2YuyrTGnO90",
+  authDomain:        "donkaew-budget.firebaseapp.com",
+  projectId:         "donkaew-budget",
+  storageBucket:     "donkaew-budget.firebasestorage.app",
+  messagingSenderId: "donkaew-budget.firebasestorage.app",
+  appId:             "303960735263"
+};
 
-function showErr(msg,ln,col){
-  var d=document.getElementById('errbox');
-  if(!d){d=document.createElement('div');d.id='errbox';document.body.appendChild(d);}
-  d.innerHTML='<b>⚠ พบข้อผิดพลาดในสคริปต์</b>'+String(msg)+(ln?'  (บรรทัด '+ln+':'+col+')':'');
-}
-window.addEventListener('error',function(e){showErr(e.message,e.lineno,e.colno)});
-if(!Element.prototype.closest){
-  Element.prototype.closest=function(s){var el=this;
-    while(el&&el.nodeType===1){
-      if((el.matches||el.msMatchesSelector||el.webkitMatchesSelector).call(el,s))return el;
-      el=el.parentElement;}
-    return null;};
+/* ==================== โหลด Firebase SDK ==================== */
+let FB=null, USE_CLOUD=false;
+if(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId){
+  try{
+    const [appM,authM,fsM]=await Promise.all([
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"),
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"),
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
+    ]);
+    const app=appM.initializeApp(FIREBASE_CONFIG);
+    FB={auth:authM.getAuth(app),db:fsM.getFirestore(app),A:authM,F:fsM};
+    USE_CLOUD=true;
+  }catch(e){ console.warn("Firebase load failed → offline mode",e); }
 }
 
 /* ==================== helper ==================== */
-function q(sel,root){return (root||document).querySelector(sel)}
-function qa(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel))}
-function el(id){return document.getElementById(id)}
-function val(id){var e=el(id);return e?e.value:""}
-function setVal(id,v){var e=el(id);if(e)e.value=(v==null?"":v)}
-function up(t,sel){if(!t)return null;if(t.nodeType===3)t=t.parentElement;return (t&&t.closest)?t.closest(sel):null}
-function num(v){v=parseFloat(String(v==null?"":v).replace(/,/g,""));return isNaN(v)?0:v}
-function fm(v){return num(v).toLocaleString("th-TH",{minimumFractionDigits:2,maximumFractionDigits:2})}
-function fmi(v){var n=num(v);return (n%1===0)?n.toLocaleString("th-TH"):fm(n)}
-function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+const q=(s,r)=>(r||document).querySelector(s);
+const qa=(s,r)=>Array.prototype.slice.call((r||document).querySelectorAll(s));
+const el=id=>document.getElementById(id);
+const val=id=>{const e=el(id);return e?e.value:""};
+const setVal=(id,v)=>{const e=el(id);if(e)e.value=(v==null?"":v)};
+const up=(t,sel)=>{if(!t)return null;if(t.nodeType===3)t=t.parentElement;return t&&t.closest?t.closest(sel):null};
+const num=v=>{v=parseFloat(String(v==null?"":v).replace(/,/g,""));return isNaN(v)?0:v};
+const fm=v=>num(v).toLocaleString("th-TH",{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmi=v=>{const n=num(v);return n%1===0?n.toLocaleString("th-TH"):fm(n)};
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function showErr(msg){let d=el('errbox');if(!d){d=document.createElement('div');d.id='errbox';document.body.appendChild(d)}d.innerHTML='<b>⚠ พบข้อผิดพลาด</b>'+String(msg)}
+window.addEventListener('error',e=>showErr(e.message));
+
+/* ==================== ตราครุฑเริ่มต้น (แบบร่าง) ==================== */
+const GARUDA_DEFAULT="data:image/svg+xml;base64,"+btoa(unescape(encodeURIComponent(
+`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130">
+<g fill="#000">
+<path d="M60 6c-4 0-7 3-8 7-1 3 0 6 2 8-3 1-5 3-6 6-2-2-5-3-8-3-6 0-10 4-10 9 0 3 1 5 3 7-5 1-9 5-9 10 0 3 1 5 3 7-4 2-7 6-7 11 0 6 5 11 11 11h6l-3 8h10l2-6h8l-2 20h5l3-20h6l3 20h5l-2-20h8l2 6h10l-3-8h6c6 0 11-5 11-11 0-5-3-9-7-11 2-2 3-4 3-7 0-5-4-9-9-10 2-2 3-4 3-7 0-5-4-9-10-9-3 0-6 1-8 3-1-3-3-5-6-6 2-2 3-5 2-8-1-4-4-7-8-7z"/>
+<path d="M32 62c-7-3-14-2-19 3 6 1 11 4 15 8 2-4 3-8 4-11zM88 62c7-3 14-2 19 3-6 1-11 4-15 8-2-4-3-8-4-11z"/>
+<path d="M46 96c-8 4-14 11-16 20 7-5 15-8 23-8-3-4-5-8-7-12zM74 96c8 4 14 11 16 20-7-5-15-8-23-8 3-4 5-8 7-12z"/>
+</g></svg>`)));
 
 /* ==================== ข้อมูลจำแนกงบประมาณ ==================== */
-var PLANS={
+const PLANS={
 "แผนงานบริหารงานทั่วไป":["งานบริหารทั่วไป","งานวางแผนสถิติและวิชาการ","งานบริหารงานคลัง","งานควบคุมภายในและการตรวจสอบภายใน","งานสารสนเทศ"],
 "แผนงานการรักษาความสงบภายใน":["งานบริหารทั่วไปเกี่ยวกับการรักษาความสงบภายใน","งานเทศกิจ","งานป้องกันและบรรเทาสาธารณภัย","งานจราจร"],
 "แผนงานการศึกษา":["งานบริหารทั่วไปเกี่ยวกับการศึกษา","งานระดับก่อนวัยเรียนและประถมศึกษา","งานระดับมัธยมศึกษา","งานศึกษาไม่กำหนดระดับ"],
@@ -254,7 +327,7 @@ var PLANS={
 "แผนงานการพาณิชย์":["งานกิจการสถานธนานุบาล","งานกิจการประปา","งานตลาดสด","งานโรงฆ่าสัตว์","งานกิจการสถานีขนส่ง/กิจการท่าเรือ","งานกิจการพาณิชย์อื่น ๆ"],
 "แผนงานงบกลาง":["งบกลาง"]};
 
-var BUDGET={
+const BUDGET={
 "งบบุคลากร":{
  "เงินเดือน (ฝ่ายการเมือง)":["เงินเดือนนายก/รองนายกองค์กรปกครองส่วนท้องถิ่น","ค่าตอบแทนประจำตำแหน่งนายก/รองนายก","ค่าตอบแทนพิเศษนายก/รองนายก","ค่าตอบแทนเลขานุการ/ที่ปรึกษานายกฯ","ค่าตอบแทนประธานสภา/รองประธานสภา/สมาชิกสภา"],
  "เงินเดือน (ฝ่ายประจำ)":["เงินเดือนข้าราชการหรือพนักงานส่วนท้องถิ่น","เงินเพิ่มต่าง ๆ ของข้าราชการหรือพนักงานส่วนท้องถิ่น","เงินประจำตำแหน่ง","ค่าจ้างลูกจ้างประจำ","เงินเพิ่มต่าง ๆ ของลูกจ้างประจำ","ค่าตอบแทนพนักงานจ้าง","เงินเพิ่มต่าง ๆ ของพนักงานจ้าง","เงินวิทยฐานะ"]},
@@ -270,531 +343,576 @@ var BUDGET={
 "งบรายจ่ายอื่น":{"รายจ่ายอื่น":["ค่าจ้างที่ปรึกษาเพื่อศึกษา วิจัย ประเมินผล","รายจ่ายอื่น ๆ"]},
 "งบกลาง":{"งบกลาง":["ค่าชำระหนี้เงินต้น","ค่าชำระดอกเบี้ย","เงินสมทบกองทุนประกันสังคม","เงินสมทบกองทุนเงินทดแทน","เบี้ยยังชีพผู้สูงอายุ","เบี้ยยังชีพความพิการ","เบี้ยยังชีพผู้ป่วยเอดส์","เงินสำรองจ่าย","รายจ่ายตามข้อผูกพัน","เงินสมทบกองทุนบำเหน็จบำนาญข้าราชการส่วนท้องถิ่น (ก.บ.ท.)","เงินช่วยพิเศษ","เงินสมทบกองทุนหลักประกันสุขภาพ"]}};
 
-var OTHER="อื่น ๆ (ระบุเอง)";
-var KEY="dk_transfer_v3", SKEY="dk_setting_v1";
-var TH_M=["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
-var STL={draft:["ร่าง","b-draft"],wait:["รออนุมัติ","b-wait"],ok:["อนุมัติแล้ว","b-ok"],no:["ไม่อนุมัติ","b-no"]};
-var DEF_SET={p1n:"นางสาวกรรณิกา  กาบจอก",p1t:"ผู้อำนวยการกองสวัสดิการสังคม",p2n:"นางสาวสุปวีณ์  ศรีโสดา",p2t:"ผู้อำนวยการกองคลัง",p3n:"นายวิชาติ  นาวาพิสุทธิ์",p3t:"ปลัดเทศบาลเมืองดอนแก้ว",p4n:"นายพลากร  กันธวัง",p4t:"นายกเทศมนตรีเมืองดอนแก้ว",pw:"admin1234"};
+const OTHER="อื่น ๆ (ระบุเอง)";
+const LKEY="dk_tr_v4", LSET="dk_set_v4", LUSR="dk_usr_v4";
+const TH_M=["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
+const STL={draft:["ร่าง","b-draft"],wait:["รออนุมัติ","b-wait"],ok:["อนุมัติแล้ว","b-ok"],no:["ไม่อนุมัติ","b-no"]};
+const DEF_SET={p1n:"นางสาวกรรณิกา  กาบจอก",p1t:"ผู้อำนวยการกองสวัสดิการสังคม",p2n:"นางสาวสุปวีณ์  ศรีโสดา",p2t:"ผู้อำนวยการกองคลัง",p3n:"นายวิชาติ  นาวาพิสุทธิ์",p3t:"ปลัดเทศบาลเมืองดอนแก้ว",p4n:"นายพลากร  กันธวัง",p4t:"นายกเทศมนตรีเมืองดอนแก้ว",garuda:""};
+const RULE26="ระเบียบกระทรวงมหาดไทย ว่าด้วยวิธีการงบประมาณขององค์กรปกครองส่วนท้องถิ่น พ.ศ. 2563 ข้อ 26 การโอนเงินงบประมาณรายจ่ายต่างๆ ให้เป็นอำนาจอนุมัติของผู้บริหารท้องถิ่น";
+const RULE27="ระเบียบกระทรวงมหาดไทย ว่าด้วยวิธีการงบประมาณขององค์กรปกครองส่วนท้องถิ่น พ.ศ. 2563 ข้อ 27 การโอนเงินงบประมาณรายจ่ายในงบลงทุน โดยการโอนเพิ่ม โอนลด ที่ทำให้ลักษณะ ปริมาณ คุณภาพเปลี่ยน หรือโอนไปตั้งจ่ายเป็นรายการใหม่ ให้เป็นอำนาจอนุมัติของสภาท้องถิ่น";
 
-var RULE26="ระเบียบกระทรวงมหาดไทย ว่าด้วยวิธีการงบประมาณขององค์กรปกครองส่วนท้องถิ่น พ.ศ. 2563 ข้อ 26 การโอนเงินงบประมาณรายจ่ายต่างๆ ให้เป็นอำนาจอนุมัติของผู้บริหารท้องถิ่น";
-var RULE27="ระเบียบกระทรวงมหาดไทย ว่าด้วยวิธีการงบประมาณขององค์กรปกครองส่วนท้องถิ่น พ.ศ. 2563 ข้อ 27 การโอนเงินงบประมาณรายจ่ายในงบลงทุน โดยการโอนเพิ่ม โอนลด ที่ทำให้ลักษณะ ปริมาณ คุณภาพเปลี่ยน หรือโอนไปตั้งจ่ายเป็นรายการใหม่ ให้เป็นอำนาจอนุมัติของสภาท้องถิ่น";
+const thDate=iso=>{if(!iso)return".....................";const d=new Date(iso);if(isNaN(d.getTime()))return".....................";return d.getDate()+" "+TH_M[d.getMonth()]+" "+(d.getFullYear()+543)};
+const STLget=k=>STL[k]||["ไม่ระบุ","b-draft"];
 
-function thDate(iso){if(!iso)return".....................";var d=new Date(iso);if(isNaN(d.getTime()))return".....................";return d.getDate()+" "+TH_M[d.getMonth()]+" "+(d.getFullYear()+543)}
-function STLget(k){return STL[k]||["ไม่ระบุ","b-draft"]}
-function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(a)?a:[]}catch(e){return []}}
-function store(l){try{localStorage.setItem(KEY,JSON.stringify(l))}catch(e){alert("บันทึกไม่สำเร็จ: พื้นที่จัดเก็บเต็ม")}}
-function getSet(){var s={};for(var k in DEF_SET)s[k]=DEF_SET[k];try{var u=JSON.parse(localStorage.getItem(SKEY)||"{}");for(var j in u)if(u[j])s[j]=u[j]}catch(e){}return s}
+/* ==================== สถานะรวม ==================== */
+let ME={uid:"local",name:"ผู้ใช้ออฟไลน์",email:"offline@local",dept:"",role:"admin"};
+let RECS=[], SETTING={...DEF_SET}, USERS=[];
+let seqId=0, editId=null, curDoc=null, gtMode="in";
+const isAdmin=()=>ME.role==="admin";
 
-(function(){var l=load(),f=false;l.forEach(function(r){
- if(!r.status||!STL[r.status]){r.status="draft";f=true}
- if(!Array.isArray(r.items)){r.items=[];f=true}
- if(typeof r.total!=="number"){r.total=r.items.reduce(function(s,x){return s+num(x.amt)},0);f=true}
- if(r.tSeq==null){r.tSeq=r.seq||"";f=true}
- if(r.tDate==null){r.tDate="";f=true}
- if(r.mode!=="27"&&r.mode!=="26"){r.mode="26";f=true}
-});if(f)store(l)})();
+/* ==================== ชั้นข้อมูล (cloud / local) ==================== */
+const lget=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}};
+const lset=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+
+async function dbSaveRec(r){
+  if(USE_CLOUD){const{doc,setDoc}=FB.F;await setDoc(doc(FB.db,"transfers",r.id),r);}
+  else{const l=lget(LKEY,[]);const i=l.findIndex(x=>x.id===r.id);i>=0?l[i]=r:l.unshift(r);lset(LKEY,l);RECS=l;renderAll();}
+}
+async function dbDelRec(id){
+  if(USE_CLOUD){const{doc,deleteDoc}=FB.F;await deleteDoc(doc(FB.db,"transfers",id));}
+  else{const l=lget(LKEY,[]).filter(x=>x.id!==id);lset(LKEY,l);RECS=l;renderAll();}
+}
+async function dbSaveSetting(s){
+  if(USE_CLOUD){const{doc,setDoc}=FB.F;await setDoc(doc(FB.db,"settings","main"),s);}
+  else{lset(LSET,s);SETTING=s;applySettingUI();}
+}
+async function dbSetRole(uid,role){
+  if(USE_CLOUD){const{doc,updateDoc}=FB.F;await updateDoc(doc(FB.db,"users",uid),{role});}
+  else{const l=lget(LUSR,[]);const u=l.find(x=>x.uid===uid);if(u)u.role=role;lset(LUSR,l);USERS=l;renderUsers();}
+}
+
+/* ==================== AUTH ==================== */
+function gerr(m){const e=el("gerr");if(!m){e.style.display="none";return}e.style.display="block";e.textContent=m}
+const AUTH_MSG={"auth/invalid-email":"รูปแบบอีเมลไม่ถูกต้อง","auth/user-not-found":"ไม่พบผู้ใช้นี้ในระบบ","auth/wrong-password":"รหัสผ่านไม่ถูกต้อง","auth/invalid-credential":"อีเมลหรือรหัสผ่านไม่ถูกต้อง","auth/email-already-in-use":"อีเมลนี้ถูกใช้สมัครแล้ว","auth/weak-password":"รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร","auth/too-many-requests":"พยายามเข้าสู่ระบบบ่อยเกินไป กรุณารอสักครู่"};
+
+function setGateMode(m){
+  gtMode=m;
+  el("tabSignin").classList.toggle("on",m==="in");
+  el("tabSignup").classList.toggle("on",m==="up");
+  el("rowName").style.display=m==="up"?"block":"none";
+  el("rowDept").style.display=m==="up"?"block":"none";
+  el("gBtn").textContent=m==="up"?"สมัครสมาชิก":"เข้าสู่ระบบ";
+  gerr("");
+}
+async function doAuth(){
+  gerr("");
+  const email=val("g_email").trim(), pw=val("g_pw");
+  if(!email||!pw){gerr("กรุณากรอกอีเมลและรหัสผ่าน");return}
+  if(!USE_CLOUD){ enterApp(); return }
+  const b=el("gBtn"); b.disabled=true; b.textContent="กำลังดำเนินการ...";
+  try{
+    const{createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile}=FB.A;
+    if(gtMode==="up"){
+      const name=val("g_name").trim()||email.split("@")[0];
+      const cred=await createUserWithEmailAndPassword(FB.auth,email,pw);
+      await updateProfile(cred.user,{displayName:name});
+      const{doc,setDoc,getDocs,collection}=FB.F;
+      let role="user";
+      try{const snap=await getDocs(collection(FB.db,"users"));if(snap.empty)role="admin"}catch(e){role="admin"}
+      await setDoc(doc(FB.db,"users",cred.user.uid),{uid:cred.user.uid,name,email,dept:val("g_dept").trim(),role,created:new Date().toISOString()});
+    }else{
+      await signInWithEmailAndPassword(FB.auth,email,pw);
+    }
+  }catch(e){ gerr(AUTH_MSG[e.code]||e.message) }
+  finally{ b.disabled=false; setGateMode(gtMode) }
+}
+function enterApp(){
+  el("gate").style.display="none";
+  el("uName").textContent=ME.name;
+  el("uRole").textContent=(isAdmin()?"ผู้ดูแลระบบ":"เจ้าหน้าที่")+(ME.dept?" · "+ME.dept:"");
+  el("navAdmin").hidden=!isAdmin();
+  el("navUsers").hidden=!isAdmin();
+  el("navSetting").hidden=!isAdmin();
+  el("cloudState").textContent=USE_CLOUD?"☁ เชื่อมต่อคลาวด์":"💾 โหมดออฟไลน์";
+  if(ME.dept&&!val("f_dept")) setVal("f_dept",ME.dept);
+  if(!el("items").children.length) addItem();
+  renderAll();
+}
+async function logout(){
+  if(USE_CLOUD){await FB.A.signOut(FB.auth)}
+  else{location.reload()}
+}
+
+/* ==================== เริ่มระบบ ==================== */
+if(USE_CLOUD){
+  const{onAuthStateChanged}=FB.A;
+  const{doc,getDoc,setDoc,collection,onSnapshot,query,orderBy}=FB.F;
+  onAuthStateChanged(FB.auth,async u=>{
+    if(!u){ el("gate").style.display="flex"; ME={role:"user"}; return }
+    let prof={name:u.displayName||u.email,email:u.email,dept:"",role:"user"};
+    try{
+      const s=await getDoc(doc(FB.db,"users",u.uid));
+      if(s.exists()) prof={...prof,...s.data()};
+      else{ await setDoc(doc(FB.db,"users",u.uid),{uid:u.uid,...prof,created:new Date().toISOString()}) }
+    }catch(e){ console.warn(e) }
+    ME={uid:u.uid,...prof};
+    enterApp();
+    onSnapshot(query(collection(FB.db,"transfers"),orderBy("created","desc")),
+      snap=>{RECS=snap.docs.map(d=>d.data());renderAll()},
+      err=>showErr("โหลดข้อมูลไม่สำเร็จ: "+err.message));
+    onSnapshot(doc(FB.db,"settings","main"),s=>{SETTING={...DEF_SET,...(s.data()||{})};applySettingUI()});
+    onSnapshot(collection(FB.db,"users"),s=>{USERS=s.docs.map(d=>d.data());renderUsers()});
+  });
+}else{
+  RECS=lget(LKEY,[]); SETTING={...DEF_SET,...lget(LSET,{})}; USERS=lget(LUSR,[]);
+  el("gNote").textContent="⚠ ยังไม่ได้ตั้งค่า Firebase — ระบบทำงานแบบออฟไลน์ (กดปุ่มเพื่อเข้าใช้งาน)";
+}
 
 /* ==================== ฟอร์มรายการ ==================== */
-var seqId=0, editId=null, adminOK=false, curDoc=null;
-function opt(arr,ph){return '<option value="">-- '+ph+' --</option>'+arr.map(function(a){return "<option>"+esc(a)+"</option>"}).join("")+"<option>"+OTHER+"</option>"}
+const opt=(arr,ph)=>'<option value="">-- '+ph+' --</option>'+arr.map(a=>"<option>"+esc(a)+"</option>").join("")+"<option>"+OTHER+"</option>";
 
 function sideHTML(k,cls,title,label){
- var amtAttr=(k==="i")?'readonly class="ro"':"";
- return '<div class="side '+cls+'"><h4>'+title+'</h4><div class="grid">'
- +'<div><label>แผนงาน</label><select data-f="'+k+'plan">'+opt(Object.keys(PLANS),"เลือกแผนงาน")+'</select>'
- +'<input data-f="'+k+'planX" style="display:none;margin-top:5px" placeholder="ระบุแผนงาน"></div>'
- +'<div><label>งาน</label><select data-f="'+k+'work"><option value="">-- เลือกแผนงานก่อน --</option></select>'
- +'<input data-f="'+k+'workX" style="display:none;margin-top:5px" placeholder="ระบุงาน"></div>'
- +'<div class="grid g2"><div><label>งบ</label><select data-f="'+k+'bud">'+opt(Object.keys(BUDGET),"เลือกงบ")+'</select></div>'
- +'<div><label>หมวด</label><select data-f="'+k+'cat"><option value="">-- เลือกงบก่อน --</option></select></div></div>'
- +'<div><label>ประเภทรายจ่าย</label><select data-f="'+k+'type"><option value="">-- เลือกหมวดก่อน --</option></select>'
- +'<input data-f="'+k+'typeX" style="display:none;margin-top:5px" placeholder="ระบุประเภทรายจ่าย"></div>'
- +'<div><label>ชื่อโครงการ / รายการ <span class="hint">(ถ้ามี — กรอกเองได้)</span></label>'
- +'<input data-f="'+k+'proj" placeholder="เช่น เก้าอี้ทำงานแบบสูง จำนวน 2 ตัว / โครงการพัฒนาคุณภาพชีวิต..."></div>'
- +'<div class="carry-note" data-carry="'+k+'" style="display:none"></div>'
- +'<div class="grid g3">'
- +'<div><label>งบประมาณตั้งไว้</label><input type="number" step="0.01" data-f="'+k+'set"></div>'
- +'<div><label>คงเหลือก่อนโอน</label><input type="number" step="0.01" data-f="'+k+'before"></div>'
- +'<div><label>'+label+'</label><input type="number" step="0.01" data-f="'+k+'amt" '+amtAttr+'></div></div>'
- +'<div><label>คงเหลือหลังโอน</label><input data-f="'+k+'after" readonly class="ro"></div>'
- +'</div></div>';
+  const amtAttr=(k==="i")?'readonly class="ro"':"";
+  return `<div class="side ${cls}"><h4>${title}</h4><div class="grid">
+  <div><label>แผนงาน</label><select data-f="${k}plan">${opt(Object.keys(PLANS),"เลือกแผนงาน")}</select>
+  <input data-f="${k}planX" style="display:none;margin-top:5px" placeholder="ระบุแผนงาน"></div>
+  <div><label>งาน</label><select data-f="${k}work"><option value="">-- เลือกแผนงานก่อน --</option></select>
+  <input data-f="${k}workX" style="display:none;margin-top:5px" placeholder="ระบุงาน"></div>
+  <div class="grid g2"><div><label>งบ</label><select data-f="${k}bud">${opt(Object.keys(BUDGET),"เลือกงบ")}</select></div>
+  <div><label>หมวด</label><select data-f="${k}cat"><option value="">-- เลือกงบก่อน --</option></select></div></div>
+  <div><label>ประเภทรายจ่าย</label><select data-f="${k}type"><option value="">-- เลือกหมวดก่อน --</option></select>
+  <input data-f="${k}typeX" style="display:none;margin-top:5px" placeholder="ระบุประเภทรายจ่าย"></div>
+  <div><label>ชื่อโครงการ / รายการ <span class="hint">(ถ้ามี — กรอกเองได้)</span></label>
+  <input data-f="${k}proj" placeholder="เช่น เก้าอี้ทำงานแบบสูง จำนวน 2 ตัว / โครงการ..."></div>
+  <div class="carry-note" data-carry="${k}" style="display:none"></div>
+  <div class="grid g3">
+  <div><label>งบประมาณตั้งไว้</label><input type="number" step="0.01" data-f="${k}set"></div>
+  <div><label>คงเหลือก่อนโอน</label><input type="number" step="0.01" data-f="${k}before"></div>
+  <div><label>${label}</label><input type="number" step="0.01" data-f="${k}amt" ${amtAttr}></div></div>
+  <div><label>คงเหลือหลังโอน</label><input data-f="${k}after" readonly class="ro"></div>
+  </div></div>`;
 }
-
 function addItem(d){
- var box=el("items");
- if(!box||typeof box.appendChild!=="function"){showErr("ไม่พบกล่อง #items");return null}
- seqId++;
- var div=document.createElement("div");
- div.className="item"; div.id="it"+seqId;
- div.innerHTML='<div class="hd"><span class="nm">รายการที่ –</span>'
-  +'<button type="button" class="btn dg sm" data-act="del-item">🗑 ลบรายการนี้</button></div>'
-  +'<div class="bd">'+sideHTML("d","dec","▼ รายการโอนลด","จำนวนที่โอนลด")
-  +sideHTML("i","inc","▲ รายการโอนเพิ่ม / ตั้งจ่ายเป็นรายการใหม่","จำนวนที่โอนเพิ่ม")+'</div>'
-  +'<div style="padding:0 12px 12px"><label>เหตุผลความจำเป็น</label>'
-  +'<textarea data-f="reason" rows="2" placeholder="เช่น เนื่องจากมีทรัพย์สินชำรุดที่เกิดจากการเสื่อมสภาพ จำเป็นต้องซ่อมบำรุงมากกว่าที่ตั้งงบประมาณไว้"></textarea></div>';
- box.appendChild(div);
- if(d) fillItem(div,d);
- renum(); calc();
- return div;
+  const box=el("items"); if(!box)return null;
+  seqId++;
+  const div=document.createElement("div");
+  div.className="item"; div.id="it"+seqId;
+  div.innerHTML=`<div class="hd"><span class="nm">รายการที่ –</span>
+    <button type="button" class="btn dg sm" data-act="del-item">🗑 ลบรายการนี้</button></div>
+    <div class="bd">${sideHTML("d","dec","▼ รายการโอนลด","จำนวนที่โอนลด")}${sideHTML("i","inc","▲ รายการโอนเพิ่ม / ตั้งจ่ายเป็นรายการใหม่","จำนวนที่โอนเพิ่ม")}</div>
+    <div style="padding:0 12px 12px"><label>เหตุผลความจำเป็น</label>
+    <textarea data-f="reason" rows="2" placeholder="เช่น เนื่องจากมีทรัพย์สินชำรุดที่เกิดจากการเสื่อมสภาพ จำเป็นต้องซ่อมบำรุงมากกว่าที่ตั้งงบประมาณไว้"></textarea></div>`;
+  box.appendChild(div);
+  if(d) fillItem(div,d);
+  renum(); calc();
+  return div;
 }
-
 function syncWork(it,k){
- var ps=q('[data-f="'+k+'plan"]',it), w=q('[data-f="'+k+'work"]',it);
- if(!ps||!w)return;
- q('[data-f="'+k+'planX"]',it).style.display=(ps.value===OTHER)?"block":"none";
- w.innerHTML=(ps.value&&PLANS[ps.value])?opt(PLANS[ps.value],"เลือกงาน"):'<option value="">-- เลือกแผนงานก่อน --</option>';
+  const ps=q(`[data-f="${k}plan"]`,it), w=q(`[data-f="${k}work"]`,it);
+  if(!ps||!w)return;
+  q(`[data-f="${k}planX"]`,it).style.display=(ps.value===OTHER)?"block":"none";
+  w.innerHTML=(ps.value&&PLANS[ps.value])?opt(PLANS[ps.value],"เลือกงาน"):'<option value="">-- เลือกแผนงานก่อน --</option>';
 }
 function syncCat(it,k){
- var bs=q('[data-f="'+k+'bud"]',it), c=q('[data-f="'+k+'cat"]',it);
- if(!bs||!c)return;
- c.innerHTML=(bs.value&&BUDGET[bs.value])?opt(Object.keys(BUDGET[bs.value]),"เลือกหมวด"):'<option value="">-- เลือกงบก่อน --</option>';
- q('[data-f="'+k+'type"]',it).innerHTML='<option value="">-- เลือกหมวดก่อน --</option>';
+  const bs=q(`[data-f="${k}bud"]`,it), c=q(`[data-f="${k}cat"]`,it);
+  if(!bs||!c)return;
+  c.innerHTML=(bs.value&&BUDGET[bs.value])?opt(Object.keys(BUDGET[bs.value]),"เลือกหมวด"):'<option value="">-- เลือกงบก่อน --</option>';
+  q(`[data-f="${k}type"]`,it).innerHTML='<option value="">-- เลือกหมวดก่อน --</option>';
 }
 function syncType(it,k){
- var b=q('[data-f="'+k+'bud"]',it).value, c=q('[data-f="'+k+'cat"]',it).value, t=q('[data-f="'+k+'type"]',it);
- t.innerHTML=(BUDGET[b]&&BUDGET[b][c])?opt(BUDGET[b][c],"เลือกประเภทรายจ่าย"):'<option value="">-- เลือกหมวดก่อน --</option>';
+  const b=q(`[data-f="${k}bud"]`,it).value, c=q(`[data-f="${k}cat"]`,it).value, t=q(`[data-f="${k}type"]`,it);
+  t.innerHTML=(BUDGET[b]&&BUDGET[b][c])?opt(BUDGET[b][c],"เลือกประเภทรายจ่าย"):'<option value="">-- เลือกหมวดก่อน --</option>';
 }
-function renum(){qa("#items .item").forEach(function(it,i){var n=q(".nm",it);if(n)n.textContent="รายการที่ "+(i+1)})}
+const renum=()=>qa("#items .item").forEach((it,i)=>{const n=q(".nm",it);if(n)n.textContent="รายการที่ "+(i+1)});
 
 function keyOf(it,k){
- var g=function(f){var e=q('[data-f="'+f+'"]',it);return e?String(e.value||"").trim():""};
- var pick=function(a,b){return g(a)===OTHER?g(b):g(a)};
- var bud=g(k+"bud"), cat=g(k+"cat"), type=pick(k+"type",k+"typeX");
- if(!bud||!cat||!type) return "";
- return [pick(k+"plan",k+"planX"),pick(k+"work",k+"workX"),bud,cat,type,g(k+"proj")].join("|");
+  const g=f=>{const e=q(`[data-f="${f}"]`,it);return e?String(e.value||"").trim():""};
+  const pick=(a,b)=>g(a)===OTHER?g(b):g(a);
+  const bud=g(k+"bud"),cat=g(k+"cat"),type=pick(k+"type",k+"typeX");
+  if(!bud||!cat||!type)return "";
+  return [pick(k+"plan",k+"planX"),pick(k+"work",k+"workX"),bud,cat,type,g(k+"proj")].join("|");
 }
-function lockCarry(it,k,fromIdx){
- ["set","before"].forEach(function(f){
-  var e=q('[data-f="'+k+f+'"]',it);
-  if(e){e.readOnly=true;e.classList.add("ro");e.classList.add("carry")}
- });
- var t=q('[data-carry="'+k+'"]',it);
- if(t){t.style.display="block";t.textContent="↩ ยกยอดต่อจากรายการที่ "+fromIdx+" (รายการซ้ำ — ระบบคำนวณให้อัตโนมัติ)"}
+function lockCarry(it,k,i){
+  ["set","before"].forEach(f=>{const e=q(`[data-f="${k}${f}"]`,it);if(e){e.readOnly=true;e.classList.add("ro","carry")}});
+  const t=q(`[data-carry="${k}"]`,it);
+  if(t){t.style.display="block";t.textContent="↩ ยกยอดต่อจากรายการที่ "+i+" (รายการซ้ำ — ระบบคำนวณให้อัตโนมัติ)"}
 }
 function unlockCarry(it,k){
- ["set","before"].forEach(function(f){
-  var e=q('[data-f="'+k+f+'"]',it);
-  if(e){e.readOnly=false;e.classList.remove("ro");e.classList.remove("carry")}
- });
- var t=q('[data-carry="'+k+'"]',it);
- if(t){t.style.display="none";t.textContent=""}
+  ["set","before"].forEach(f=>{const e=q(`[data-f="${k}${f}"]`,it);if(e){e.readOnly=false;e.classList.remove("ro","carry")}});
+  const t=q(`[data-carry="${k}"]`,it); if(t){t.style.display="none";t.textContent=""}
 }
 function calc(){
- var n=0,total=0,warn=[],map={};
- qa("#items .item").forEach(function(it,i){
-  var g=function(f){return q('[data-f="'+f+'"]',it)};
-  if(!g("damt"))return;
-  var amt=num(g("damt").value);
-  g("iamt").value=amt?amt:"";
-  var kd=keyOf(it,"d"), cd=kd?map[kd]:null;
-  if(cd){ g("dset").value=cd.set; g("dbefore").value=cd.after; lockCarry(it,"d",cd.idx); }
-  else unlockCarry(it,"d");
-  var dSet=num(g("dset").value), dAfter=num(g("dbefore").value)-amt;
-  g("dafter").value=fm(dAfter);
-  if(kd) map[kd]={set:dSet,after:dAfter,idx:i+1};
-  var ki=keyOf(it,"i"), ci=ki?map[ki]:null;
-  if(ci){ g("iset").value=ci.set; g("ibefore").value=ci.after; lockCarry(it,"i",ci.idx); }
-  else unlockCarry(it,"i");
-  var iSet=num(g("iset").value), iAfter=num(g("ibefore").value)+amt;
-  g("iafter").value=fm(iAfter);
-  if(ki) map[ki]={set:iSet,after:iAfter,idx:i+1};
-  if(dAfter<0) warn.push("รายการที่ "+(i+1)+" : ยอดโอนลดมากกว่างบคงเหลือ (ติดลบ "+fm(Math.abs(dAfter))+" บาท)");
-  n++; total+=amt;
- });
- var sb=el("sumbox"); if(sb) sb.textContent="รวมยอดโอน "+n+" รายการ · "+fm(total)+" บาท";
- var wb=el("warnbox"); if(wb) wb.innerHTML=warn.length?'<div class="warn">⚠ '+warn.join("<br>⚠ ")+"</div>":"";
+  let n=0,total=0;const warn=[],map={};
+  qa("#items .item").forEach((it,i)=>{
+    const g=f=>q(`[data-f="${f}"]`,it);
+    if(!g("damt"))return;
+    const amt=num(g("damt").value);
+    g("iamt").value=amt?amt:"";
+    const kd=keyOf(it,"d"),cd=kd?map[kd]:null;
+    if(cd){g("dset").value=cd.set;g("dbefore").value=cd.after;lockCarry(it,"d",cd.idx)}else unlockCarry(it,"d");
+    const dSet=num(g("dset").value),dAfter=num(g("dbefore").value)-amt;
+    g("dafter").value=fm(dAfter);
+    if(kd)map[kd]={set:dSet,after:dAfter,idx:i+1};
+    const ki=keyOf(it,"i"),ci=ki?map[ki]:null;
+    if(ci){g("iset").value=ci.set;g("ibefore").value=ci.after;lockCarry(it,"i",ci.idx)}else unlockCarry(it,"i");
+    const iSet=num(g("iset").value),iAfter=num(g("ibefore").value)+amt;
+    g("iafter").value=fm(iAfter);
+    if(ki)map[ki]={set:iSet,after:iAfter,idx:i+1};
+    if(dAfter<0)warn.push("รายการที่ "+(i+1)+" : ยอดโอนลดมากกว่างบคงเหลือ (ติดลบ "+fm(Math.abs(dAfter))+" บาท)");
+    n++; total+=amt;
+  });
+  el("sumbox").textContent="รวมยอดโอน "+n+" รายการ · "+fm(total)+" บาท";
+  el("warnbox").innerHTML=warn.length?'<div class="warn">⚠ '+warn.join("<br>⚠ ")+"</div>":"";
 }
 function readItem(it){
- var g=function(f){var e=q('[data-f="'+f+'"]',it);return e?e.value:""};
- var pick=function(a,b){return g(a)===OTHER?g(b):g(a)};
- return {dplan:pick("dplan","dplanX"),dwork:pick("dwork","dworkX"),dbud:g("dbud"),dcat:g("dcat"),dtype:pick("dtype","dtypeX"),dproj:g("dproj"),
-  dset:num(g("dset")),dbefore:num(g("dbefore")),amt:num(g("damt")),
-  iplan:pick("iplan","iplanX"),iwork:pick("iwork","iworkX"),ibud:g("ibud"),icat:g("icat"),itype:pick("itype","itypeX"),iproj:g("iproj"),
-  iset:num(g("iset")),ibefore:num(g("ibefore")),reason:g("reason")};
+  const g=f=>{const e=q(`[data-f="${f}"]`,it);return e?e.value:""};
+  const pick=(a,b)=>g(a)===OTHER?g(b):g(a);
+  return {dplan:pick("dplan","dplanX"),dwork:pick("dwork","dworkX"),dbud:g("dbud"),dcat:g("dcat"),dtype:pick("dtype","dtypeX"),dproj:g("dproj"),
+    dset:num(g("dset")),dbefore:num(g("dbefore")),amt:num(g("damt")),
+    iplan:pick("iplan","iplanX"),iwork:pick("iwork","iworkX"),ibud:g("ibud"),icat:g("icat"),itype:pick("itype","itypeX"),iproj:g("iproj"),
+    iset:num(g("iset")),ibefore:num(g("ibefore")),reason:g("reason")};
 }
 function fillItem(it,d){
- var g=function(f){return q('[data-f="'+f+'"]',it)};
- ["d","i"].forEach(function(k){
-  var has=function(sel,v){return Array.prototype.some.call(sel.options,function(o){return o.value===v})};
-  var ps=g(k+"plan");
-  if(has(ps,d[k+"plan"])) ps.value=d[k+"plan"]; else {ps.value=OTHER;g(k+"planX").style.display="block";g(k+"planX").value=d[k+"plan"]||""}
-  syncWork(it,k);
-  var ws=g(k+"work");
-  if(has(ws,d[k+"work"])) ws.value=d[k+"work"]; else {ws.value=OTHER;g(k+"workX").style.display="block";g(k+"workX").value=d[k+"work"]||""}
-  g(k+"bud").value=d[k+"bud"]||""; syncCat(it,k);
-  g(k+"cat").value=d[k+"cat"]||""; syncType(it,k);
-  var ts=g(k+"type");
-  if(has(ts,d[k+"type"])) ts.value=d[k+"type"]; else {ts.value=OTHER;g(k+"typeX").style.display="block";g(k+"typeX").value=d[k+"type"]||""}
-  g(k+"proj").value=d[k+"proj"]||"";
-  g(k+"set").value=d[k+"set"]||""; g(k+"before").value=d[k+"before"]||"";
- });
- g("damt").value=d.amt||""; g("reason").value=d.reason||"";
+  const g=f=>q(`[data-f="${f}"]`,it);
+  ["d","i"].forEach(k=>{
+    const has=(sel,v)=>Array.prototype.some.call(sel.options,o=>o.value===v);
+    const ps=g(k+"plan");
+    if(has(ps,d[k+"plan"]))ps.value=d[k+"plan"];else{ps.value=OTHER;g(k+"planX").style.display="block";g(k+"planX").value=d[k+"plan"]||""}
+    syncWork(it,k);
+    const ws=g(k+"work");
+    if(has(ws,d[k+"work"]))ws.value=d[k+"work"];else{ws.value=OTHER;g(k+"workX").style.display="block";g(k+"workX").value=d[k+"work"]||""}
+    g(k+"bud").value=d[k+"bud"]||""; syncCat(it,k);
+    g(k+"cat").value=d[k+"cat"]||""; syncType(it,k);
+    const ts=g(k+"type");
+    if(has(ts,d[k+"type"]))ts.value=d[k+"type"];else{ts.value=OTHER;g(k+"typeX").style.display="block";g(k+"typeX").value=d[k+"type"]||""}
+    g(k+"proj").value=d[k+"proj"]||"";
+    g(k+"set").value=d[k+"set"]||""; g(k+"before").value=d[k+"before"]||"";
+  });
+  g("damt").value=d.amt||""; g("reason").value=d.reason||"";
 }
 
 /* ==================== โหมดเอกสาร ==================== */
 function applyMode(keepRule){
- var m=val("f_note");
- if(!keepRule) setVal("f_rule",m==="27"?RULE27:RULE26);
- var h=el("noteHint");
- if(h) h.innerHTML=(m==="27")
-  ?"<b>รูปแบบเอกสาร:</b> บันทึกเสนอสภาเทศบาล (ตามไฟล์ “บันทึกโอนอำนาจสภาเทศบาล”) — โอนงบลงทุน / ตั้งจ่ายเป็นรายการใหม่"
-  :"<b>รูปแบบเอกสาร:</b> บันทึกอำนาจนายกเทศมนตรี (ตามไฟล์ “บันทึกโอนอำนาจนายก”) — โอนงบประมาณรายจ่ายทั่วไป";
+  const m=val("f_note");
+  if(!keepRule) setVal("f_rule",m==="27"?RULE27:RULE26);
+  el("noteHint").innerHTML=(m==="27")
+    ?"<b>รูปแบบเอกสาร:</b> บันทึกเสนอสภาเทศบาล — โอนงบลงทุน / ตั้งจ่ายเป็นรายการใหม่"
+    :"<b>รูปแบบเอกสาร:</b> บันทึกอำนาจนายกเทศมนตรี — โอนงบประมาณรายจ่ายทั่วไป";
 }
 
-/* ==================== บันทึก ==================== */
+/* ==================== บันทึกเอกสาร ==================== */
 function readForm(){
- var items=qa("#items .item").map(readItem).filter(function(x){return x.amt>0||x.dtype||x.itype});
- return {id:editId||("T"+Date.now()),dept:val("f_dept"),no1:val("f_no1"),no2:val("f_no2"),tel:val("f_tel"),
-  date:val("f_date"),year:val("f_year"),seq:val("f_seq"),subject:val("f_subject"),
-  rule:val("f_rule"),mode:val("f_note"),items:items,
-  total:items.reduce(function(s,x){return s+x.amt},0),created:new Date().toISOString()};
+  const items=qa("#items .item").map(readItem).filter(x=>x.amt>0||x.dtype||x.itype);
+  return {id:editId||("T"+Date.now()+"-"+Math.random().toString(36).slice(2,7)),
+    dept:val("f_dept"),no1:val("f_no1"),no2:val("f_no2"),tel:val("f_tel"),
+    date:val("f_date"),year:val("f_year"),seq:val("f_seq"),subject:val("f_subject"),
+    rule:val("f_rule"),mode:val("f_note"),items,
+    total:items.reduce((s,x)=>s+x.amt,0),created:new Date().toISOString(),
+    ownerUid:ME.uid,ownerName:ME.name,ownerEmail:ME.email};
 }
-function saveRec(st){
- var r=readForm();
- if(!r.items.length){alert("กรุณาเพิ่มรายการโอนอย่างน้อย 1 รายการ");return}
- if(r.items.some(function(x){return x.amt<=0})){alert("กรุณากรอกจำนวนเงินที่โอนให้ครบทุกรายการ");return}
- var l=load(), i=-1;
- l.forEach(function(x,ix){if(x.id===r.id)i=ix});
- var old=(i>=0)?l[i]:{};
- r.status=(st==="draft")?"draft":((old.status&&old.status!=="draft")?old.status:"wait");
- r.approveDate=old.approveDate||""; r.tSeq=old.tSeq||r.seq||""; r.tDate=old.tDate||""; r.remark=old.remark||"";
- if(i>=0) l[i]=r; else l.unshift(r);
- store(l); editId=r.id;
- el("editing").textContent="บันทึกแล้ว (รหัส "+r.id+")";
- alert(st==="draft"?"บันทึกร่างเรียบร้อย":"บันทึกและเสนอขออนุมัติเรียบร้อย");
- renderList(); if(adminOK) renderAdmin();
+async function saveRec(st){
+  const r=readForm();
+  if(!r.items.length){alert("กรุณาเพิ่มรายการโอนอย่างน้อย 1 รายการ");return}
+  if(r.items.some(x=>x.amt<=0)){alert("กรุณากรอกจำนวนเงินที่โอนให้ครบทุกรายการ");return}
+  const old=RECS.find(x=>x.id===r.id)||{};
+  if(old.ownerUid){r.ownerUid=old.ownerUid;r.ownerName=old.ownerName;r.ownerEmail=old.ownerEmail;r.created=old.created}
+  r.status=(st==="draft")?"draft":((old.status&&old.status!=="draft")?old.status:"wait");
+  r.approveDate=old.approveDate||""; r.tSeq=old.tSeq||r.seq||""; r.tDate=old.tDate||""; r.remark=old.remark||"";
+  r.updated=new Date().toISOString(); r.updatedBy=ME.name;
+  try{ await dbSaveRec(r); editId=r.id;
+    el("editing").textContent="บันทึกแล้ว (รหัส "+r.id+")";
+    alert(st==="draft"?"บันทึกร่างเรียบร้อย":"บันทึกและเสนอขออนุมัติเรียบร้อย");
+  }catch(e){ alert("บันทึกไม่สำเร็จ: "+e.message) }
 }
 function resetForm(){editId=null;el("items").innerHTML="";addItem();setVal("f_no2","");setVal("f_seq","");el("editing").textContent=""}
 function editRec(id){
- var r=null; load().forEach(function(x){if(x.id===id)r=x});
- if(!r)return; editId=id;
- setVal("f_dept",r.dept);setVal("f_no1",r.no1);setVal("f_no2",r.no2);setVal("f_tel",r.tel||"0-5312-1585");
- setVal("f_date",r.date);setVal("f_year",r.year);setVal("f_seq",r.tSeq||r.seq);setVal("f_subject",r.subject);
- setVal("f_note",r.mode||"26"); applyMode(true); setVal("f_rule",r.rule||(r.mode==="27"?RULE27:RULE26));
- el("items").innerHTML=""; r.items.forEach(function(d){addItem(d)});
- calc(); el("editing").textContent="กำลังแก้ไขรหัส "+id;
- gotoTab("new"); window.scrollTo(0,0);
+  const r=RECS.find(x=>x.id===id); if(!r)return;
+  if(!isAdmin()&&r.ownerUid!==ME.uid){alert("คุณแก้ไขได้เฉพาะเอกสารที่ตนเองบันทึกเท่านั้น");return}
+  editId=id;
+  setVal("f_dept",r.dept);setVal("f_no1",r.no1);setVal("f_no2",r.no2);setVal("f_tel",r.tel||"0-5312-1585");
+  setVal("f_date",r.date);setVal("f_year",r.year);setVal("f_seq",r.tSeq||r.seq);setVal("f_subject",r.subject);
+  setVal("f_note",r.mode||"26"); applyMode(true); setVal("f_rule",r.rule||(r.mode==="27"?RULE27:RULE26));
+  el("items").innerHTML=""; r.items.forEach(d=>addItem(d));
+  calc(); el("editing").textContent="กำลังแก้ไขรหัส "+id;
+  gotoTab("new"); window.scrollTo(0,0);
 }
-function delRec(id){if(!confirm("ยืนยันลบรายการนี้?"))return;store(load().filter(function(x){return x.id!==id}));renderList();if(adminOK)renderAdmin()}
+async function delRec(id){
+  const r=RECS.find(x=>x.id===id); if(!r)return;
+  if(!isAdmin()&&r.ownerUid!==ME.uid){alert("คุณลบได้เฉพาะเอกสารที่ตนเองบันทึกเท่านั้น");return}
+  if(!confirm("ยืนยันลบรายการนี้?"))return;
+  try{await dbDelRec(id)}catch(e){alert("ลบไม่สำเร็จ: "+e.message)}
+}
 
-/* ==================== ทะเบียน ==================== */
+/* ==================== ตาราง ==================== */
+function renderAll(){renderList();renderAdmin();renderUsers()}
 function renderList(){
- var t=el("tblist"); if(!t)return;
- var kw=val("q_kw").trim(), yy=val("q_year").trim(), st=val("q_st");
- var l=load().filter(function(r){
-  return (!st||r.status===st)&&(!yy||String(r.year||"").indexOf(yy)>-1)&&(!kw||JSON.stringify(r).indexOf(kw)>-1);
- });
- var h='<tr><th>ครั้งที่</th><th>วันที่โอน</th><th>ส่วนราชการ</th><th>ปีงบ</th><th class="center">ข้อ</th><th class="center">รายการ</th><th class="right">รวมเงิน (บาท)</th><th class="center">สถานะ</th><th class="center">จัดการ</th></tr>';
- h+=l.length?l.map(function(r){var s=STLget(r.status);
-  return '<tr><td class="center">'+esc(r.tSeq||"-")+'</td><td>'+(r.tDate?thDate(r.tDate):"-")+'</td>'
-  +'<td>'+esc(r.dept)+'</td><td class="center">'+esc(r.year)+'</td><td class="center">'+esc(r.mode||"26")+'</td><td class="center">'+r.items.length+'</td>'
-  +'<td class="right">'+fm(r.total)+'</td><td class="center"><span class="badge '+s[1]+'">'+s[0]+'</span></td>'
-  +'<td class="center" style="white-space:nowrap">'
-  +'<button type="button" class="btn gh sm" data-act="doc" data-id="'+r.id+'">เอกสาร</button> '
-  +'<button type="button" class="btn gh sm" data-act="edit" data-id="'+r.id+'">แก้ไข</button> '
-  +'<button type="button" class="btn dg sm" data-act="del" data-id="'+r.id+'">ลบ</button></td></tr>';
- }).join(""):'<tr><td colspan="9" class="center" style="padding:24px;color:#8a97a6">ยังไม่มีข้อมูล</td></tr>';
- t.innerHTML=h;
-}
-function dl(name,blob){var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},900)}
-function exportCSV(){
- var rows=[["ครั้งที่","วันที่โอน","ข้อระเบียบ","สถานะ","ส่วนราชการ","ปีงบ","ลำดับ","โอนลด-แผนงาน","โอนลด-งาน","โอนลด-งบ","โอนลด-หมวด","โอนลด-ประเภท","โอนลด-โครงการ","ตั้งไว้","คงเหลือก่อน","จำนวนโอน","คงเหลือหลัง","โอนเพิ่ม-แผนงาน","โอนเพิ่ม-งาน","โอนเพิ่ม-งบ","โอนเพิ่ม-หมวด","โอนเพิ่ม-ประเภท","โอนเพิ่ม-โครงการ","ตั้งไว้","คงเหลือก่อน","คงเหลือหลัง","เหตุผล"]];
- load().forEach(function(r){r.items.forEach(function(x,i){
-  rows.push([r.tSeq||"",r.tDate||"",r.mode||"26",STLget(r.status)[0],r.dept,r.year,i+1,x.dplan,x.dwork,x.dbud,x.dcat,x.dtype,x.dproj||"",x.dset,x.dbefore,x.amt,x.dbefore-x.amt,x.iplan,x.iwork,x.ibud,x.icat,x.itype,x.iproj||"",x.iset,x.ibefore,x.ibefore+x.amt,x.reason]);
- })});
- var csv="\uFEFF"+rows.map(function(r){return r.map(function(c){return '"'+String(c==null?"":c).replace(/"/g,'""')+'"'}).join(",")}).join("\n");
- dl("ทะเบียนโอนงบประมาณ.csv",new Blob([csv],{type:"text/csv;charset=utf-8"}));
-}
-function backup(){dl("backup-โอนงบประมาณ-"+new Date().toISOString().slice(0,10)+".json",new Blob([JSON.stringify({data:load(),setting:getSet()},null,1)],{type:"application/json"}))}
-function restore(f){
- var rd=new FileReader();
- rd.onload=function(){try{
-  var o=JSON.parse(rd.result), arr=Array.isArray(o)?o:(o.data||[]);
-  if(!Array.isArray(arr))throw new Error("รูปแบบไฟล์ไม่ถูกต้อง");
-  if(!confirm("นำเข้า "+arr.length+" รายการ (ข้อมูลเดิมจะถูกแทนที่) ยืนยันหรือไม่?"))return;
-  store(arr);
-  if(o.setting)localStorage.setItem(SKEY,JSON.stringify(o.setting));
-  loadSetting(); renderList(); if(adminOK)renderAdmin();
-  alert("นำเข้าข้อมูลเรียบร้อย");
- }catch(e){alert("นำเข้าไม่สำเร็จ: "+e.message)}};
- rd.readAsText(f);
-}
-
-/* ==================== ผู้ดูแลระบบ ==================== */
-function doLogin(){
- if(val("pw")===getSet().pw){adminOK=true;el("adminLock").style.display="none";el("adminBody").style.display="block";renderAdmin()}
- else alert("รหัสผ่านไม่ถูกต้อง");
+  const t=el("tblist"); if(!t)return;
+  const kw=val("q_kw").trim(), yy=val("q_year").trim(), st=val("q_st");
+  const l=RECS.filter(r=>(!st||r.status===st)&&(!yy||String(r.year||"").includes(yy))&&(!kw||JSON.stringify(r).includes(kw)));
+  let h='<tr><th>ครั้งที่</th><th>วันที่โอน</th><th>ส่วนราชการ</th><th>ปีงบ</th><th class="center">ข้อ</th><th class="center">รายการ</th><th class="right">รวมเงิน</th><th>ผู้บันทึก</th><th class="center">สถานะ</th><th class="center">จัดการ</th></tr>';
+  h+=l.length?l.map(r=>{const s=STLget(r.status);const mine=r.ownerUid===ME.uid||isAdmin();
+    return `<tr><td class="center">${esc(r.tSeq||"-")}</td><td>${r.tDate?thDate(r.tDate):"-"}</td>
+    <td>${esc(r.dept)}</td><td class="center">${esc(r.year)}</td><td class="center">${esc(r.mode||"26")}</td>
+    <td class="center">${r.items.length}</td><td class="right">${fm(r.total)}</td>
+    <td>${esc(r.ownerName||"-")}<br><span class="hint">${esc(r.ownerEmail||"")}</span></td>
+    <td class="center"><span class="badge ${s[1]}">${s[0]}</span></td>
+    <td class="center" style="white-space:nowrap">
+    <button type="button" class="btn gh sm" data-act="doc" data-id="${r.id}">เอกสาร</button>
+    ${mine?`<button type="button" class="btn gh sm" data-act="edit" data-id="${r.id}">แก้ไข</button>
+    <button type="button" class="btn dg sm" data-act="del" data-id="${r.id}">ลบ</button>`:""}</td></tr>`;
+  }).join(""):'<tr><td colspan="10" class="center" style="padding:24px;color:#8a97a6">ยังไม่มีข้อมูล</td></tr>';
+  t.innerHTML=h;
 }
 function renderAdmin(){
- var t=el("tbadmin"); if(!t)return;
- var l=load();
- var h='<tr><th>ส่วนราชการ / ปีงบ</th><th class="right">รวมเงิน</th><th style="width:110px">ครั้งที่โอน</th><th style="width:155px">วันที่โอน</th><th style="width:150px">สถานะอนุมัติ</th><th>หมายเหตุ/เหตุผล</th><th class="center">บันทึก</th></tr>';
- h+=l.length?l.map(function(r){
-  return '<tr><td>'+esc(r.dept)+'<br><span class="hint">ปีงบ '+esc(r.year)+' · ข้อ '+esc(r.mode||"26")+' · '+r.items.length+' รายการ · รหัส '+r.id+'</span></td>'
-  +'<td class="right">'+fm(r.total)+'</td>'
-  +'<td><input id="a1'+r.id+'" value="'+esc(r.tSeq||"")+'" placeholder="เช่น 12"></td>'
-  +'<td><input type="date" id="a2'+r.id+'" value="'+esc(r.tDate||"")+'"></td>'
-  +'<td><select id="a3'+r.id+'">'+Object.keys(STL).map(function(k){return '<option value="'+k+'"'+(r.status===k?" selected":"")+">"+STL[k][0]+"</option>"}).join("")+'</select></td>'
-  +'<td><input id="a4'+r.id+'" value="'+esc(r.remark||"")+'" placeholder="กรณีไม่อนุมัติ ระบุเหตุผล"></td>'
-  +'<td class="center" style="white-space:nowrap"><button type="button" class="btn gr sm" data-act="admin-save" data-id="'+r.id+'">✔ บันทึก</button> '
-  +'<button type="button" class="btn gh sm" data-act="doc" data-id="'+r.id+'">เอกสาร</button></td></tr>';
- }).join(""):'<tr><td colspan="7" class="center" style="padding:24px;color:#8a97a6">ยังไม่มีข้อมูล</td></tr>';
- t.innerHTML=h;
+  const t=el("tbadmin"); if(!t||!isAdmin())return;
+  let h='<tr><th>ส่วนราชการ / ผู้บันทึก</th><th class="right">รวมเงิน</th><th style="width:110px">ครั้งที่โอน</th><th style="width:155px">วันที่โอน</th><th style="width:150px">สถานะอนุมัติ</th><th>หมายเหตุ/เหตุผล</th><th class="center">บันทึก</th></tr>';
+  h+=RECS.length?RECS.map(r=>`<tr>
+    <td>${esc(r.dept)}<br><span class="hint">ปีงบ ${esc(r.year)} · ข้อ ${esc(r.mode||"26")} · ${r.items.length} รายการ<br>โดย ${esc(r.ownerName||"-")}</span></td>
+    <td class="right">${fm(r.total)}</td>
+    <td><input id="a1${r.id}" value="${esc(r.tSeq||"")}" placeholder="เช่น 12"></td>
+    <td><input type="date" id="a2${r.id}" value="${esc(r.tDate||"")}"></td>
+    <td><select id="a3${r.id}">${Object.keys(STL).map(k=>`<option value="${k}"${r.status===k?" selected":""}>${STL[k][0]}</option>`).join("")}</select></td>
+    <td><input id="a4${r.id}" value="${esc(r.remark||"")}" placeholder="กรณีไม่อนุมัติ ระบุเหตุผล"></td>
+    <td class="center" style="white-space:nowrap"><button type="button" class="btn gr sm" data-act="admin-save" data-id="${r.id}">✔ บันทึก</button>
+    <button type="button" class="btn gh sm" data-act="doc" data-id="${r.id}">เอกสาร</button></td></tr>`).join("")
+    :'<tr><td colspan="7" class="center" style="padding:24px;color:#8a97a6">ยังไม่มีข้อมูล</td></tr>';
+  t.innerHTML=h;
 }
-function saveAdmin(id){
- var l=load(), r=null; l.forEach(function(x){if(x.id===id)r=x});
- if(!r)return;
- r.tSeq=val("a1"+id); r.tDate=val("a2"+id); r.status=val("a3"+id); r.remark=val("a4"+id);
- if(r.status==="ok") r.approveDate=r.tDate||new Date().toISOString().slice(0,10);
- store(l); alert("บันทึกสถานะเรียบร้อย"); renderList(); renderAdmin();
+async function saveAdmin(id){
+  if(!isAdmin()){alert("เฉพาะผู้ดูแลระบบเท่านั้น");return}
+  const r=RECS.find(x=>x.id===id); if(!r)return;
+  const n={...r,tSeq:val("a1"+id),tDate:val("a2"+id),status:val("a3"+id),remark:val("a4"+id)};
+  if(n.status==="ok") n.approveDate=n.tDate||new Date().toISOString().slice(0,10);
+  n.approvedBy=ME.name; n.approvedAt=new Date().toISOString();
+  try{await dbSaveRec(n);alert("บันทึกสถานะเรียบร้อย")}catch(e){alert("บันทึกไม่สำเร็จ: "+e.message)}
+}
+function renderUsers(){
+  const t=el("tbusers"); if(!t||!isAdmin())return;
+  let h='<tr><th>ชื่อ-นามสกุล</th><th>อีเมล</th><th>ส่วนราชการ</th><th style="width:190px">สิทธิ์</th><th class="center">บันทึก</th></tr>';
+  h+=USERS.length?USERS.map(u=>`<tr><td>${esc(u.name||"-")}</td><td>${esc(u.email||"")}</td><td>${esc(u.dept||"-")}</td>
+    <td><select id="r_${u.uid}"><option value="user"${u.role!=="admin"?" selected":""}>เจ้าหน้าที่</option><option value="admin"${u.role==="admin"?" selected":""}>ผู้ดูแลระบบ</option></select></td>
+    <td class="center"><button type="button" class="btn gr sm" data-act="role-save" data-id="${u.uid}">✔ บันทึก</button></td></tr>`).join("")
+    :'<tr><td colspan="5" class="center" style="padding:24px;color:#8a97a6">ยังไม่มีผู้ใช้</td></tr>';
+  t.innerHTML=h;
+}
+async function saveRole(uid){
+  if(!isAdmin())return;
+  if(uid===ME.uid&&val("r_"+uid)!=="admin"&&!confirm("คุณกำลังลดสิทธิ์ตนเอง จะไม่สามารถเข้าหน้าผู้ดูแลได้อีก ยืนยันหรือไม่?"))return;
+  try{await dbSetRole(uid,val("r_"+uid));alert("บันทึกสิทธิ์เรียบร้อย")}catch(e){alert("บันทึกไม่สำเร็จ: "+e.message)}
 }
 
 /* ==================== ตั้งค่า ==================== */
-function saveSetting(){
- var s={}; ["p1n","p1t","p2n","p2t","p3n","p3t","p4n","p4t","pw"].forEach(function(k){s[k]=val("s_"+k)});
- localStorage.setItem(SKEY,JSON.stringify(s)); alert("บันทึกการตั้งค่าเรียบร้อย");
+function applySettingUI(){
+  Object.keys(DEF_SET).forEach(k=>{if(k!=="garuda")setVal("s_"+k,SETTING[k])});
+  el("garudaPrev").src=SETTING.garuda||GARUDA_DEFAULT;
 }
-function loadSetting(){var s=getSet();Object.keys(s).forEach(function(k){setVal("s_"+k,s[k])})}
+async function saveSetting(){
+  if(!isAdmin()){alert("เฉพาะผู้ดูแลระบบเท่านั้น");return}
+  const s={...SETTING};
+  ["p1n","p1t","p2n","p2t","p3n","p3t","p4n","p4t"].forEach(k=>s[k]=val("s_"+k));
+  try{await dbSaveSetting(s);SETTING=s;alert("บันทึกการตั้งค่าเรียบร้อย")}catch(e){alert("บันทึกไม่สำเร็จ: "+e.message)}
+}
+function onGaruda(f){
+  if(f.size>350*1024){alert("ไฟล์ใหญ่เกิน 350 KB กรุณาย่อขนาดก่อน");return}
+  const rd=new FileReader();
+  rd.onload=async()=>{
+    const s={...SETTING,garuda:rd.result};
+    try{await dbSaveSetting(s);SETTING=s;el("garudaPrev").src=rd.result;alert("อัปโหลดตราครุฑเรียบร้อย")}
+    catch(e){alert("อัปโหลดไม่สำเร็จ: "+e.message)}
+  };
+  rd.readAsDataURL(f);
+}
 
 /* ==================== สร้างเอกสาร ==================== */
 function nameOf(x,k){
- var p=[];
- if(x[k+"plan"])p.push(x[k+"plan"]);
- if(x[k+"work"])p.push(x[k+"work"]);
- if(x[k+"bud"])p.push(x[k+"bud"]);
- if(x[k+"cat"])p.push("หมวด"+x[k+"cat"]);
- if(x[k+"type"])p.push("ประเภท"+x[k+"type"]);
- if(x[k+"proj"])p.push(x[k+"proj"]);
- return esc(p.join(" "));
+  const p=[];
+  if(x[k+"plan"])p.push(x[k+"plan"]);
+  if(x[k+"work"])p.push(x[k+"work"]);
+  if(x[k+"bud"])p.push(x[k+"bud"]);
+  if(x[k+"cat"])p.push("หมวด"+x[k+"cat"]);
+  if(x[k+"type"])p.push("ประเภท"+x[k+"type"]);
+  if(x[k+"proj"])p.push(x[k+"proj"]);
+  return esc(p.join(" "));
 }
 function docBody(r){
- var s=getSet(), m=(r.mode==="27")?"27":"26", n=r.items.length;
- var noteTxt="รบ.มท.ว่าด้วยวิธีการงบประมาณของ อปท. พ.ศ.2563 ข้อ "+m;
+  const s=SETTING, m=(r.mode==="27")?"27":"26", n=r.items.length;
+  const g=s.garuda||GARUDA_DEFAULT;
+  const noteTxt="รบ.มท.ว่าด้วยวิธีการงบประมาณของ อปท. พ.ศ.2563 ข้อ "+m;
+  const oldTxt=r.items.map(x=>(m==="27")
+    ? nameOf(x,"i")+" ไม่ได้ตั้งงบประมาณรายจ่ายไว้"
+    : nameOf(x,"i")+" งบประมาณตั้งไว้ "+fmi(x.iset)+".- บาท งบประมาณคงเหลือ "+fmi(x.ibefore)+".- บาท").join(" , ");
+  const fact=r.items.map((x,i)=>{
+    const t=(m==="27")
+      ? `รายการที่ ${i+1} ${nameOf(x,"i")} ขออนุมัติโอนตั้งจ่ายเป็นรายการใหม่ จำนวน ${fmi(x.amt)} บาท โดยโอนลดจาก ${nameOf(x,"d")} เหตุผลความจำเป็น ${esc(x.reason||"-")}`
+      : `รายการที่ ${i+1} ${nameOf(x,"i")} งบประมาณตั้งไว้ ${fmi(x.iset)}.- บาท งบประมาณคงเหลือ ${fmi(x.ibefore)}.- บาท ขออนุมัติโอนเพิ่ม จำนวน ${fmi(x.amt)}.- บาท โดยโอนลดจาก ${nameOf(x,"d")} เหตุผลความจำเป็น ${esc(x.reason||"-")}`;
+    return '<p class="ind2">'+t+"</p>";
+  }).join("");
+  const consider=(m==="27")
+    ? `เห็นควรให้ความเห็นชอบเพื่อเสนอสภาเทศบาลเมืองดอนแก้วพิจารณาอนุมัติโอนงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ. ${esc(r.year)} จำนวน ${n} รายการ รวมเป็นเงินทั้งสิ้น ${fmi(r.total)} บาท รายละเอียดดังนี้`
+    : `เพื่อให้การปฏิบัติเป็นไปตามระเบียบดังกล่าว ${esc(r.dept)} จึงขออนุมัติโอนงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ. ${esc(r.year)} จำนวน ${n} รายการ รวมเป็นเงินทั้งสิ้น ${fmi(r.total)} บาท รายละเอียดดังนี้`;
+  const rows=r.items.map((x,i)=>{
+    const dec=nameOf(x,"d")
+      +"<br>- งบประมาณตั้งไว้ "+fmi(x.dset)+" บาท"
+      +"<br>- งบประมาณคงเหลือก่อนโอน "+fmi(x.dbefore)+" บาท"
+      +"<br>- โอนลด "+fmi(x.amt)+" บาท"
+      +"<br>- งบประมาณคงเหลือหลังโอนลด "+fmi(x.dbefore-x.amt)+" บาท";
+    const inc=(m==="27")
+      ? nameOf(x,"i")+"<br>- โอนเพิ่มตั้งจ่ายเป็นรายการใหม่ "+fmi(x.amt)+" บาท<br>- งบประมาณคงเหลือหลังตั้งจ่ายเป็นรายการใหม่ "+fmi(x.ibefore+x.amt)+" บาท"
+      : nameOf(x,"i")+"<br>- งบประมาณตั้งไว้ "+fmi(x.iset)+" บาท<br>- งบประมาณคงเหลือก่อนโอน "+fmi(x.ibefore)+" บาท<br>- โอนเพิ่ม "+fmi(x.amt)+" บาท<br>- งบประมาณคงเหลือหลังโอนเพิ่ม "+fmi(x.ibefore+x.amt)+" บาท";
+    return `<tr><td class="center" style="width:4%">${i+1}.</td><td style="width:35%">${dec}</td><td style="width:35%">${inc}</td><td style="width:26%">${noteTxt}</td></tr>`;
+  }).join("");
+  const mayorLine=(m==="27")
+    ? `( ${r.status==="ok"?"✓":"&nbsp;&nbsp;&nbsp;"} ) เห็นชอบ เพื่อเสนอสภาเทศบาลเมืองดอนแก้วพิจารณาอนุมัติ<br>( ${r.status==="no"?"✓":"&nbsp;&nbsp;&nbsp;"} ) ไม่เห็นชอบ เนื่องจาก ${esc(r.remark||"...........................................................")}`
+    : `( ${r.status==="ok"?"✓":"&nbsp;&nbsp;&nbsp;"} ) อนุมัติ &nbsp;&nbsp;&nbsp; ( ${r.status==="no"?"✓":"&nbsp;&nbsp;&nbsp;"} ) ไม่อนุมัติ เนื่องจาก ${esc(r.remark||"...........................................................")}`;
 
- var oldTxt=r.items.map(function(x){
-  return (m==="27")
-   ? nameOf(x,"i")+" ไม่ได้ตั้งงบประมาณรายจ่ายไว้"
-   : nameOf(x,"i")+" งบประมาณตั้งไว้ "+fmi(x.iset)+".- บาท งบประมาณคงเหลือ "+fmi(x.ibefore)+".- บาท";
- }).join(" , ");
-
- var fact=r.items.map(function(x,i){
-  var t=(m==="27")
-   ? "รายการที่ "+(i+1)+" "+nameOf(x,"i")+" ขออนุมัติโอนตั้งจ่ายเป็นรายการใหม่ จำนวน "+fmi(x.amt)
-     +" บาท โดยโอนลดจาก "+nameOf(x,"d")+" เหตุผลความจำเป็น "+esc(x.reason||"-")
-   : "รายการที่ "+(i+1)+" "+nameOf(x,"i")+" งบประมาณตั้งไว้ "+fmi(x.iset)+".- บาท งบประมาณคงเหลือ "+fmi(x.ibefore)
-     +".- บาท ขออนุมัติโอนเพิ่ม จำนวน "+fmi(x.amt)+".- บาท โดยโอนลดจาก "+nameOf(x,"d")
-     +" เหตุผลความจำเป็น "+esc(x.reason||"-");
-  return '<p class="ind2">'+t+"</p>";
- }).join("");
-
- var consider=(m==="27")
-  ? "เห็นควรให้ความเห็นชอบเพื่อเสนอสภาเทศบาลเมืองดอนแก้วพิจารณาอนุมัติโอนงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ. "+esc(r.year)+" จำนวน "+n+" รายการ รวมเป็นเงินทั้งสิ้น "+fmi(r.total)+" บาท รายละเอียดดังนี้"
-  : "เพื่อให้การปฏิบัติเป็นไปตามระเบียบดังกล่าว "+esc(r.dept)+" จึงขออนุมัติโอนงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ. "+esc(r.year)+" จำนวน "+n+" รายการ รวมเป็นเงินทั้งสิ้น "+fmi(r.total)+" บาท รายละเอียดดังนี้";
-
- var rows=r.items.map(function(x,i){
-  var dec=nameOf(x,"d")
-   +"<br>- งบประมาณตั้งไว้ "+fmi(x.dset)+" บาท"
-   +"<br>- งบประมาณคงเหลือก่อนโอน "+fmi(x.dbefore)+" บาท"
-   +"<br>- โอนลด "+fmi(x.amt)+" บาท"
-   +"<br>- งบประมาณคงเหลือหลังโอนลด "+fmi(x.dbefore-x.amt)+" บาท";
-  var incTxt=(m==="27")
-   ? nameOf(x,"i")
-     +"<br>- โอนเพิ่มตั้งจ่ายเป็นรายการใหม่ "+fmi(x.amt)+" บาท"
-     +"<br>- งบประมาณคงเหลือหลังตั้งจ่ายเป็นรายการใหม่ "+fmi(x.ibefore+x.amt)+" บาท"
-   : nameOf(x,"i")
-     +"<br>- งบประมาณตั้งไว้ "+fmi(x.iset)+" บาท"
-     +"<br>- งบประมาณคงเหลือก่อนโอน "+fmi(x.ibefore)+" บาท"
-     +"<br>- โอนเพิ่ม "+fmi(x.amt)+" บาท"
-     +"<br>- งบประมาณคงเหลือหลังโอนเพิ่ม "+fmi(x.ibefore+x.amt)+" บาท";
-  return '<tr><td class="center" style="width:4%">'+(i+1)+'.</td><td style="width:35%">'+dec+'</td>'
-   +'<td style="width:35%">'+incTxt+'</td><td style="width:26%">'+noteTxt+"</td></tr>";
- }).join("");
-
- var mayorTitle=(m==="27")?"ความเห็นนายกเทศมนตรีเมืองดอนแก้ว":"ความเห็นนายกเทศมนตรีเมืองดอนแก้ว";
- var mayorLine=(m==="27")
-  ? '( '+(r.status==="ok"?"✓":"&nbsp;&nbsp;&nbsp;")+' ) เห็นชอบ เพื่อเสนอสภาเทศบาลเมืองดอนแก้วพิจารณาอนุมัติ<br>( '+(r.status==="no"?"✓":"&nbsp;&nbsp;&nbsp;")+' ) ไม่เห็นชอบ เนื่องจาก '+esc(r.remark||"...........................................................")
-  : '( '+(r.status==="ok"?"✓":"&nbsp;&nbsp;&nbsp;")+' ) อนุมัติ &nbsp;&nbsp;&nbsp; ( '+(r.status==="no"?"✓":"&nbsp;&nbsp;&nbsp;")+' ) ไม่อนุมัติ เนื่องจาก '+esc(r.remark||"...........................................................");
-
- return '<div class="sheet">'
- +'<div class="memohd">บันทึกข้อความ</div>'
- +'<div class="rowline"><span class="lb">ส่วนราชการ</span><span class="fill">'+esc(r.dept)+' เทศบาลเมืองดอนแก้ว โทร. '+esc(r.tel||"0-5312-1585")+'</span></div>'
- +'<div class="rowline"><span class="lb">ที่</span><span class="fill" style="max-width:34%">ชม '+esc(r.no1||"...........")+"/"+esc(r.no2||"...........")+'</span>'
- +'<span class="lb">วันที่</span><span class="fill">'+thDate(r.date)+'</span></div>'
- +'<div class="rowline"><span class="lb">เรื่อง</span><span class="fill">'+esc(r.subject)+' ประจำปีงบประมาณ พ.ศ. '+esc(r.year)+(r.tSeq?" (ครั้งที่ "+esc(r.tSeq)+")":"")+'</span></div>'
- +'<div style="margin:8px 0 4px"><span class="lb">เรียน</span> &nbsp; นายกเทศมนตรีเมืองดอนแก้ว</div>'
- +'<div class="head4">1. เรื่องเดิม</div>'
- +'<p class="ind">ตามเทศบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. '+esc(r.year)+' '+oldTxt+' นั้น</p>'
- +'<div class="head4">2. ข้อเท็จจริง</div>'
- +'<p class="ind">'+esc(r.dept)+' ได้ดำเนินการตรวจสอบงบประมาณรายจ่ายในส่วนของ'+esc(r.dept)
- +(m==="27"
-   ?' พบว่ามีความจำเป็นต้องจัดหาครุภัณฑ์/รายการที่มิได้ตั้งงบประมาณรายจ่ายไว้ จึงมีความประสงค์ขออนุมัติโอนงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. '
-   :' พบว่างบประมาณไม่เพียงพอแก่การเบิกจ่าย จึงมีความประสงค์ขออนุมัติโอนงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. ')
- +esc(r.year)+' จำนวน '+n+' รายการ รายละเอียดดังนี้</p>'
- +fact
- +'<div class="head4">3. ระเบียบ/หนังสือสั่งการ</div>'
- +'<p class="ind2">1. '+esc(r.rule||(m==="27"?RULE27:RULE26))+'</p>'
- +'<div class="head4">4. ข้อพิจารณา</div>'
- +'<p class="ind">'+consider+'</p>'
- +'<table class="doc"><tr><th style="width:4%">ที่</th><th style="width:35%">รายการโอนลด</th>'
- +'<th style="width:35%">รายการโอนเพิ่ม/ตั้งจ่ายเป็นรายการใหม่</th><th style="width:26%">หมายเหตุ</th></tr>'
- +rows+'</table>'
- +'<p class="ind" style="margin-top:8px">จึงเรียนมาเพื่อโปรดพิจารณา</p>'
- +'<div class="sig">(ลงชื่อ) ...............................................<br>( '+esc(s.p1n)+' )<br>'+esc(s.p1t)+'</div><div class="clr"></div>'
- +'<div class="opinion"><b>ความเห็นผู้อำนวยการกองคลัง</b><br>( &nbsp;&nbsp;&nbsp; ) เห็นชอบ &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp; ) ไม่เห็นชอบ เนื่องจาก ...........................................................'
- +'<div class="sig">(ลงชื่อ) ...............................................<br>( '+esc(s.p2n)+' )<br>'+esc(s.p2t)+'</div><div class="clr"></div></div>'
- +'<div class="opinion"><b>ความเห็นเจ้าหน้าที่งบประมาณ</b><br>( &nbsp;&nbsp;&nbsp; ) เห็นชอบ &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp; ) ไม่เห็นชอบ เนื่องจาก ...........................................................'
- +'<div class="sig">(ลงชื่อ) ...............................................<br>( '+esc(s.p3n)+' )<br>'+esc(s.p3t)+'</div><div class="clr"></div></div>'
- +'<div class="opinion"><b>'+mayorTitle+'</b><br>'+mayorLine+'<br>'
- +(r.tDate?"โอนงบประมาณรายจ่าย ครั้งที่ "+esc(r.tSeq||"-")+" &nbsp; วันที่ "+thDate(r.tDate):"")
- +'<div class="sig">(ลงชื่อ) ...............................................<br>( '+esc(s.p4n)+' )<br>'+esc(s.p4t)+'</div><div class="clr"></div></div>'
- +'</div>';
+  return `<div class="sheet">
+  <img class="garuda" src="${g}" alt="ตราครุฑ">
+  <div class="memohd">บันทึกข้อความ</div>
+  <div class="rowline"><span class="lb">ส่วนราชการ</span><span class="fill">${esc(r.dept)} เทศบาลเมืองดอนแก้ว โทร. ${esc(r.tel||"0-5312-1585")}</span></div>
+  <div class="rowline"><span class="lb">ที่</span><span class="fill" style="max-width:34%">ชม ${esc(r.no1||"...........")}/${esc(r.no2||"...........")}</span>
+  <span class="lb">วันที่</span><span class="fill">${thDate(r.date)}</span></div>
+  <div class="rowline"><span class="lb">เรื่อง</span><span class="fill">${esc(r.subject)} ประจำปีงบประมาณ พ.ศ. ${esc(r.year)}${r.tSeq?" (ครั้งที่ "+esc(r.tSeq)+")":""}</span></div>
+  <div style="margin:8px 0 4px"><span class="lb">เรียน</span> &nbsp; นายกเทศมนตรีเมืองดอนแก้ว</div>
+  <div class="head4">1. เรื่องเดิม</div>
+  <p class="ind">ตามเทศบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. ${esc(r.year)} ${oldTxt} นั้น</p>
+  <div class="head4">2. ข้อเท็จจริง</div>
+  <p class="ind">${esc(r.dept)} ได้ดำเนินการตรวจสอบงบประมาณรายจ่ายในส่วนของ${esc(r.dept)}${m==="27"?" พบว่ามีความจำเป็นต้องจัดหาครุภัณฑ์/รายการที่มิได้ตั้งงบประมาณรายจ่ายไว้ จึงมีความประสงค์ขออนุมัติโอนงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. ":" พบว่างบประมาณไม่เพียงพอแก่การเบิกจ่าย จึงมีความประสงค์ขออนุมัติโอนงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. "}${esc(r.year)} จำนวน ${n} รายการ รายละเอียดดังนี้</p>
+  ${fact}
+  <div class="head4">3. ระเบียบ/หนังสือสั่งการ</div>
+  <p class="ind2">1. ${esc(r.rule||(m==="27"?RULE27:RULE26))}</p>
+  <div class="head4">4. ข้อพิจารณา</div>
+  <p class="ind">${consider}</p>
+  <table class="doc"><tr><th style="width:4%">ที่</th><th style="width:35%">รายการโอนลด</th>
+  <th style="width:35%">รายการโอนเพิ่ม/ตั้งจ่ายเป็นรายการใหม่</th><th style="width:26%">หมายเหตุ</th></tr>${rows}</table>
+  <p class="ind" style="margin-top:8px">จึงเรียนมาเพื่อโปรดพิจารณา</p>
+  <div class="sig">(ลงชื่อ) ...............................................<br>( ${esc(s.p1n)} )<br>${esc(s.p1t)}</div><div class="clr"></div>
+  <div class="opinion"><b>ความเห็นผู้อำนวยการกองคลัง</b><br>( &nbsp;&nbsp;&nbsp; ) เห็นชอบ &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp; ) ไม่เห็นชอบ เนื่องจาก ...........................................................
+  <div class="sig">(ลงชื่อ) ...............................................<br>( ${esc(s.p2n)} )<br>${esc(s.p2t)}</div><div class="clr"></div></div>
+  <div class="opinion"><b>ความเห็นเจ้าหน้าที่งบประมาณ</b><br>( &nbsp;&nbsp;&nbsp; ) เห็นชอบ &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp; ) ไม่เห็นชอบ เนื่องจาก ...........................................................
+  <div class="sig">(ลงชื่อ) ...............................................<br>( ${esc(s.p3n)} )<br>${esc(s.p3t)}</div><div class="clr"></div></div>
+  <div class="opinion"><b>ความเห็นนายกเทศมนตรีเมืองดอนแก้ว</b><br>${mayorLine}<br>
+  ${r.tDate?"โอนงบประมาณรายจ่าย ครั้งที่ "+esc(r.tSeq||"-")+" &nbsp; วันที่ "+thDate(r.tDate):""}
+  <div class="sig">(ลงชื่อ) ...............................................<br>( ${esc(s.p4n)} )<br>${esc(s.p4t)}</div><div class="clr"></div></div>
+  </div>`;
 }
 function previewNow(){
- var r=readForm();
- if(!r.items.length){alert("กรุณาเพิ่มรายการโอนก่อน");return}
- r.status="wait"; r.tSeq=r.seq; r.tDate=""; r.remark="";
- buildDoc(r);
+  const r=readForm();
+  if(!r.items.length){alert("กรุณาเพิ่มรายการโอนก่อน");return}
+  buildDoc({...r,status:"wait",tSeq:r.seq,tDate:"",remark:""});
 }
-function showDoc(id){var r=null;load().forEach(function(x){if(x.id===id)r=x});if(r)buildDoc(r)}
-function closeDoc(){var w=el("docWrap");if(w)w.style.display="none";qa(".tabpane").forEach(function(p){p.style.display=""})}
+function showDoc(id){const r=RECS.find(x=>x.id===id);if(r)buildDoc(r)}
+function closeDoc(){el("docWrap").style.display="none";qa(".tabpane").forEach(p=>p.style.display="")}
 function buildDoc(r){
- curDoc=r;
- el("doc").innerHTML=docBody(r);
- qa(".tabpane").forEach(function(p){p.style.display="none"});
- el("docWrap").style.display="block"; window.scrollTo(0,0);
+  curDoc=r; el("doc").innerHTML=docBody(r);
+  qa(".tabpane").forEach(p=>p.style.display="none");
+  el("docWrap").style.display="block"; window.scrollTo(0,0);
 }
-
-/* ---------- Export Word (.doc) ---------- */
+function dl(name,blob){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},900)}
 function exportWord(){
- if(!curDoc){alert("กรุณาเปิดเอกสารก่อน");return}
- var r=curDoc;
- var css=
- "@page Section1{size:21cm 29.7cm;mso-page-orientation:portrait;margin:1.27cm 2cm 1.27cm 3cm;}"
- +"div.Section1{page:Section1;}"
- +"body,p,td,th,div,span{font-family:'TH SarabunIT๙','TH SarabunIT9','TH SarabunPSK',sans-serif;font-size:16pt;}"
- +"body{line-height:1.05;color:#000;margin:0}"
- +".sheet{width:auto;margin:0;padding:0;box-shadow:none;background:#fff}"
- +".memohd{text-align:center;font-size:29pt;font-weight:bold;letter-spacing:6pt;margin:0 0 3pt}"
- +".lb{font-weight:bold;font-size:20pt}"
- +".rowline{margin:0 0 1pt}"
- +".fill{border-bottom:1pt dotted #000}"
- +".ind{text-indent:2.5cm;text-align:justify;margin:0}"
- +".ind2{text-indent:1.5cm;text-align:justify;margin:0}"
- +".head4{font-weight:bold;margin:4pt 0 0}"
- +"table.doc{width:100%;border-collapse:collapse;font-size:14pt;margin-top:4pt}"
- +"table.doc th,table.doc td{border:1pt solid #000;padding:2pt 4pt;vertical-align:top;font-size:14pt}"
- +"table.doc th{text-align:center;font-weight:bold}"
- +".sig{margin-top:20pt;text-align:center;width:50%;float:right;line-height:1.1}"
- +".clr{clear:both}.opinion{margin-top:10pt}.center{text-align:center}";
-
- /* แปลง flex-row เป็นตารางเพื่อให้ Word จัดหน้าได้ตรง */
- var body=docBody(r)
-  .replace(/<div class="rowline">([\s\S]*?)<\/div>\s*(?=<div|<p|<table)/g,function(mm,inner){
-    var cells=inner.split(/(?=<span class="lb">)/).filter(function(z){return z.trim()});
-    var tds=cells.map(function(c){
-      var lb=(c.match(/<span class="lb">([\s\S]*?)<\/span>/)||[,""])[1];
-      var fl=(c.match(/<span class="fill"[^>]*>([\s\S]*?)<\/span>/)||[,""])[1];
-      return '<td style="white-space:nowrap;padding-right:4pt"><span class="lb">'+lb+'</span></td>'
-           +'<td style="border-bottom:1pt dotted #000;width:100%">'+fl+'</td>';
+  if(!curDoc){alert("กรุณาเปิดเอกสารก่อน");return}
+  const r=curDoc;
+  const css=
+   "@page Section1{size:21cm 29.7cm;mso-page-orientation:portrait;margin:1.27cm 2cm 1.27cm 3cm;}"
+  +"div.Section1{page:Section1;}"
+  +"body,p,td,th,div,span{font-family:'TH SarabunIT๙','TH SarabunIT9','TH SarabunPSK',sans-serif;font-size:16pt;}"
+  +"body{line-height:1.05;color:#000;margin:0}"
+  +".sheet{width:auto;margin:0;padding:0;background:#fff}"
+  +".garuda{width:1.5cm;height:1.5cm;display:block;margin:0 0 2pt}"
+  +".memohd{text-align:center;font-size:29pt;font-weight:bold;letter-spacing:6pt;margin:-0.85cm 0 3pt}"
+  +".lb{font-weight:bold;font-size:20pt}"
+  +".rowline{margin:0 0 1pt}.fill{border-bottom:1pt dotted #000}"
+  +".ind{text-indent:2.5cm;text-align:justify;margin:0}"
+  +".ind2{text-indent:1.5cm;text-align:justify;margin:0}"
+  +".head4{font-weight:bold;margin:4pt 0 0}"
+  +"table.doc{width:100%;border-collapse:collapse;font-size:14pt;margin-top:4pt}"
+  +"table.doc th,table.doc td{border:1pt solid #000;padding:2pt 4pt;vertical-align:top;font-size:14pt}"
+  +"table.doc th{text-align:center;font-weight:bold}"
+  +".sig{margin-top:20pt;text-align:center;width:50%;float:right;line-height:1.1}"
+  +".clr{clear:both}.opinion{margin-top:10pt}.center{text-align:center}";
+  const body=docBody(r).replace(/<div class="rowline">([\s\S]*?)<\/div>\s*(?=<div|<p|<table)/g,(mm,inner)=>{
+    const cells=inner.split(/(?=<span class="lb">)/).filter(z=>z.trim());
+    const tds=cells.map(c=>{
+      const lb=(c.match(/<span class="lb">([\s\S]*?)<\/span>/)||[,""])[1];
+      const fl=(c.match(/<span class="fill"[^>]*>([\s\S]*?)<\/span>/)||[,""])[1];
+      return `<td style="white-space:nowrap;padding-right:4pt"><span class="lb">${lb}</span></td><td style="border-bottom:1pt dotted #000;width:100%">${fl}</td>`;
     }).join("");
-    return '<table style="width:100%;border-collapse:collapse;margin:0 0 1pt"><tr>'+tds+'</tr></table>';
+    return `<table style="width:100%;border-collapse:collapse;margin:0 0 1pt"><tr>${tds}</tr></table>`;
   });
-
- var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
- +'<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">'
- +'<title>'+esc(r.subject||"บันทึกข้อความ")+'</title>'
- +'<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:DoNotOptimizeForBrowser/></w:WordDocument></xml><![endif]-->'
- +'<style>'+css+'</style></head><body><div class="Section1">'+body+'</div></body></html>';
-
- var name="บันทึกโอนงบประมาณ-ข้อ"+(r.mode==="27"?"27-สภาเทศบาล":"26-นายกเทศมนตรี")+"-"+(r.dept||"")+"-"+(r.tSeq||new Date().toISOString().slice(0,10))+".doc";
- dl(name,new Blob(["\ufeff"+html],{type:"application/msword;charset=utf-8"}));
+  const html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
+   +'<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>'+esc(r.subject||"บันทึกข้อความ")+'</title>'
+   +'<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:DoNotOptimizeForBrowser/></w:WordDocument></xml><![endif]-->'
+   +'<style>'+css+'</style></head><body><div class="Section1">'+body+'</div></body></html>';
+  dl("บันทึกโอนงบประมาณ-ข้อ"+(r.mode==="27"?"27-สภาเทศบาล":"26-นายกเทศมนตรี")+"-"+(r.dept||"")+"-"+(r.tSeq||new Date().toISOString().slice(0,10))+".doc",
+     new Blob(["\ufeff"+html],{type:"application/msword;charset=utf-8"}));
 }
+function exportCSV(){
+  const rows=[["ครั้งที่","วันที่โอน","ข้อ","สถานะ","ผู้บันทึก","ส่วนราชการ","ปีงบ","ลำดับ","โอนลด-แผนงาน","โอนลด-งาน","โอนลด-งบ","โอนลด-หมวด","โอนลด-ประเภท","โอนลด-โครงการ","ตั้งไว้","คงเหลือก่อน","จำนวนโอน","คงเหลือหลัง","โอนเพิ่ม-แผนงาน","โอนเพิ่ม-งาน","โอนเพิ่ม-งบ","โอนเพิ่ม-หมวด","โอนเพิ่ม-ประเภท","โอนเพิ่ม-โครงการ","ตั้งไว้","คงเหลือก่อน","คงเหลือหลัง","เหตุผล"]];
+  RECS.forEach(r=>r.items.forEach((x,i)=>rows.push([r.tSeq||"",r.tDate||"",r.mode||"26",STLget(r.status)[0],r.ownerName||"",r.dept,r.year,i+1,x.dplan,x.dwork,x.dbud,x.dcat,x.dtype,x.dproj||"",x.dset,x.dbefore,x.amt,x.dbefore-x.amt,x.iplan,x.iwork,x.ibud,x.icat,x.itype,x.iproj||"",x.iset,x.ibefore,x.ibefore+x.amt,x.reason])));
+  dl("ทะเบียนโอนงบประมาณ.csv",new Blob(["\uFEFF"+rows.map(r=>r.map(c=>'"'+String(c==null?"":c).replace(/"/g,'""')+'"').join(",")).join("\n")],{type:"text/csv;charset=utf-8"}));
+}
+function backup(){dl("backup-โอนงบประมาณ-"+new Date().toISOString().slice(0,10)+".json",new Blob([JSON.stringify({data:RECS,setting:SETTING},null,1)],{type:"application/json"}))}
 
 /* ==================== เหตุการณ์ ==================== */
 function gotoTab(name){
- qa("nav button").forEach(function(x){x.classList.toggle("on",x.getAttribute("data-tab")===name)});
- qa(".tabpane").forEach(function(p){p.classList.toggle("on",p.id==="tab-"+name);p.style.display=""});
- closeDoc();
- if(name==="list") renderList();
- if(name==="admin"&&adminOK) renderAdmin();
+  qa("nav button").forEach(x=>x.classList.toggle("on",x.getAttribute("data-tab")===name));
+  qa(".tabpane").forEach(p=>{p.classList.toggle("on",p.id==="tab-"+name);p.style.display=""});
+  closeDoc();
 }
-function doAct(act,id,btn){
- if(act==="add") addItem();
- else if(act==="del-item"){var it=up(btn,".item");if(it){it.remove();renum();calc()}}
- else if(act==="save-draft") saveRec("draft");
- else if(act==="save-wait") saveRec("wait");
- else if(act==="preview") previewNow();
- else if(act==="reset") resetForm();
- else if(act==="csv") exportCSV();
- else if(act==="backup") backup();
- else if(act==="restore") el("fileIn").click();
- else if(act==="login") doLogin();
- else if(act==="save-setting") saveSetting();
- else if(act==="admin-save") saveAdmin(id);
- else if(act==="doc") showDoc(id);
- else if(act==="edit") editRec(id);
- else if(act==="del") delRec(id);
- else if(act==="print") window.print();
- else if(act==="word") exportWord();
- else if(act==="closedoc") closeDoc();
-}
-document.addEventListener("click",function(e){
- try{
-  var nb=up(e.target,"nav button[data-tab]");
-  if(nb){gotoTab(nb.getAttribute("data-tab"));return}
-  var b=up(e.target,"[data-act]");
-  if(!b)return;
-  e.preventDefault();
-  doAct(b.getAttribute("data-act"),b.getAttribute("data-id"),b);
- }catch(err){showErr("click: "+err.message)}
+document.addEventListener("click",e=>{
+  try{
+    const gt=up(e.target,"[data-gt]");
+    if(gt){setGateMode(gt.getAttribute("data-gt"));return}
+    if(up(e.target,"#gBtn")){doAuth();return}
+    const nb=up(e.target,"nav button[data-tab]");
+    if(nb){gotoTab(nb.getAttribute("data-tab"));return}
+    const b=up(e.target,"[data-act]"); if(!b)return;
+    e.preventDefault();
+    const act=b.getAttribute("data-act"), id=b.getAttribute("data-id");
+    if(act==="add")addItem();
+    else if(act==="del-item"){const it=up(b,".item");if(it){it.remove();renum();calc()}}
+    else if(act==="save-draft")saveRec("draft");
+    else if(act==="save-wait")saveRec("wait");
+    else if(act==="preview")previewNow();
+    else if(act==="reset")resetForm();
+    else if(act==="csv")exportCSV();
+    else if(act==="backup")backup();
+    else if(act==="admin-save")saveAdmin(id);
+    else if(act==="role-save")saveRole(id);
+    else if(act==="save-setting")saveSetting();
+    else if(act==="garuda-reset"){dbSaveSetting({...SETTING,garuda:""}).then(()=>{SETTING={...SETTING,garuda:""};el("garudaPrev").src=GARUDA_DEFAULT})}
+    else if(act==="doc")showDoc(id);
+    else if(act==="edit")editRec(id);
+    else if(act==="del")delRec(id);
+    else if(act==="print")window.print();
+    else if(act==="word")exportWord();
+    else if(act==="closedoc")closeDoc();
+    else if(act==="logout")logout();
+  }catch(err){showErr("click: "+err.message)}
 },false);
-document.addEventListener("change",function(e){
- try{
-  var t=e.target, f=t.getAttribute&&t.getAttribute("data-f");
-  if(f){
-   var it=up(t,".item");
-   if(it){
-    var k=f.charAt(0), fd=f.slice(1);
-    if(fd==="plan") syncWork(it,k);
-    else if(fd==="work") q('[data-f="'+k+'workX"]',it).style.display=(t.value===OTHER)?"block":"none";
-    else if(fd==="bud") syncCat(it,k);
-    else if(fd==="cat") syncType(it,k);
-    else if(fd==="type") q('[data-f="'+k+'typeX"]',it).style.display=(t.value===OTHER)?"block":"none";
-    calc();
-   }
-  }
-  if(t.id==="f_note") applyMode();
-  if(t.id==="q_st") renderList();
-  if(t.id==="fileIn"&&t.files&&t.files[0]){restore(t.files[0]);t.value=""}
- }catch(err){showErr("change: "+err.message)}
+document.addEventListener("change",e=>{
+  try{
+    const t=e.target, f=t.getAttribute&&t.getAttribute("data-f");
+    if(f){
+      const it=up(t,".item");
+      if(it){
+        const k=f.charAt(0), fd=f.slice(1);
+        if(fd==="plan")syncWork(it,k);
+        else if(fd==="work")q(`[data-f="${k}workX"]`,it).style.display=(t.value===OTHER)?"block":"none";
+        else if(fd==="bud")syncCat(it,k);
+        else if(fd==="cat")syncType(it,k);
+        else if(fd==="type")q(`[data-f="${k}typeX"]`,it).style.display=(t.value===OTHER)?"block":"none";
+        calc();
+      }
+    }
+    if(t.id==="f_note")applyMode();
+    if(t.id==="q_st")renderList();
+    if(t.id==="garudaFile"&&t.files&&t.files[0]){onGaruda(t.files[0]);t.value=""}
+  }catch(err){showErr("change: "+err.message)}
 },false);
-document.addEventListener("input",function(e){
- var t=e.target, f=t.getAttribute&&t.getAttribute("data-f");
- if(f&&up(t,".item")){
-  if(/(set|before|amt)$/.test(f)) calc();
-  else if(/(planX|workX|typeX|proj)$/.test(f)) calc();
- }
- if(t.id==="q_kw"||t.id==="q_year") renderList();
+document.addEventListener("input",e=>{
+  const t=e.target, f=t.getAttribute&&t.getAttribute("data-f");
+  if(f&&up(t,".item")&&/(set|before|amt|planX|workX|typeX|proj)$/.test(f))calc();
+  if(t.id==="q_kw"||t.id==="q_year")renderList();
 },false);
-document.addEventListener("keydown",function(e){
- if(e.key==="Enter"&&e.target.id==="pw"){e.preventDefault();doLogin()}
+document.addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&(e.target.id==="g_pw"||e.target.id==="g_email")){e.preventDefault();doAuth()}
 },false);
 
-/* ==================== เริ่มระบบ ==================== */
-function init(){
- try{
-  var d=el("f_date"); if(d&&!d.value) d.value=new Date().toISOString().slice(0,10);
-  applyMode(); loadSetting();
-  if(el("items")&&!el("items").children.length) addItem();
-  renderList();
-  var add=el("btnAdd");
-  if(add) add.addEventListener("click",function(ev){if(!ev.defaultPrevented){ev.preventDefault();addItem()}},false);
- }catch(err){showErr("init: "+err.message)}
-}
-if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init);
-else init();
-
-})();
+/* ==================== init ==================== */
+const d=el("f_date"); if(d&&!d.value)d.value=new Date().toISOString().slice(0,10);
+applyMode(); applySettingUI();
+el("garudaPrev").src=SETTING.garuda||GARUDA_DEFAULT;
+if(!USE_CLOUD){ setGateMode("in") }
 </script>
 </body>
 </html>
