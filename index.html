@@ -6,7 +6,6 @@
 <title>ระบบบันทึกการโอนงบประมาณรายจ่าย – เทศบาลเมืองดอนแก้ว</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ============ INSIGHTDECK TOKENS ============ */
 :root{
   --pri:#0D9488; --pri-d:#0B7A70; --pri-l:#14B8A6; --pri-bg:#F0FDFA;
   --sec:#9333EA; --sec-l:#A855F7; --sec-bg:#FAF5FF;
@@ -15,166 +14,131 @@
   --ok:#10B981; --warn:#F59E0B; --err:#EF4444; --info:#3B82F6;
   --ink:#0F172A; --ink2:#334155; --mute:#64748B; --line:#E2E8F0; --line2:#F1F5F9;
   --r:8px; --r-lg:12px; --r-xl:16px;
-  --sh:0 1px 2px rgba(15,23,42,.06);
-  --sh-md:0 2px 8px rgba(15,23,42,.08);
-  --sh-lg:0 8px 24px rgba(15,23,42,.10);
-  --sh-xl:0 16px 48px rgba(15,23,42,.14);
+  --sh:0 1px 2px rgba(15,23,42,.06); --sh-md:0 2px 8px rgba(15,23,42,.08);
+  --sh-lg:0 8px 24px rgba(15,23,42,.10); --sh-xl:0 16px 48px rgba(15,23,42,.14);
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:'Sarabun',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.55}
-
-header{background:var(--surf);border-bottom:1px solid var(--line);padding:0 24px;
-  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;height:64px}
+header{background:var(--surf);border-bottom:1px solid var(--line);padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;min-height:64px}
 .brand{display:flex;align-items:center;gap:12px}
-.blogo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--pri),var(--sec));
-  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:17px;flex:none}
-header h1{margin:0;font-size:15.5px;font-weight:700;letter-spacing:-.2px}
+.blogo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--pri),var(--sec));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:17px;flex:none}
+header h1{margin:0;font-size:15.5px;font-weight:700}
 header p{margin:1px 0 0;font-size:11.5px;color:var(--mute)}
 .who{display:flex;align-items:center;gap:10px;font-size:12px}
 .who b{display:block;font-size:13px;font-weight:600}
 .who span{color:var(--mute);font-size:11.5px}
-.cloud{font-size:11px;padding:4px 10px;border-radius:99px;background:var(--pri-bg);color:var(--pri-d);
-  font-weight:600;border:1px solid #CCFBF1}
-
-nav{background:var(--surf);border-bottom:1px solid var(--line);padding:0 24px;display:flex;gap:2px;
-  flex-wrap:wrap;position:sticky;top:0;z-index:20}
-nav button{background:none;border:none;padding:12px 16px;font-family:inherit;font-size:13.5px;
-  cursor:pointer;border-bottom:2px solid transparent;color:var(--mute);font-weight:600;transition:all .15s}
+.cloud{font-size:11px;padding:4px 10px;border-radius:99px;background:var(--pri-bg);color:var(--pri-d);font-weight:600;border:1px solid #CCFBF1}
+nav{background:var(--surf);border-bottom:1px solid var(--line);padding:0 24px;display:flex;gap:2px;flex-wrap:wrap;position:sticky;top:0;z-index:20}
+nav button{background:none;border:none;padding:12px 16px;font-family:inherit;font-size:13.5px;cursor:pointer;border-bottom:2px solid transparent;color:var(--mute);font-weight:600;transition:all .15s}
 nav button:hover{color:var(--ink);background:var(--line2)}
 nav button.on{color:var(--pri);border-color:var(--pri)}
 nav button[hidden]{display:none}
 main{max-width:1320px;margin:20px auto;padding:0 24px}
-
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
 @media(max-width:940px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{background:var(--surf);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 18px;
-  position:relative;overflow:hidden;transition:box-shadow .2s}
-.stat:hover{box-shadow:var(--sh-md)}
+.stat{background:var(--surf);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px 18px;position:relative;overflow:hidden}
 .stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--c,var(--pri))}
-.stat .lbl{font-size:11.5px;color:var(--mute);font-weight:600;letter-spacing:.3px;text-transform:uppercase}
-.stat .val{font-size:26px;font-weight:700;margin:5px 0 2px;letter-spacing:-.8px;color:var(--ink)}
+.stat .lbl{font-size:11.5px;color:var(--mute);font-weight:600;text-transform:uppercase}
+.stat .val{font-size:26px;font-weight:700;margin:5px 0 2px;letter-spacing:-.8px}
 .stat .sub{font-size:11.5px;color:var(--mute)}
-.stat .ico{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:9px;
-  display:flex;align-items:center;justify-content:center;font-size:16px;background:var(--cbg,var(--pri-bg))}
-
+.stat .ico{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;background:var(--cbg,var(--pri-bg))}
 .chart{display:flex;align-items:flex-end;gap:10px;height:160px;padding:14px 4px 0;border-bottom:1px solid var(--line)}
 .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
-.bar .col{width:100%;max-width:52px;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--pri-l),var(--pri));
-  transition:height .5s cubic-bezier(.4,0,.2,1);position:relative;min-height:3px}
-.bar .col:hover{filter:brightness(1.1)}
-.bar .col::after{content:attr(data-v);position:absolute;top:-19px;left:50%;transform:translateX(-50%);
-  font-size:10.5px;font-weight:700;color:var(--ink2);white-space:nowrap}
-.bar .cap{font-size:10.5px;color:var(--mute);text-align:center;overflow:hidden;text-overflow:ellipsis;
-  white-space:nowrap;width:100%;font-weight:500}
-
+.bar .col{width:100%;max-width:52px;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--pri-l),var(--pri));transition:height .5s;position:relative;min-height:3px}
+.bar .col::after{content:attr(data-v);position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.bar .cap{font-size:10.5px;color:var(--mute);text-align:center;width:100%}
 .card{background:var(--surf);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;margin-bottom:16px}
-.card h3{margin:0 0 3px;font-size:15px;font-weight:700;letter-spacing:-.2px;display:flex;align-items:center;gap:8px}
+.card h3{margin:0 0 3px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
 .card .desc{margin:0 0 16px;font-size:12px;color:var(--mute)}
-.card h3 .ico{width:26px;height:26px;border-radius:7px;background:var(--pri-bg);color:var(--pri);
-  display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
-.card.sec h3 .ico{background:var(--sec-bg);color:var(--sec)}
-.card.ter h3 .ico{background:var(--ter-bg);color:var(--ter)}
+.card h3 .ico{width:26px;height:26px;border-radius:7px;background:var(--pri-bg);color:var(--pri);display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.card.sec h3 .ico{background:var(--sec-bg)}.card.ter h3 .ico{background:var(--ter-bg)}
 .cardhd{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:14px}
-.cardhd h3{margin-bottom:3px}
 .yrpick{display:flex;align-items:center;gap:8px;flex:none}
 .yrpick label{margin:0;font-size:11.5px;white-space:nowrap}
 .yrpick select{min-width:160px;padding:7px 10px;font-size:13px}
 .grid{display:grid;gap:13px}
 .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
-
 label{display:block;font-size:12px;color:var(--ink2);margin-bottom:5px;font-weight:600}
-input,select,textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:var(--r);
-  font-family:inherit;font-size:13.5px;background:var(--surf);color:var(--ink);transition:all .15s}
+input,select,textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:var(--r);font-family:inherit;font-size:13.5px;background:var(--surf);color:var(--ink);transition:all .15s}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--pri);box-shadow:0 0 0 3px rgba(13,148,136,.12)}
 input[readonly],input.ro{background:var(--line2);color:var(--ink2);font-weight:600}
 textarea{resize:vertical}
-
-.btn{border:1px solid transparent;border-radius:var(--r);padding:9px 18px;font-family:inherit;font-size:13.5px;
-  font-weight:600;cursor:pointer;transition:all .15s;background:var(--pri);color:#fff;
-  display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:38px;box-shadow:var(--sh)}
-.btn:hover{background:var(--pri-d);box-shadow:var(--sh-md)}
-.btn:active{transform:translateY(1px)}
-.btn.gh{background:var(--surf);color:var(--ink2);border-color:var(--line)}
-.btn.gh:hover{background:var(--line2);border-color:#CBD5E1}
+.btn{border:1px solid transparent;border-radius:var(--r);padding:9px 18px;font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer;transition:all .15s;background:var(--pri);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:38px;box-shadow:var(--sh)}
+.btn:hover{background:var(--pri-d)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.gh{background:var(--surf);color:var(--ink2);border-color:var(--line)}.btn.gh:hover{background:var(--line2)}
 .btn.sec{background:var(--sec)}.btn.sec:hover{background:#7E22CE}
-.btn.ter{background:var(--ter)}.btn.ter:hover{background:#DB2777}
 .btn.dg{background:var(--err)}.btn.dg:hover{background:#DC2626}
 .btn.ok{background:var(--ok)}.btn.ok:hover{background:#059669}
 .btn.sm{padding:5px 12px;font-size:12px;min-height:30px}
-
-.item{background:var(--surf);border:1px solid var(--line);border-radius:var(--r-lg);margin-bottom:16px;overflow:hidden}
-.item>.hd{background:var(--line2);padding:11px 16px;display:flex;justify-content:space-between;
-  align-items:center;font-weight:700;font-size:13.5px;border-bottom:1px solid var(--line)}
+.item{background:var(--surf);border:1px solid var(--line);border-radius:var(--r-lg);margin-bottom:16px}
+.item>.hd{background:var(--line2);padding:11px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13.5px;border-bottom:1px solid var(--line);border-radius:var(--r-lg) var(--r-lg) 0 0}
 .item>.bd{padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:940px){.item>.bd{grid-template-columns:1fr}}
 .side{border:1px solid var(--line);border-radius:var(--r);padding:14px}
 .side.dec{background:var(--ter-bg);border-color:#FBCFE8}
 .side.inc{background:var(--pri-bg);border-color:#CCFBF1}
-.side h4{margin:0 0 12px;font-size:12.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
-  display:flex;align-items:center;gap:6px}
+.side h4{margin:0 0 12px;font-size:12.5px;font-weight:700;text-transform:uppercase}
 .side.dec h4{color:#BE185D}.side.inc h4{color:var(--pri-d)}
-
+/* --- ค้นหาเทศบัญญัติ --- */
+.dbs{position:relative;background:#fff;border:1px dashed #C4B5FD;border-radius:var(--r);padding:10px}
+.dbs label{color:var(--sec)}
+.dbs .res{position:absolute;left:0;right:0;top:100%;z-index:40;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-lg);max-height:340px;overflow:auto;margin-top:4px;display:none}
+.dbs .res.on{display:block}
+.opt{padding:9px 12px;border-bottom:1px solid var(--line2);cursor:pointer;font-size:12.5px}
+.opt:hover,.opt.act{background:var(--sec-bg)}
+.opt b{display:block;font-weight:600}
+.opt .m{color:var(--mute);font-size:11.5px}
+.opt .amt{float:right;font-weight:700;color:var(--pri-d);margin-left:10px;white-space:nowrap}
+.db-note{font-size:11.5px;color:#1D4ED8;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:7px 10px;font-weight:500;line-height:1.6}
+.db-note.miss{color:#92400E;background:#FFFBEB;border-color:#FDE68A}
+.db-note .btn{margin-left:6px;vertical-align:middle;min-height:24px;padding:2px 9px;font-size:11px}
 table.list{width:100%;border-collapse:collapse;font-size:13px}
-table.list th{background:var(--line2);color:var(--ink2);padding:10px 11px;text-align:left;
-  font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--line)}
-table.list td{padding:11px;border-bottom:1px solid var(--line2);vertical-align:middle}
+table.list th{background:var(--line2);color:var(--ink2);padding:10px 11px;text-align:left;font-weight:600;font-size:11.5px;text-transform:uppercase;border-bottom:1px solid var(--line);white-space:nowrap}
+table.list td{padding:10px 11px;border-bottom:1px solid var(--line2);vertical-align:middle}
 table.list tr:hover td{background:#FCFDFE}
 table.list td input,table.list td select{padding:6px 9px;font-size:12.5px}
-
 .badge{padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600;display:inline-block;white-space:nowrap;border:1px solid}
 .b-wait{background:#FFFBEB;color:#B45309;border-color:#FDE68A}
 .b-ok{background:#ECFDF5;color:#047857;border-color:#A7F3D0}
 .b-no{background:#FEF2F2;color:#B91C1C;border-color:#FECACA}
 .b-draft{background:var(--line2);color:var(--mute);border-color:var(--line)}
 .chip{padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600;background:var(--sec-bg);color:var(--sec);border:1px solid #E9D5FF}
-.av{width:28px;height:28px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;
-  color:#fff;font-weight:700;font-size:12px;flex:none}
+.av{width:28px;height:28px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex:none}
 .owner{display:flex;align-items:center;gap:8px}
 .right{text-align:right}.center{text-align:center}
-.tot{background:linear-gradient(135deg,var(--pri),var(--sec));padding:14px 18px;border-radius:var(--r-lg);
-  font-weight:600;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.tot .n{font-size:22px;font-weight:700;letter-spacing:-.5px}
+.tot{background:linear-gradient(135deg,var(--pri),var(--sec));padding:14px 18px;border-radius:var(--r-lg);font-weight:600;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tot .n{font-size:22px;font-weight:700}
 .sumbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 .sumpill{background:var(--line2);border:1px solid var(--line);border-radius:var(--r);padding:8px 14px;font-size:12.5px}
-.sumpill b{font-size:15px;display:block;margin-top:1px;letter-spacing:-.3px}
-.warn{background:#FEF2F2;border:1px solid #FECACA;color:#B91C1C;padding:11px 14px;
-  border-radius:var(--r);margin-top:10px;font-size:12.5px;font-weight:500}
+.sumpill b{font-size:15px;display:block;margin-top:1px}
+.pbar{height:6px;background:var(--line2);border-radius:99px;overflow:hidden;min-width:80px}
+.pbar i{display:block;height:100%;background:var(--pri);border-radius:99px}
+.warn{background:#FEF2F2;border:1px solid #FECACA;color:#B91C1C;padding:11px 14px;border-radius:var(--r);margin-top:10px;font-size:12.5px}
+.okbox{background:#ECFDF5;border:1px solid #A7F3D0;color:#047857;padding:11px 14px;border-radius:var(--r);margin-top:12px;font-size:12.5px}
 .hint{font-size:11.5px;color:var(--mute);font-weight:400}
-.carry-note{font-size:11.5px;color:var(--sec);background:var(--sec-bg);border:1px solid #E9D5FF;
-  border-radius:6px;padding:6px 10px;margin-top:6px;font-weight:600}
+.carry-note{font-size:11.5px;color:var(--sec);background:var(--sec-bg);border:1px solid #E9D5FF;border-radius:6px;padding:6px 10px;font-weight:600}
 input.carry{background:var(--sec-bg)!important;border-color:#E9D5FF!important;color:var(--sec)}
-.modebox{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:var(--r);
-  padding:11px 14px;font-size:12.5px;color:#1D4ED8;margin-top:9px}
-
-#gate{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;
-  background:linear-gradient(135deg,#0D9488 0%,#0F766E 40%,#7E22CE 100%);overflow:auto}
-#gate::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 18% 22%,rgba(236,72,153,.28),transparent 42%),
-             radial-gradient(circle at 82% 78%,rgba(20,184,166,.32),transparent 45%)}
+.modebox{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:var(--r);padding:11px 14px;font-size:12.5px;color:#1D4ED8;margin-top:9px}
+#gate{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#0D9488 0%,#0F766E 40%,#7E22CE 100%);overflow:auto}
+#gate::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 22%,rgba(236,72,153,.28),transparent 42%),radial-gradient(circle at 82% 78%,rgba(20,184,166,.32),transparent 45%)}
 .gwrap{position:relative;z-index:2;width:100%;max-width:400px}
 .glogo{text-align:center;margin-bottom:22px;color:#fff}
-.glogo .ic{width:56px;height:56px;border-radius:15px;background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.28);display:inline-flex;align-items:center;justify-content:center;
-  font-size:26px;margin-bottom:12px;backdrop-filter:blur(10px)}
-.glogo h1{margin:0;font-size:19px;font-weight:700;letter-spacing:-.3px}
+.glogo .ic{width:56px;height:56px;border-radius:15px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);display:inline-flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:12px}
+.glogo h1{margin:0;font-size:19px;font-weight:700}
 .glogo p{margin:5px 0 0;font-size:12.5px;opacity:.85}
 .gbox{background:var(--surf);border-radius:var(--r-xl);padding:26px;box-shadow:var(--sh-xl)}
 .gbox .row{margin-bottom:13px}
 .gtab{display:flex;gap:4px;margin-bottom:20px;background:var(--line2);padding:4px;border-radius:var(--r)}
-.gtab button{flex:1;padding:8px;border:none;background:none;border-radius:6px;font-family:inherit;
-  font-size:13px;cursor:pointer;color:var(--mute);font-weight:600;transition:all .15s}
+.gtab button{flex:1;padding:8px;border:none;background:none;border-radius:6px;font-family:inherit;font-size:13px;cursor:pointer;color:var(--mute);font-weight:600}
 .gtab button.on{background:var(--surf);color:var(--pri);box-shadow:var(--sh)}
-.gerr{background:#FEF2F2;border:1px solid #FECACA;color:#B91C1C;padding:10px 12px;
-  border-radius:var(--r);font-size:12.5px;margin-bottom:13px;display:none}
-.gpreview{width:64px;height:64px;object-fit:contain;border:1px solid var(--line);
-  border-radius:var(--r);background:var(--line2);padding:6px}
-
+.gerr{background:#FEF2F2;border:1px solid #FECACA;color:#B91C1C;padding:10px 12px;border-radius:var(--r);font-size:12.5px;margin-bottom:13px;display:none}
+.gpreview{width:64px;height:64px;object-fit:contain;border:1px solid var(--line);border-radius:var(--r);background:var(--line2);padding:6px}
+/* --- เอกสาร --- */
 #doc{background:#E7EBF0;padding:24px 0}
 .docbar{max-width:1320px;margin:14px auto;display:flex;gap:9px;flex-wrap:wrap;padding:0 24px;align-items:center}
-.sheet{background:#fff;width:21cm;min-height:29.7cm;margin:0 auto 20px;padding:1.5cm 2cm 1.5cm 3cm;
-  font-family:'TH SarabunIT๙','TH SarabunIT9','TH SarabunPSK','Sarabun',sans-serif;
-  font-size:16pt;line-height:1.35;color:#000;box-shadow:var(--sh-xl)}
+.sheet{background:#fff;width:21cm;min-height:29.7cm;margin:0 auto 20px;padding:1.5cm 2cm 1.5cm 3cm;font-family:'TH SarabunIT๙','TH SarabunIT9','TH SarabunPSK','Sarabun',sans-serif;font-size:16pt;line-height:1.35;color:#000;box-shadow:var(--sh-xl)}
 .memo-top{display:flex;align-items:center;gap:18px;padding-bottom:6px}
 .memo-top .garuda{width:1.5cm;height:1.5cm;object-fit:contain;flex:none}
 .memo-top .ttl{flex:1;text-align:center;font-size:29pt;font-weight:700;letter-spacing:3px;line-height:1}
@@ -184,8 +148,7 @@ input.carry{background:var(--sec-bg)!important;border-color:#E9D5FF!important;co
 .mlb{font-weight:700;font-size:18pt;white-space:nowrap;flex:none}
 .mval{flex:1;border-bottom:1px dotted #9AA5B1;padding:0 4px 1px;min-height:22px;min-width:60px}
 .mval.tight{flex:none;min-width:150px}
-.ph{display:inline-block;border:1px dashed #F0A030;background:#FFFBF2;border-radius:4px;
-  padding:0 8px;color:#B8792B;font-size:15pt}
+.ph{display:inline-block;border:1px dashed #F0A030;background:#FFFBF2;border-radius:4px;padding:0 8px;color:#B8792B;font-size:15pt}
 .ind{text-indent:2.5cm;text-align:justify;margin:0 0 3px}
 .ind2{text-indent:1.5cm;text-align:justify;margin:0 0 3px}
 .head4{font-weight:700;margin-top:7px}
@@ -193,14 +156,10 @@ table.doc{width:100%;border-collapse:collapse;font-size:14pt;margin-top:7px}
 table.doc th,table.doc td{border:1px solid #000;padding:3px 5px;vertical-align:top}
 table.doc th{text-align:center;font-weight:700;background:#F4F6F8}
 .sig{margin-top:22px;text-align:center;width:50%;float:right;font-size:16pt;line-height:1.25}
-.clr{clear:both}
-.opinion{margin-top:12px}
+.clr{clear:both}.opinion{margin-top:12px}
 body.present header,body.present nav,body.present .docbar .hidepres{display:none!important}
 body.present #doc{background:#1E293B;padding:20px 0;min-height:100vh}
-body.present .sheet{box-shadow:0 20px 60px rgba(0,0,0,.5)}
-body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:80;
-  background:rgba(15,23,42,.92);padding:9px 14px;border-radius:99px;margin:0;width:auto;
-  backdrop-filter:blur(12px);box-shadow:var(--sh-lg)}
+body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:80;background:rgba(15,23,42,.92);padding:9px 14px;border-radius:99px;margin:0;width:auto}
 @media print{
   body{background:#fff}
   .noprint,#errbox,header,nav,.docbar{display:none!important}
@@ -211,9 +170,8 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
 }
 .tabpane{display:none}.tabpane.on{display:block;animation:fade .25s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-#errbox{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--err);color:#fff;
-  padding:11px 16px;font-size:13px;white-space:pre-wrap;box-shadow:var(--sh-lg)}
-#errbox b{display:block;margin-bottom:2px;font-weight:700}
+#errbox{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--err);color:#fff;padding:11px 16px;font-size:13px;white-space:pre-wrap}
+#errbox b{display:block;margin-bottom:2px}
 .empty{padding:44px 20px;text-align:center;color:var(--mute)}
 .empty .e{font-size:34px;margin-bottom:8px;opacity:.4}
 </style>
@@ -223,11 +181,9 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
 <!-- ================= LOGIN ================= -->
 <div id="gate">
  <div class="gwrap">
-  <div class="glogo">
-    <div class="ic">📊</div>
+  <div class="glogo"><div class="ic">📊</div>
     <h1>ระบบบันทึกการโอนงบประมาณรายจ่าย</h1>
-    <p>เทศบาลเมืองดอนแก้ว อำเภอแม่ริม จังหวัดเชียงใหม่</p>
-  </div>
+    <p>เทศบาลเมืองดอนแก้ว อำเภอแม่ริม จังหวัดเชียงใหม่</p></div>
   <div class="gbox">
     <div class="gtab">
       <button type="button" id="tabSignin" class="on" data-gt="in">เข้าสู่ระบบ</button>
@@ -238,19 +194,15 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
     <div class="row" id="rowDept" style="display:none"><label>ส่วนราชการ (กอง/สำนัก)</label><input id="g_dept" placeholder="เช่น สำนักปลัดเทศบาล"></div>
     <div class="row"><label>อีเมล</label><input type="email" id="g_email" autocomplete="username"></div>
     <div class="row"><label>รหัสผ่าน</label><input type="password" id="g_pw" autocomplete="current-password" placeholder="อย่างน้อย 6 ตัวอักษร"></div>
-    <div style="height:7px"></div>
-    <button type="button" class="btn" style="width:100%" id="gBtn">เข้าสู่ระบบ</button>
+    <button type="button" class="btn" style="width:100%;margin-top:7px" id="gBtn">เข้าสู่ระบบ</button>
     <p class="hint" style="margin:14px 0 0;text-align:center" id="gNote">ผู้ใช้คนแรกของระบบจะได้สิทธิ์ผู้ดูแลระบบอัตโนมัติ</p>
   </div>
  </div>
 </div>
 
 <header>
-  <div class="brand">
-    <div class="blogo">฿</div>
-    <div><h1>ระบบบันทึกการโอนงบประมาณรายจ่าย</h1>
-    <p>เทศบาลเมืองดอนแก้ว · ระเบียบ มท. พ.ศ. 2563 ข้อ 26 / ข้อ 27</p></div>
-  </div>
+  <div class="brand"><div class="blogo">฿</div>
+    <div><h1>ระบบบันทึกการโอนงบประมาณรายจ่าย</h1><p>เทศบาลเมืองดอนแก้ว · ระเบียบ มท. พ.ศ. 2563 ข้อ 26 / ข้อ 27</p></div></div>
   <div class="who">
     <span class="cloud" id="cloudState">•</span>
     <span class="av" id="uAv">—</span>
@@ -263,6 +215,7 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
   <button type="button" class="on" data-tab="dash">📊 ภาพรวม</button>
   <button type="button" data-tab="new">➕ บันทึกการโอนใหม่</button>
   <button type="button" data-tab="list">📋 ทะเบียนการโอน</button>
+  <button type="button" data-tab="budget">📘 เทศบัญญัติ</button>
   <button type="button" data-tab="admin" id="navAdmin" hidden>✅ อนุมัติ</button>
   <button type="button" data-tab="users" id="navUsers" hidden>👥 ผู้ใช้งาน</button>
   <button type="button" data-tab="setting" id="navSetting" hidden>⚙️ ตั้งค่า</button>
@@ -271,7 +224,7 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
 <main>
 <!-- ========== DASHBOARD ========== -->
 <div class="tabpane on" id="tab-dash">
-  <div class="card" style="padding:14px 18px;margin-bottom:16px">
+  <div class="card" style="padding:14px 18px">
     <div class="cardhd" style="margin:0;align-items:center">
       <div><h3 style="margin:0"><span class="ico">🗓</span>เลือกปีงบประมาณที่ต้องการวิเคราะห์</h3>
       <p class="desc" style="margin:2px 0 0" id="dashScope">—</p></div>
@@ -279,30 +232,23 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
     </div>
   </div>
   <div class="stats" id="statBox"></div>
-  <div class="card">
-    <h3><span class="ico">📈</span>มูลค่าการโอนงบประมาณรายเดือน</h3>
-    <p class="desc" id="chartDesc">เปรียบเทียบยอดโอนสะสมแต่ละเดือน — ช่วยระบุช่วงที่มีการปรับงบสูงผิดปกติ</p>
-    <div class="chart" id="chartBox"></div>
-    <div style="height:8px"></div>
-  </div>
-  <div class="card sec">
-    <h3><span class="ico">🏢</span>สัดส่วนการโอนแยกตามส่วนราชการ</h3>
-    <p class="desc">หน่วยงานที่มีการโอนงบสูงสุด 5 อันดับแรก — สะท้อนจุดที่การวางแผนงบประมาณต้องทบทวน</p>
-    <div id="deptBox"></div>
-  </div>
+  <div class="card"><h3><span class="ico">📈</span>มูลค่าการโอนงบประมาณรายเดือน</h3>
+    <p class="desc" id="chartDesc">—</p><div class="chart" id="chartBox"></div></div>
+  <div class="card sec"><h3><span class="ico">🏢</span>สัดส่วนการโอนแยกตามส่วนราชการ</h3>
+    <p class="desc">หน่วยงานที่มีการโอนงบสูงสุด 5 อันดับแรก — สะท้อนจุดที่การวางแผนงบประมาณต้องทบทวน</p><div id="deptBox"></div></div>
 </div>
 
 <!-- ========== TAB NEW ========== -->
 <div class="tabpane" id="tab-new">
   <div class="card">
     <h3><span class="ico">📝</span>ข้อมูลหัวบันทึกข้อความ</h3>
-    <p class="desc">กรอกรายละเอียดหนังสือราชการ — ข้อมูลนี้จะปรากฏในส่วนหัวของเอกสารที่พิมพ์ออก</p>
+    <p class="desc">ปีงบประมาณที่เลือกจะใช้ค้นหาจากฐานข้อมูลเทศบัญญัติของปีนั้น</p>
     <div class="grid g4">
       <div><label>ส่วนราชการ (กอง/สำนัก)</label><input id="f_dept" value="สำนักปลัดเทศบาล"></div>
       <div><label>ที่ ชม เลขที่</label><input id="f_no1" value="71206"></div>
       <div><label>เลขที่หนังสือ /</label><input id="f_no2" placeholder="306"></div>
       <div><label>วันที่บันทึก</label><input type="date" id="f_date"></div>
-      <div><label>ปีงบประมาณ พ.ศ.</label><input id="f_year" value="2570"></div>
+      <div><label>ปีงบประมาณ พ.ศ.</label><input id="f_year" value="2568"></div>
       <div><label>ครั้งที่โอน <span class="hint">(ผู้ดูแลกำหนด)</span></label><input id="f_seq" placeholder="ผู้ดูแลระบบกำหนดได้"></div>
       <div><label>โทรศัพท์</label><input id="f_tel" value="0-5312-1585"></div>
       <div><label>เรียน</label><input id="f_to" value="นายกเทศมนตรีเมืองดอนแก้ว"></div>
@@ -310,12 +256,11 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
     </div>
   </div>
 
-  <!-- ===== ผู้ลงนามรายเอกสาร ===== -->
   <div class="card ter">
     <h3><span class="ico">✍️</span>ผู้ลงนามในเอกสารฉบับนี้</h3>
-    <p class="desc">ระบุผู้เสนอขออนุมัติและผู้อำนวยการกองต้นสังกัด — เว้นว่างไว้ระบบจะใช้ค่าจากหน้าตั้งค่ากลางแทน · บล็อกความเห็นผู้อำนวยการกองจะปรากฏในเอกสารเฉพาะเมื่อกรอกชื่อ</p>
+    <p class="desc">เว้นว่างไว้ระบบจะใช้ค่าจากหน้าตั้งค่ากลาง · บล็อกความเห็นผู้อำนวยการกองจะปรากฏเฉพาะเมื่อกรอกชื่อ</p>
     <div class="grid g2">
-      <div><label>ผู้เสนอขออนุมัติ (ชื่อ-นามสกุล)</label><input id="f_p1n" placeholder="เช่น นายนรเศรษฐ  ชุ่มถนอม"></div>
+      <div><label>ผู้เสนอขออนุมัติ (ชื่อ-นามสกุล)</label><input id="f_p1n" placeholder="เช่น นายนเรศฐ์  ชุ่มถนอม"></div>
       <div><label>ตำแหน่งผู้เสนอขออนุมัติ</label><input id="f_p1t" placeholder="เช่น นักวิเคราะห์นโยบายและแผน"></div>
       <div><label>ผู้อำนวยการกอง (ชื่อ-นามสกุล)</label><input id="f_pdn" placeholder="เช่น นางสาวกรรณิกา  กาบจอก"></div>
       <div><label>ตำแหน่งผู้อำนวยการกอง</label><input id="f_pdt" placeholder="เช่น ผู้อำนวยการกองสวัสดิการสังคม"></div>
@@ -330,14 +275,13 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
       <option value="27">ระเบียบกระทรวงมหาดไทย ว่าด้วยวิธีการงบประมาณขององค์กรปกครองส่วนท้องถิ่น พ.ศ. 2563 ข้อ 27</option>
     </select>
     <div class="modebox" id="noteHint"></div>
-    <div style="height:12px"></div>
-    <label>ข้อความระเบียบที่ปรากฏในเอกสาร (แก้ไขได้)</label>
+    <label style="margin-top:12px">ข้อความระเบียบที่ปรากฏในเอกสาร (แก้ไขได้)</label>
     <textarea id="f_rule" rows="3"></textarea>
   </div>
 
   <div class="card">
     <h3><span class="ico">🔄</span>รายการโอนงบประมาณ</h3>
-    <p class="desc">เพิ่มได้หลายรายการในครั้งเดียว — หากพบรายการซ้ำ ระบบจะยกยอดคงเหลือต่อจากรายการก่อนหน้าอัตโนมัติ</p>
+    <p class="desc">พิมพ์ค้นหาในช่อง "🔍 ค้นหาจากเทศบัญญัติ" แล้วเลือก ระบบจะเติมทุกช่องพร้อมยอดคงเหลือให้ · รายการซ้ำในเอกสารเดียวกันจะยกยอดต่อให้อัตโนมัติ</p>
     <div id="items"></div>
     <button type="button" class="btn gh" id="btnAdd" data-act="add">➕ เพิ่มรายการโอน</button>
     <div class="tot" style="margin-top:16px" id="sumbox"><span>รวมยอดโอนทั้งสิ้น</span><span class="n">0.00 บาท</span></div>
@@ -372,51 +316,83 @@ body.present .docbar{position:fixed;bottom:18px;left:50%;transform:translateX(-5
   </div>
 </div>
 
+<!-- ========== TAB BUDGET ========== -->
+<div class="tabpane" id="tab-budget">
+  <div class="card sec" id="budAdmin" style="display:none">
+    <h3><span class="ico">📥</span>นำเข้าฐานข้อมูลเทศบัญญัติงบประมาณรายจ่าย</h3>
+    <p class="desc">เฉพาะผู้ดูแลระบบ — นำเข้าไฟล์ CSV หรือคัดลอกตารางจาก Excel มาวาง ระบบจับคู่หัวคอลัมน์ให้อัตโนมัติ · นำเข้าซ้ำในปีเดิมจะแทนที่ข้อมูลเดิมทั้งหมด</p>
+    <div class="grid g3">
+      <div><label>ปีงบประมาณของข้อมูล</label><input id="b_year" placeholder="2570"></div>
+      <div><label>ไฟล์ CSV (UTF-8)</label><input type="file" id="b_file" accept=".csv,.txt,.tsv"></div>
+      <div style="align-self:end;display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn gh sm" data-act="b-template">⬇ แม่แบบ CSV</button>
+        <button type="button" class="btn dg sm" data-act="b-delete">🗑 ลบข้อมูลปีนี้</button>
+      </div>
+    </div>
+    <label style="margin-top:12px">หรือวางข้อมูลที่คัดลอกจาก Excel (รวมแถวหัวตาราง)</label>
+    <textarea id="b_paste" rows="4" placeholder="ส่วนราชการ	แผนงาน	งาน	งบ	หมวด	ประเภทรายจ่าย	ชื่อโครงการ/รายการ	งบประมาณตั้งไว้"></textarea>
+    <div class="hint" style="margin:6px 0 12px">หัวคอลัมน์ที่รองรับ: ส่วนราชการ · แผนงาน · งาน · งบ · หมวด · ประเภทรายจ่าย · ชื่อโครงการ/รายการ · งบประมาณตั้งไว้ (เรียงลำดับใดก็ได้ · ต้องมีอย่างน้อย "ประเภทรายจ่าย" และ "งบประมาณตั้งไว้")</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button type="button" class="btn sec" data-act="b-check">🔎 ตรวจสอบข้อมูล</button>
+      <button type="button" class="btn" data-act="b-import" id="bImportBtn" disabled>📥 ยืนยันนำเข้า</button>
+    </div>
+    <div id="bPreview"></div>
+  </div>
+
+  <div class="card">
+    <div class="cardhd">
+      <div><h3><span class="ico">📘</span>ยอดงบประมาณคงเหลือตามเทศบัญญัติ</h3>
+      <p class="desc" style="margin:0" id="bScope">—</p></div>
+      <div class="yrpick"><label for="b_vy">ปีงบประมาณ</label><select id="b_vy"></select></div>
+    </div>
+    <div class="grid g3" style="margin-bottom:14px">
+      <div><label>ส่วนราชการ</label><select id="b_dept"></select></div>
+      <div><label>ค้นหา</label><input id="b_kw" placeholder="ชื่อโครงการ / ประเภท / แผนงาน"></div>
+      <div style="align-self:end"><button type="button" class="btn gh sm" data-act="b-export">⬇ ส่งออกยอดคงเหลือ CSV</button></div>
+    </div>
+    <div class="sumbar" id="bSum"></div>
+    <div style="overflow:auto"><table class="list" id="tbbud"></table></div>
+    <div class="hint" id="bFoot" style="margin-top:8px"></div>
+  </div>
+</div>
+
 <!-- ========== TAB ADMIN ========== -->
 <div class="tabpane" id="tab-admin">
   <div class="card"><h3><span class="ico">✅</span>อนุมัติและกำหนดครั้งที่โอน</h3>
-    <p class="desc">เฉพาะผู้ดูแลระบบ — กำหนดเลขครั้งที่ วันที่โอน และสถานะการพิจารณาของผู้บริหาร</p>
-    <div style="overflow:auto"><table class="list" id="tbadmin"></table></div>
-  </div>
+    <p class="desc">เฉพาะผู้ดูแลระบบ — เมื่อเปลี่ยนสถานะเป็น "อนุมัติแล้ว" ยอดคงเหลือในฐานข้อมูลเทศบัญญัติจะปรับตามทันที</p>
+    <div style="overflow:auto"><table class="list" id="tbadmin"></table></div></div>
 </div>
 
 <!-- ========== TAB USERS ========== -->
 <div class="tabpane" id="tab-users">
   <div class="card sec"><h3><span class="ico">👥</span>จัดการผู้ใช้งานและสิทธิ์</h3>
-    <p class="desc">เฉพาะผู้ดูแลระบบ — กำหนดสิทธิ์การเข้าถึงหน้าอนุมัติและการตั้งค่าระบบ</p>
-    <div style="overflow:auto"><table class="list" id="tbusers"></table></div>
-  </div>
+    <p class="desc">เฉพาะผู้ดูแลระบบ — กำหนดสิทธิ์การเข้าถึงหน้าอนุมัติ การนำเข้าเทศบัญญัติ และการตั้งค่าระบบ</p>
+    <div style="overflow:auto"><table class="list" id="tbusers"></table></div></div>
 </div>
 
 <!-- ========== TAB SETTING ========== -->
 <div class="tabpane" id="tab-setting">
   <div class="card"><h3><span class="ico">🦅</span>ตราครุฑหัวบันทึกข้อความ</h3>
-    <p class="desc">ตราครุฑจะแสดงมุมบนซ้ายของเอกสาร ขนาด 1.5 ซม. ตามระเบียบงานสารบรรณ</p>
+    <p class="desc">แสดงมุมบนซ้ายของเอกสาร ขนาด 1.5 ซม. ตามระเบียบงานสารบรรณ</p>
     <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
       <img id="garudaPrev" class="gpreview" alt="ตราครุฑ">
       <div style="flex:1;min-width:250px">
         <label>อัปโหลดไฟล์ตราครุฑ (PNG พื้นหลังโปร่งใส แนะนำ 300×300 px)</label>
         <input type="file" id="garudaFile" accept="image/png,image/jpeg,image/svg+xml">
-        <div style="height:10px"></div>
-        <button type="button" class="btn gh sm" data-act="garuda-reset">↺ ใช้ตราครุฑเริ่มต้น</button>
+        <button type="button" class="btn gh sm" style="margin-top:10px" data-act="garuda-reset">↺ ใช้ตราครุฑเริ่มต้น</button>
       </div>
     </div>
   </div>
   <div class="card ter"><h3><span class="ico">✍️</span>ผู้ลงนามค่าเริ่มต้น</h3>
-    <p class="desc">ใช้เมื่อไม่ได้ระบุผู้ลงนามในเอกสารฉบับนั้น — มีผลกับผู้ใช้ทุกคนในระบบ</p>
+    <p class="desc">ใช้เมื่อไม่ได้ระบุผู้ลงนามในเอกสารฉบับนั้น — มีผลกับผู้ใช้ทุกคน</p>
     <div class="grid g2">
-      <div><label>ผู้เสนอ (ชื่อ)</label><input id="s_p1n"></div>
-      <div><label>ผู้เสนอ (ตำแหน่ง)</label><input id="s_p1t"></div>
-      <div><label>ผู้อำนวยการกอง (ค่าเริ่มต้น)</label><input id="s_pdn"></div>
-      <div><label>ตำแหน่ง</label><input id="s_pdt"></div>
-      <div><label>ผู้อำนวยการกองคลัง</label><input id="s_p2n"></div>
-      <div><label>ตำแหน่ง</label><input id="s_p2t"></div>
-      <div><label>เจ้าหน้าที่งบประมาณ</label><input id="s_p3n"></div>
-      <div><label>ตำแหน่ง</label><input id="s_p3t"></div>
-      <div><label>ผู้อนุมัติ</label><input id="s_p4n"></div>
-      <div><label>ตำแหน่ง</label><input id="s_p4t"></div>
+      <div><label>ผู้เสนอ (ชื่อ)</label><input id="s_p1n"></div><div><label>ผู้เสนอ (ตำแหน่ง)</label><input id="s_p1t"></div>
+      <div><label>ผู้อำนวยการกอง (ค่าเริ่มต้น)</label><input id="s_pdn"></div><div><label>ตำแหน่ง</label><input id="s_pdt"></div>
+      <div><label>ผู้อำนวยการกองคลัง</label><input id="s_p2n"></div><div><label>ตำแหน่ง</label><input id="s_p2t"></div>
+      <div><label>เจ้าหน้าที่งบประมาณ</label><input id="s_p3n"></div><div><label>ตำแหน่ง</label><input id="s_p3t"></div>
+      <div><label>ผู้อนุมัติ</label><input id="s_p4n"></div><div><label>ตำแหน่ง</label><input id="s_p4t"></div>
     </div>
-    <div style="height:14px"></div><button type="button" class="btn" data-act="save-setting">💾 บันทึกการตั้งค่า</button>
+    <button type="button" class="btn" style="margin-top:14px" data-act="save-setting">💾 บันทึกการตั้งค่า</button>
   </div>
 </div>
 
@@ -461,7 +437,7 @@ const el=id=>document.getElementById(id);
 const val=id=>{const e=el(id);return e?e.value:""};
 const setVal=(id,v)=>{const e=el(id);if(e)e.value=(v==null?"":v)};
 const up=(t,sel)=>{if(!t)return null;if(t.nodeType===3)t=t.parentElement;return t&&t.closest?t.closest(sel):null};
-const num=v=>{v=parseFloat(String(v==null?"":v).replace(/,/g,""));return isNaN(v)?0:v};
+const num=v=>{v=parseFloat(String(v==null?"":v).replace(/[,\s฿]/g,""));return isNaN(v)?0:v};
 const fm=v=>num(v).toLocaleString("th-TH",{minimumFractionDigits:2,maximumFractionDigits:2});
 const fmi=v=>{const n=num(v);return n%1===0?n.toLocaleString("th-TH"):fm(n)};
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -470,7 +446,6 @@ window.addEventListener('error',e=>showErr(e.message));
 
 const TH_NUM=["๐","๑","๒","๓","๔","๕","๖","๗","๘","๙"];
 const toThaiNum=s=>String(s).replace(/[0-9]/g,d=>TH_NUM[+d]);
-
 const AVC=["#0D9488","#9333EA","#EC4899","#3B82F6","#F59E0B","#10B981","#6366F1","#EF4444","#14B8A6","#A855A8"];
 function hashIdx(s){let h=0;s=String(s||"");for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h%AVC.length}
 const avColor=s=>AVC[hashIdx(s)];
@@ -513,31 +488,49 @@ const BUDGET={
 "งบกลาง":{"งบกลาง":["ค่าชำระหนี้เงินต้น","ค่าชำระดอกเบี้ย","เงินสมทบกองทุนประกันสังคม","เงินสมทบกองทุนเงินทดแทน","เบี้ยยังชีพผู้สูงอายุ","เบี้ยยังชีพความพิการ","เบี้ยยังชีพผู้ป่วยเอดส์","เงินสำรองจ่าย","รายจ่ายตามข้อผูกพัน","เงินสมทบกองทุนบำเหน็จบำนาญข้าราชการส่วนท้องถิ่น (ก.บ.ท.)","เงินช่วยพิเศษ","เงินสมทบกองทุนหลักประกันสุขภาพ"]}};
 
 const OTHER="อื่น ๆ (ระบุเอง)";
-const LKEY="dk_tr_v7",LSET="dk_set_v7",LUSR="dk_usr_v7";
+const LKEY="dk_tr_v7",LSET="dk_set_v7",LUSR="dk_usr_v7",LBUD="dk_bud_v1";
 const TH_M=["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
 const TH_MS=["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
 const STL={draft:["ร่าง","b-draft"],wait:["รออนุมัติ","b-wait"],ok:["อนุมัติแล้ว","b-ok"],no:["ไม่อนุมัติ","b-no"]};
-const DEF_SET={p1n:"นายนเรศฐ์  ชุ่มถนอม",p1t:"นักวิเคราะห์นโยบายและแผน",
-  pdn:"นางสาวกรรณิกา  กาบจอก",pdt:"ผู้อำนวยการกองสวัสดิการสังคม",
-  p2n:"นางสาวสุปวีณ์  ศรีโสดา",p2t:"ผู้อำนวยการกองคลัง",
-  p3n:"นายวิชาติ  นาวาพิสุทธิ์",p3t:"ปลัดเทศบาลเมืองดอนแก้ว",
+const DEF_SET={p1n:"นายนเรศฐ์  ชุ่มถนอม",p1t:"นักวิเคราะห์นโยบายและแผน",pdn:"นางสาวกรรณิกา  กาบจอก",pdt:"ผู้อำนวยการกองสวัสดิการสังคม",
+  p2n:"นางสาวสุปวีณ์  ศรีโสดา",p2t:"ผู้อำนวยการกองคลัง",p3n:"นายวิชาติ  นาวาพิสุทธิ์",p3t:"ปลัดเทศบาลเมืองดอนแก้ว",
   p4n:"นายพลากร  กันธวัง",p4t:"นายกเทศมนตรีเมืองดอนแก้ว",garuda:""};
 const RULE26="ระเบียบกระทรวงมหาดไทย ว่าด้วยวิธีการงบประมาณขององค์กรปกครองส่วนท้องถิ่น พ.ศ. 2563 ข้อ 26 การโอนเงินงบประมาณรายจ่ายต่างๆ ให้เป็นอำนาจอนุมัติของผู้บริหารท้องถิ่น";
 const RULE27="ระเบียบกระทรวงมหาดไทย ว่าด้วยวิธีการงบประมาณขององค์กรปกครองส่วนท้องถิ่น พ.ศ. 2563 ข้อ 27 การโอนเงินงบประมาณรายจ่ายในงบลงทุน โดยการโอนเพิ่ม โอนลด ที่ทำให้ลักษณะ ปริมาณ คุณภาพเปลี่ยน หรือโอนไปตั้งจ่ายเป็นรายการใหม่ ให้เป็นอำนาจอนุมัติของสภาท้องถิ่น";
 
-const thDate=iso=>{if(!iso)return"";const d=new Date(iso);if(isNaN(d.getTime()))return"";
-  return toThaiNum(d.getDate())+" "+TH_M[d.getMonth()]+" "+toThaiNum(d.getFullYear()+543)};
-const thDateEn=iso=>{if(!iso)return"-";const d=new Date(iso);if(isNaN(d.getTime()))return"-";
-  return d.getDate()+" "+TH_MS[d.getMonth()]+" "+(d.getFullYear()+543)};
+const thDate=iso=>{if(!iso)return"";const d=new Date(iso);if(isNaN(d.getTime()))return"";return toThaiNum(d.getDate())+" "+TH_M[d.getMonth()]+" "+toThaiNum(d.getFullYear()+543)};
+const thDateEn=iso=>{if(!iso)return"-";const d=new Date(iso);if(isNaN(d.getTime()))return"-";return d.getDate()+" "+TH_MS[d.getMonth()]+" "+(d.getFullYear()+543)};
 const STLget=k=>STL[k]||["ไม่ระบุ","b-draft"];
 
 let ME={uid:"local",name:"ผู้ใช้ออฟไลน์",email:"offline@local",dept:"",role:"admin"};
 let RECS=[],SETTING={...DEF_SET},USERS=[];
+/* ฐานข้อมูลเทศบัญญัติ */
+let BUDS={},BMETA={},BUDDOCS={},BIDX={},BHAY={},PARSED=null,BFILETXT="",BUDVIEW={y:"",rows:[]};
 let seqId=0,editId=null,curDoc=null,gtMode="in";
 const isAdmin=()=>ME.role==="admin";
 const lget=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}};
 const lset=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 
+/* ============ คีย์จับคู่รายการ ============ */
+const lk=o=>[o.plan,o.work,o.bud,o.cat,o.type,o.proj].map(v=>String(v||"").trim()).join("|");
+const budYears=()=>Object.keys(BUDS).filter(y=>(BUDS[y]||[]).length).sort((a,b)=>num(b)-num(a));
+const ZU=()=>({dec:0,inc:0,pdec:0,pinc:0});
+/* ยอดโอนสะสมจากเอกสาร: ok = อนุมัติแล้ว, wait = รออนุมัติ */
+function usage(year,excludeId){
+  const U={};const add=(k,f,v)=>{(U[k]=U[k]||ZU())[f]+=v};
+  RECS.forEach(r=>{
+    if(String(r.year||"").trim()!==String(year)||r.id===excludeId)return;
+    const ok=r.status==="ok",pend=r.status==="wait";if(!ok&&!pend)return;
+    (r.items||[]).forEach(x=>{const a=num(x.amt);
+      add(lk({plan:x.dplan,work:x.dwork,bud:x.dbud,cat:x.dcat,type:x.dtype,proj:x.dproj}),ok?"dec":"pdec",a);
+      add(lk({plan:x.iplan,work:x.iwork,bud:x.ibud,cat:x.icat,type:x.itype,proj:x.iproj}),ok?"inc":"pinc",a);
+    });
+  });
+  return U;
+}
+const balOf=(l,U)=>{const u=U[lk(l)]||ZU();return num(l.amount)-u.dec+u.inc};
+
+/* ============ ชั้นข้อมูล ============ */
 async function dbSaveRec(r){
   if(USE_CLOUD){const{doc,setDoc}=FB.F;await setDoc(doc(FB.db,"transfers",r.id),r)}
   else{const l=lget(LKEY,[]);const i=l.findIndex(x=>x.id===r.id);i>=0?l[i]=r:l.unshift(r);lset(LKEY,l);RECS=l;renderAll()}
@@ -553,6 +546,44 @@ async function dbSaveSetting(s){
 async function dbSetRole(uid,role){
   if(USE_CLOUD){const{doc,updateDoc}=FB.F;await updateDoc(doc(FB.db,"users",uid),{role})}
   else{const l=lget(LUSR,[]);const u=l.find(x=>x.uid===uid);if(u)u.role=role;lset(LUSR,l);USERS=l;renderUsers()}
+}
+const CHUNK=300;
+async function dbSaveBudget(year,lines){
+  const meta={updated:new Date().toISOString(),by:ME.name||""};
+  if(USE_CLOUD){
+    const{doc,writeBatch}=FB.F;const b=writeBatch(FB.db);const newIds=[];
+    for(let i=0;i*CHUNK<lines.length;i++){
+      const id=`${year}-p${i}`;newIds.push(id);
+      b.set(doc(FB.db,"budgets",id),{year:String(year),part:i,lines:lines.slice(i*CHUNK,(i+1)*CHUNK),...meta});
+    }
+    (BUDDOCS[year]||[]).filter(id=>!newIds.includes(id)).forEach(id=>b.delete(doc(FB.db,"budgets",id)));
+    await b.commit();
+  }else{
+    const o=lget(LBUD,{});o[year]={lines,...meta};lset(LBUD,o);loadLocalBudgets();
+  }
+}
+async function dbDelBudget(year){
+  if(USE_CLOUD){const{doc,writeBatch}=FB.F;const b=writeBatch(FB.db);
+    (BUDDOCS[year]||[]).forEach(id=>b.delete(doc(FB.db,"budgets",id)));await b.commit()}
+  else{const o=lget(LBUD,{});delete o[year];lset(LBUD,o);loadLocalBudgets()}
+}
+function loadLocalBudgets(){
+  const o=lget(LBUD,{});BUDS={};BMETA={};
+  Object.keys(o).forEach(y=>{BUDS[y]=o[y].lines||[];BMETA[y]={updated:o[y].updated,by:o[y].by}});
+  applyBudgets();
+}
+function applyBudgets(){
+  BIDX={};BHAY={};
+  Object.keys(BUDS).forEach(y=>{
+    const m=new Map();BUDS[y].forEach(l=>m.set(lk(l),l));BIDX[y]=m;
+    BHAY[y]=BUDS[y].map(l=>[l.dept,l.plan,l.work,l.bud,l.cat,l.type,l.proj].join(" ").toLowerCase());
+  });
+  if(!editId){
+    const ys=budYears(),cur=val("f_year").trim();
+    const touched=qa("#items .item").some(it=>num((q('[data-f="damt"]',it)||{}).value));
+    if(ys.length&&!BUDS[cur]&&!touched){setVal("f_year",ys[0]);refreshYearPickers()}
+  }
+  renderBudget();calc();
 }
 
 /* ============ AUTH ============ */
@@ -606,6 +637,13 @@ if(USE_CLOUD){
     onSnapshot(query(collection(FB.db,"transfers"),orderBy("created","desc")),s=>{RECS=s.docs.map(d=>d.data());renderAll()},e=>showErr(e.message));
     onSnapshot(doc(FB.db,"settings","main"),s=>{SETTING={...DEF_SET,...(s.data()||{})};applySettingUI()});
     onSnapshot(collection(FB.db,"users"),s=>{USERS=s.docs.map(d=>d.data());renderUsers()});
+    onSnapshot(collection(FB.db,"budgets"),s=>{
+      const parts={};BUDDOCS={};BMETA={};
+      s.docs.forEach(d=>{const v=d.data(),y=String(v.year);(parts[y]=parts[y]||[]).push(v);(BUDDOCS[y]=BUDDOCS[y]||[]).push(d.id);
+        if(!BMETA[y]||v.part===0)BMETA[y]={updated:v.updated,by:v.by}});
+      BUDS={};Object.keys(parts).forEach(y=>{BUDS[y]=parts[y].sort((a,b)=>a.part-b.part).flatMap(p=>p.lines||[])});
+      applyBudgets();
+    },e=>showErr("โหลดเทศบัญญัติไม่สำเร็จ: "+e.message));
   });
 }else{
   RECS=lget(LKEY,[]);SETTING={...DEF_SET,...lget(LSET,{})};USERS=lget(LUSR,[]);
@@ -614,67 +652,42 @@ if(USE_CLOUD){
 
 /* ============ ปีงบประมาณ ============ */
 function allYears(){
-  const set=new Set();
-  RECS.forEach(r=>{const y=String(r.year||"").trim();if(y)set.add(y)});
+  const set=new Set();RECS.forEach(r=>{const y=String(r.year||"").trim();if(y)set.add(y)});
   const cur=String(val("f_year")||"").trim();if(cur)set.add(cur);
   return Array.from(set).sort((a,b)=>num(b)-num(a));
 }
 function fillYearSelect(id,allLabel){
-  const s=el(id);if(!s)return;
-  const keep=s.value;
-  const ys=allYears();
+  const s=el(id);if(!s)return;const keep=s.value,ys=allYears();
   s.innerHTML=`<option value="">${allLabel}</option>`+ys.map(y=>`<option value="${esc(y)}">ปีงบประมาณ ${esc(y)}</option>`).join("");
   if(keep&&ys.includes(keep))s.value=keep;
 }
-function refreshYearPickers(){
-  fillYearSelect("d_year","ทุกปีงบประมาณ");
-  fillYearSelect("q_year","ทุกปีงบประมาณ");
-}
+function refreshYearPickers(){fillYearSelect("d_year","ทุกปีงบประมาณ");fillYearSelect("q_year","ทุกปีงบประมาณ")}
 
 /* ============ DASHBOARD ============ */
 function renderDash(){
   const box=el("statBox");if(!box)return;
-  const yy=val("d_year");
-  const data=yy?RECS.filter(r=>String(r.year||"")===yy):RECS;
-  el("dashScope").textContent=yy
-    ?`แสดงข้อมูลเฉพาะปีงบประมาณ พ.ศ. ${yy} — ${data.length} เอกสาร`
-    :`แสดงข้อมูลรวมทุกปีงบประมาณ — ${data.length} เอกสาร`;
-  el("chartDesc").textContent=yy
-    ?`ยอดโอนรายเดือนของปีงบประมาณ พ.ศ. ${yy} — ช่วยระบุช่วงที่มีการปรับงบสูงผิดปกติ`
-    :"ยอดโอนรายเดือนรวมทุกปีงบประมาณ — เลือกปีด้านบนเพื่อดูแยกรายปี";
-
-  const tot=data.reduce((s,r)=>s+num(r.total),0);
-  const ok=data.filter(r=>r.status==="ok").length;
-  const wait=data.filter(r=>r.status==="wait").length;
+  const yy=val("d_year"),data=yy?RECS.filter(r=>String(r.year||"")===yy):RECS;
+  el("dashScope").textContent=(yy?`แสดงข้อมูลเฉพาะปีงบประมาณ พ.ศ. ${yy}`:"แสดงข้อมูลรวมทุกปีงบประมาณ")+` — ${data.length} เอกสาร`;
+  el("chartDesc").textContent=yy?`ยอดโอนรายเดือนของปีงบประมาณ พ.ศ. ${yy} — ช่วยระบุช่วงที่มีการปรับงบสูงผิดปกติ`:"ยอดโอนรายเดือนรวมทุกปีงบประมาณ — เลือกปีด้านบนเพื่อดูแยกรายปี";
+  const tot=data.reduce((s,r)=>s+num(r.total),0),ok=data.filter(r=>r.status==="ok").length,wait=data.filter(r=>r.status==="wait").length;
   const items=data.reduce((s,r)=>s+(r.items?r.items.length:0),0);
-  const cards=[
-    {l:"เอกสารทั้งหมด",v:data.length.toLocaleString("th-TH"),s:items+" รายการโอน",i:"📄",c:"var(--pri)",b:"var(--pri-bg)"},
+  box.innerHTML=[
+    {l:"เอกสารทั้งหมด",v:data.length,s:items+" รายการโอน",i:"📄",c:"var(--pri)",b:"var(--pri-bg)"},
     {l:"มูลค่าโอนรวม",v:fm(tot),s:"บาท",i:"💰",c:"var(--sec)",b:"var(--sec-bg)"},
-    {l:"อนุมัติแล้ว",v:ok.toLocaleString("th-TH"),s:data.length?Math.round(ok/data.length*100)+"% ของทั้งหมด":"—",i:"✅",c:"var(--ok)",b:"#ECFDF5"},
-    {l:"รออนุมัติ",v:wait.toLocaleString("th-TH"),s:wait?"ต้องพิจารณา":"ไม่มีค้าง",i:"⏳",c:"var(--warn)",b:"#FFFBEB"}];
-  box.innerHTML=cards.map(c=>`<div class="stat" style="--c:${c.c};--cbg:${c.b}">
-    <div class="ico">${c.i}</div><div class="lbl">${c.l}</div>
-    <div class="val">${c.v}</div><div class="sub">${c.s}</div></div>`).join("");
-
+    {l:"อนุมัติแล้ว",v:ok,s:data.length?Math.round(ok/data.length*100)+"% ของทั้งหมด":"—",i:"✅",c:"var(--ok)",b:"#ECFDF5"},
+    {l:"รออนุมัติ",v:wait,s:wait?"ต้องพิจารณา":"ไม่มีค้าง",i:"⏳",c:"var(--warn)",b:"#FFFBEB"}
+  ].map(c=>`<div class="stat" style="--c:${c.c};--cbg:${c.b}"><div class="ico">${c.i}</div><div class="lbl">${c.l}</div><div class="val">${c.v}</div><div class="sub">${c.s}</div></div>`).join("");
   const mon=new Array(12).fill(0);
   data.forEach(r=>{const d=new Date(r.tDate||r.date||r.created);if(!isNaN(d.getTime()))mon[d.getMonth()]+=num(r.total)});
   const mx=Math.max(...mon,1);
-  el("chartBox").innerHTML=mon.map((v,i)=>{
-    const h=v>0?Math.max(6,Math.round(v/mx*128)):3;
-    return `<div class="bar"><div class="col" style="height:${h}px" data-v="${v>0?Math.round(v/1000)+"K":""}"></div>
-    <div class="cap">${TH_MS[i]}</div></div>`}).join("");
-
+  el("chartBox").innerHTML=mon.map((v,i)=>`<div class="bar"><div class="col" style="height:${v>0?Math.max(6,Math.round(v/mx*128)):3}px" data-v="${v>0?Math.round(v/1000)+"K":""}"></div><div class="cap">${TH_MS[i]}</div></div>`).join("");
   const dm={};data.forEach(r=>{dm[r.dept||"ไม่ระบุ"]=(dm[r.dept||"ไม่ระบุ"]||0)+num(r.total)});
-  const top=Object.entries(dm).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  const mxd=top.length?top[0][1]:1;
+  const top=Object.entries(dm).sort((a,b)=>b[1]-a[1]).slice(0,5),mxd=top.length?top[0][1]||1:1;
   const COL=["var(--pri)","var(--sec)","var(--ter)","var(--info)","var(--warn)"];
-  el("deptBox").innerHTML=top.length?top.map(([d,v],i)=>`
-    <div style="margin-bottom:13px">
-      <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px">
-        <b>${esc(d)}</b><span style="color:var(--mute)">${fm(v)} บาท</span></div>
-      <div style="height:8px;background:var(--line2);border-radius:99px;overflow:hidden">
-        <div style="height:100%;width:${Math.round(v/mxd*100)}%;background:${COL[i]};border-radius:99px;transition:width .6s"></div></div>
-    </div>`).join(""):'<div class="empty"><div class="e">📊</div>ยังไม่มีข้อมูลในปีงบประมาณที่เลือก</div>';
+  el("deptBox").innerHTML=top.length?top.map(([d,v],i)=>`<div style="margin-bottom:13px">
+    <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px"><b>${esc(d)}</b><span style="color:var(--mute)">${fm(v)} บาท</span></div>
+    <div class="pbar" style="height:8px"><i style="width:${Math.round(v/mxd*100)}%;background:${COL[i]}"></i></div></div>`).join("")
+    :'<div class="empty"><div class="e">📊</div>ยังไม่มีข้อมูลในปีงบประมาณที่เลือก</div>';
 }
 
 /* ============ ฟอร์มรายการ ============ */
@@ -682,6 +695,9 @@ const opt=(arr,ph)=>'<option value="">— '+ph+' —</option>'+arr.map(a=>"<opti
 function sideHTML(k,cls,title,label){
   const amtAttr=(k==="i")?'readonly class="ro"':"";
   return `<div class="side ${cls}"><h4>${title}</h4><div class="grid">
+  <div class="dbs"><label>🔍 ค้นหาจากเทศบัญญัติ <span class="hint">(พิมพ์ชื่อโครงการ / ประเภท / แผนงาน)</span></label>
+    <input data-dbq="${k}" autocomplete="off" placeholder="เช่น วัสดุสำนักงาน, ถนน ค.ส.ล. ซอย 25">
+    <div class="res" data-dbr="${k}"></div></div>
   <div><label>แผนงาน</label><select data-f="${k}plan">${opt(Object.keys(PLANS),"เลือกแผนงาน")}</select>
   <input data-f="${k}planX" style="display:none;margin-top:6px" placeholder="ระบุแผนงาน"></div>
   <div><label>งาน</label><select data-f="${k}work"><option value="">— เลือกแผนงานก่อน —</option></select>
@@ -693,6 +709,7 @@ function sideHTML(k,cls,title,label){
   <div><label>ชื่อโครงการ / รายการ <span class="hint">(ถ้ามี)</span></label>
   <input data-f="${k}proj" placeholder="เช่น เก้าอี้ทำงานแบบสูง จำนวน 2 ตัว"></div>
   <div class="carry-note" data-carry="${k}" style="display:none"></div>
+  <div class="db-note" data-dbn="${k}" style="display:none"></div>
   <div class="grid g3">
   <div><label>งบประมาณตั้งไว้</label><input type="number" step="0.01" data-f="${k}set"></div>
   <div><label>คงเหลือก่อนโอน</label><input type="number" step="0.01" data-f="${k}before"></div>
@@ -702,10 +719,8 @@ function sideHTML(k,cls,title,label){
 }
 function addItem(d){
   const box=el("items");if(!box)return null;
-  seqId++;const div=document.createElement("div");
-  div.className="item";div.id="it"+seqId;
-  div.innerHTML=`<div class="hd"><span class="nm">รายการที่ –</span>
-    <button type="button" class="btn dg sm" data-act="del-item">🗑 ลบ</button></div>
+  seqId++;const div=document.createElement("div");div.className="item";div.id="it"+seqId;
+  div.innerHTML=`<div class="hd"><span class="nm">รายการที่ –</span><button type="button" class="btn dg sm" data-act="del-item">🗑 ลบ</button></div>
     <div class="bd">${sideHTML("d","dec","🔻 รายการโอนลด","จำนวนที่โอนลด")}${sideHTML("i","inc","🔺 รายการโอนเพิ่ม / ตั้งจ่ายเป็นรายการใหม่","จำนวนที่โอนเพิ่ม")}</div>
     <div style="padding:0 16px 16px"><label>เหตุผลความจำเป็น</label>
     <textarea data-f="reason" rows="2" placeholder="เช่น เนื่องจากมีทรัพย์สินชำรุดที่เกิดจากการเสื่อมสภาพ จำเป็นต้องซ่อมบำรุงมากกว่าที่ตั้งงบประมาณไว้"></textarea></div>`;
@@ -726,24 +741,92 @@ function syncType(it,k){
   t.innerHTML=(BUDGET[b]&&BUDGET[b][c])?opt(BUDGET[b][c],"เลือกประเภทรายจ่าย"):'<option value="">— เลือกหมวดก่อน —</option>';
 }
 const renum=()=>qa("#items .item").forEach((it,i)=>{const n=q(".nm",it);if(n)n.textContent="รายการที่ "+(i+1)});
-function keyOf(it,k){
+/* เลือกค่าใน select — ถ้าไม่มีในรายการ ให้เพิ่มตัวเลือกนั้นเข้าไป */
+function setSel(sel,v){
+  if(!sel)return;v=String(v==null?"":v).trim();
+  if(v&&!Array.prototype.some.call(sel.options,o=>o.value===v)){const o=document.createElement("option");o.value=v;o.textContent=v;sel.appendChild(o)}
+  sel.value=v;
+}
+function fillSide(it,k,d){
+  const g=f=>q(`[data-f="${f}"]`,it);
+  ["planX","workX","typeX"].forEach(f=>{const e=g(k+f);if(e){e.style.display="none";e.value=""}});
+  setSel(g(k+"plan"),d.plan);syncWork(it,k);setSel(g(k+"work"),d.work);
+  setSel(g(k+"bud"),d.bud);syncCat(it,k);setSel(g(k+"cat"),d.cat);syncType(it,k);setSel(g(k+"type"),d.type);
+  g(k+"proj").value=d.proj||"";
+  g(k+"set").value=(d.set==null||d.set==="")?"":d.set;
+  g(k+"before").value=(d.before==null||d.before==="")?"":d.before;
+}
+function sideVals(it,k){
   const g=f=>{const e=q(`[data-f="${f}"]`,it);return e?String(e.value||"").trim():""};
   const pick=(a,b)=>g(a)===OTHER?g(b):g(a);
-  const bud=g(k+"bud"),cat=g(k+"cat"),type=pick(k+"type",k+"typeX");
-  if(!bud||!cat||!type)return "";
-  return [pick(k+"plan",k+"planX"),pick(k+"work",k+"workX"),bud,cat,type,g(k+"proj")].join("|");
+  return {plan:pick(k+"plan",k+"planX"),work:pick(k+"work",k+"workX"),bud:g(k+"bud"),cat:g(k+"cat"),type:pick(k+"type",k+"typeX"),proj:g(k+"proj")};
 }
+function keyOf(it,k){const v=sideVals(it,k);if(!v.bud||!v.cat||!v.type)return "";return lk(v)}
 function lockCarry(it,k,i){
   ["set","before"].forEach(f=>{const e=q(`[data-f="${k}${f}"]`,it);if(e){e.readOnly=true;e.classList.add("ro","carry")}});
-  const t=q(`[data-carry="${k}"]`,it);
-  if(t){t.style.display="block";t.textContent="↩ ยกยอดต่อจากรายการที่ "+i+" — ระบบคำนวณอัตโนมัติ"}
+  const t=q(`[data-carry="${k}"]`,it);if(t){t.style.display="block";t.textContent="↩ ยกยอดต่อจากรายการที่ "+i+" — ระบบคำนวณอัตโนมัติ"}
 }
 function unlockCarry(it,k){
   ["set","before"].forEach(f=>{const e=q(`[data-f="${k}${f}"]`,it);if(e){e.readOnly=false;e.classList.remove("ro","carry")}});
   const t=q(`[data-carry="${k}"]`,it);if(t){t.style.display="none";t.textContent=""}
 }
+
+/* ============ ค้นหา / เลือกจากเทศบัญญัติ ============ */
+function dbSearch(it,k,qs){
+  const box=q(`[data-dbr="${k}"]`,it);if(!box)return;
+  const yr=val("f_year").trim(),lines=BUDS[yr]||[],hay=BHAY[yr]||[];
+  const toks=qs.toLowerCase().split(/\s+/).filter(Boolean);
+  if(!toks.length){box.classList.remove("on");return}
+  if(!lines.length){
+    it._dbres=[];
+    box.innerHTML=`<div class="opt" style="cursor:default">ยังไม่มีฐานข้อมูลเทศบัญญัติปีงบประมาณ ${esc(yr)} — ผู้ดูแลระบบนำเข้าได้ที่แท็บ "📘 เทศบัญญัติ"</div>`;
+    box.classList.add("on");return;
+  }
+  const dept=val("f_dept").trim(),U=usage(yr,editId);
+  const res=[];lines.forEach((l,i)=>{if(toks.every(t=>hay[i].includes(t)))res.push(l)});
+  res.sort((a,b)=>(b.dept===dept)-(a.dept===dept));
+  const top=res.slice(0,30);it._dbres=top;
+  box.innerHTML=top.length?top.map((l,i)=>{const bal=balOf(l,U);
+    return `<div class="opt${i===0?" act":""}" data-act="db-pick" data-k="${k}" data-i="${i}">
+      <span class="amt" style="${bal<0?"color:var(--err)":""}">คงเหลือ ${fm(bal)}</span>
+      <b>${esc(l.proj||l.type)}</b>
+      <div class="m">${esc(l.dept||"-")} · ${esc(l.plan)} › ${esc(l.work)} › ${esc(l.cat)}${l.proj?" › "+esc(l.type):""} · ตั้งไว้ ${fm(l.amount)}</div></div>`}).join("")
+    +(res.length>30?`<div class="opt" style="cursor:default;color:var(--mute)">พบ ${res.length} รายการ แสดง 30 รายการแรก — พิมพ์คำเพิ่มเพื่อกรองให้แคบลง</div>`:"")
+    :`<div class="opt" style="cursor:default">ไม่พบรายการที่ตรงกับ "${esc(qs)}"</div>`;
+  box.classList.add("on");
+}
+function dbPick(it,k,l){
+  if(!it||!l)return;
+  const yr=val("f_year").trim(),U=usage(yr,editId);
+  fillSide(it,k,{plan:l.plan,work:l.work,bud:l.bud,cat:l.cat,type:l.type,proj:l.proj,set:num(l.amount),before:balOf(l,U)});
+  if(k==="d"&&!val("f_dept")&&l.dept)setVal("f_dept",l.dept);
+  const inp=q(`[data-dbq="${k}"]`,it);if(inp)inp.value="";
+  const box=q(`[data-dbr="${k}"]`,it);if(box)box.classList.remove("on");
+  calc();
+}
+function dbApply(it,k){
+  const yr=val("f_year").trim(),idx=BIDX[yr],key=keyOf(it,k);if(!idx||!idx.has(key))return;
+  const l=idx.get(key),U=usage(yr,editId);
+  q(`[data-f="${k}set"]`,it).value=num(l.amount);q(`[data-f="${k}before"]`,it).value=balOf(l,U);calc();
+}
+function dbNote(it,k,carried,yr,idx,U){
+  const box=q(`[data-dbn="${k}"]`,it);if(!box)return;
+  const key=keyOf(it,k),l=(!carried&&idx&&key)?idx.get(key):null;
+  if(!l){box.style.display="none";box.innerHTML="";return}
+  const u=U[key]||ZU(),bal=num(l.amount)-u.dec+u.inc;
+  const setV=num(q(`[data-f="${k}set"]`,it).value),befV=num(q(`[data-f="${k}before"]`,it).value);
+  const miss=Math.abs(setV-num(l.amount))>.004||Math.abs(befV-bal)>.004;
+  box.className="db-note"+(miss?" miss":"");box.style.display="block";
+  box.innerHTML=`📘 ตรงกับเทศบัญญัติปี ${esc(yr)} · ตั้งไว้ <b>${fm(l.amount)}</b> · โอนลดแล้ว ${fm(u.dec)} · โอนเพิ่มแล้ว ${fm(u.inc)} · คงเหลือ <b>${fm(bal)}</b>`
+    +((u.pdec||u.pinc)?` · รออนุมัติ −${fm(u.pdec)} / +${fm(u.pinc)}`:"")
+    +(miss?`<br>⚠ ยอดที่กรอกไม่ตรงกับฐานข้อมูล <button type="button" class="btn sm" data-act="db-apply" data-k="${k}">↻ ใช้ยอดตามเทศบัญญัติ</button>`:"");
+}
+
+/* ============ คำนวณ ============ */
 function calc(){
+  const sb=el("sumbox");if(!sb)return;
   let n=0,total=0;const warn=[],map={};
+  const yr=String(val("f_year")||"").trim(),idx=BIDX[yr],U=idx?usage(yr,editId):{};
   qa("#items .item").forEach((it,i)=>{
     const g=f=>q(`[data-f="${f}"]`,it);if(!g("damt"))return;
     const amt=num(g("damt").value);g("iamt").value=amt?amt:"";
@@ -755,36 +838,26 @@ function calc(){
     if(ci){g("iset").value=ci.set;g("ibefore").value=ci.after;lockCarry(it,"i",ci.idx)}else unlockCarry(it,"i");
     const iSet=num(g("iset").value),iAfter=num(g("ibefore").value)+amt;
     g("iafter").value=fm(iAfter);if(ki)map[ki]={set:iSet,after:iAfter,idx:i+1};
+    dbNote(it,"d",!!cd,yr,idx,U);dbNote(it,"i",!!ci,yr,idx,U);
     if(dAfter<0)warn.push("รายการที่ "+(i+1)+" : ยอดโอนลดมากกว่างบคงเหลือ (ติดลบ "+fm(Math.abs(dAfter))+" บาท)");
+    else if(idx&&kd&&!cd&&idx.has(kd)){const u=U[kd];
+      if(u&&u.pdec>0&&dAfter-u.pdec<0)warn.push("รายการที่ "+(i+1)+" : มีเอกสารอื่นรออนุมัติโอนลดจากรายการเดียวกันอีก "+fm(u.pdec)+" บาท — หากอนุมัติทั้งหมดงบจะติดลบ "+fm(Math.abs(dAfter-u.pdec))+" บาท")}
     n++;total+=amt;
   });
-  el("sumbox").innerHTML=`<span>รวมยอดโอนทั้งสิ้น · ${n} รายการ</span><span class="n">${fm(total)} บาท</span>`;
+  sb.innerHTML=`<span>รวมยอดโอนทั้งสิ้น · ${n} รายการ</span><span class="n">${fm(total)} บาท</span>`;
   el("warnbox").innerHTML=warn.length?'<div class="warn">⚠ '+warn.join("<br>⚠ ")+"</div>":"";
 }
 function readItem(it){
   const g=f=>{const e=q(`[data-f="${f}"]`,it);return e?e.value:""};
-  const pick=(a,b)=>g(a)===OTHER?g(b):g(a);
-  return {dplan:pick("dplan","dplanX"),dwork:pick("dwork","dworkX"),dbud:g("dbud"),dcat:g("dcat"),dtype:pick("dtype","dtypeX"),dproj:g("dproj"),
+  const d=sideVals(it,"d"),i=sideVals(it,"i");
+  return {dplan:d.plan,dwork:d.work,dbud:d.bud,dcat:d.cat,dtype:d.type,dproj:d.proj,
     dset:num(g("dset")),dbefore:num(g("dbefore")),amt:num(g("damt")),
-    iplan:pick("iplan","iplanX"),iwork:pick("iwork","iworkX"),ibud:g("ibud"),icat:g("icat"),itype:pick("itype","itypeX"),iproj:g("iproj"),
+    iplan:i.plan,iwork:i.work,ibud:i.bud,icat:i.cat,itype:i.type,iproj:i.proj,
     iset:num(g("iset")),ibefore:num(g("ibefore")),reason:g("reason")};
 }
 function fillItem(it,d){
-  const g=f=>q(`[data-f="${f}"]`,it);
-  ["d","i"].forEach(k=>{
-    const has=(sel,v)=>Array.prototype.some.call(sel.options,o=>o.value===v);
-    const ps=g(k+"plan");
-    if(has(ps,d[k+"plan"]))ps.value=d[k+"plan"];else{ps.value=OTHER;g(k+"planX").style.display="block";g(k+"planX").value=d[k+"plan"]||""}
-    syncWork(it,k);
-    const ws=g(k+"work");
-    if(has(ws,d[k+"work"]))ws.value=d[k+"work"];else{ws.value=OTHER;g(k+"workX").style.display="block";g(k+"workX").value=d[k+"work"]||""}
-    g(k+"bud").value=d[k+"bud"]||"";syncCat(it,k);
-    g(k+"cat").value=d[k+"cat"]||"";syncType(it,k);
-    const ts=g(k+"type");
-    if(has(ts,d[k+"type"]))ts.value=d[k+"type"];else{ts.value=OTHER;g(k+"typeX").style.display="block";g(k+"typeX").value=d[k+"type"]||""}
-    g(k+"proj").value=d[k+"proj"]||"";g(k+"set").value=d[k+"set"]||"";g(k+"before").value=d[k+"before"]||"";
-  });
-  g("damt").value=d.amt||"";g("reason").value=d.reason||"";
+  ["d","i"].forEach(k=>fillSide(it,k,{plan:d[k+"plan"],work:d[k+"work"],bud:d[k+"bud"],cat:d[k+"cat"],type:d[k+"type"],proj:d[k+"proj"],set:d[k+"set"]||"",before:d[k+"before"]||""}));
+  q('[data-f="damt"]',it).value=d.amt||"";q('[data-f="reason"]',it).value=d.reason||"";
 }
 function applyMode(keepRule){
   const m=val("f_note");if(!keepRule)setVal("f_rule",m==="27"?RULE27:RULE26);
@@ -798,11 +871,10 @@ function readForm(){
   const items=qa("#items .item").map(readItem).filter(x=>x.amt>0||x.dtype||x.itype);
   return {id:editId||("T"+Date.now()+"-"+Math.random().toString(36).slice(2,7)),
     dept:val("f_dept"),no1:val("f_no1"),no2:val("f_no2"),tel:val("f_tel"),to:val("f_to"),
-    date:val("f_date"),year:val("f_year"),seq:val("f_seq"),subject:val("f_subject"),
+    date:val("f_date"),year:val("f_year").trim(),seq:val("f_seq"),subject:val("f_subject"),
     p1n:val("f_p1n"),p1t:val("f_p1t"),pdn:val("f_pdn"),pdt:val("f_pdt"),
-    rule:val("f_rule"),mode:val("f_note"),items,
-    total:items.reduce((s,x)=>s+x.amt,0),created:new Date().toISOString(),
-    ownerUid:ME.uid,ownerName:ME.name,ownerEmail:ME.email};
+    rule:val("f_rule"),mode:val("f_note"),items,total:items.reduce((s,x)=>s+x.amt,0),
+    created:new Date().toISOString(),ownerUid:ME.uid,ownerName:ME.name,ownerEmail:ME.email};
 }
 async function saveRec(st){
   const r=readForm();
@@ -813,8 +885,7 @@ async function saveRec(st){
   r.status=(st==="draft")?"draft":((old.status&&old.status!=="draft")?old.status:"wait");
   r.approveDate=old.approveDate||"";r.tSeq=old.tSeq||r.seq||"";r.tDate=old.tDate||"";r.remark=old.remark||"";
   r.updated=new Date().toISOString();r.updatedBy=ME.name;
-  try{await dbSaveRec(r);editId=r.id;
-    el("editing").textContent="✅ บันทึกแล้ว · รหัส "+r.id;
+  try{await dbSaveRec(r);editId=r.id;el("editing").textContent="✅ บันทึกแล้ว · รหัส "+r.id;
     alert(st==="draft"?"บันทึกร่างเรียบร้อย":"บันทึกและเสนอขออนุมัติเรียบร้อย");
   }catch(e){alert("บันทึกไม่สำเร็จ: "+e.message)}
 }
@@ -824,13 +895,12 @@ function editRec(id){
   if(!isAdmin()&&r.ownerUid!==ME.uid){alert("คุณแก้ไขได้เฉพาะเอกสารที่ตนเองบันทึกเท่านั้น");return}
   editId=id;
   setVal("f_dept",r.dept);setVal("f_no1",r.no1);setVal("f_no2",r.no2);setVal("f_tel",r.tel||"0-5312-1585");
-  setVal("f_to",r.to||"นายกเทศมนตรีเมืองดอนแก้ว");
-  setVal("f_date",r.date);setVal("f_year",r.year);setVal("f_seq",r.tSeq||r.seq);setVal("f_subject",r.subject);
+  setVal("f_to",r.to||"นายกเทศมนตรีเมืองดอนแก้ว");setVal("f_date",r.date);setVal("f_year",r.year);
+  setVal("f_seq",r.tSeq||r.seq);setVal("f_subject",r.subject);
   setVal("f_p1n",r.p1n||"");setVal("f_p1t",r.p1t||"");setVal("f_pdn",r.pdn||"");setVal("f_pdt",r.pdt||"");
   setVal("f_note",r.mode||"26");applyMode(true);setVal("f_rule",r.rule||(r.mode==="27"?RULE27:RULE26));
   el("items").innerHTML="";r.items.forEach(d=>addItem(d));
-  calc();el("editing").textContent="✏️ กำลังแก้ไข · รหัส "+id;
-  gotoTab("new");window.scrollTo(0,0);
+  calc();el("editing").textContent="✏️ กำลังแก้ไข · รหัส "+id;gotoTab("new");window.scrollTo(0,0);
 }
 async function delRec(id){
   const r=RECS.find(x=>x.id===id);if(!r)return;
@@ -839,44 +909,37 @@ async function delRec(id){
   try{await dbDelRec(id)}catch(e){alert("ลบไม่สำเร็จ: "+e.message)}
 }
 
-/* ============ ตาราง ============ */
-function renderAll(){refreshYearPickers();renderDash();renderList();renderAdmin();renderUsers()}
+/* ============ ทะเบียน / อนุมัติ / ผู้ใช้ ============ */
+function renderAll(){refreshYearPickers();renderDash();renderList();renderBudget();renderAdmin();renderUsers();calc()}
 function ownerCell(r){
-  const c=avColor(r.ownerUid||r.ownerEmail||r.ownerName);
-  return `<div class="owner"><span class="av" style="background:${c}">${avChar(r.ownerName)}</span>
+  return `<div class="owner"><span class="av" style="background:${avColor(r.ownerUid||r.ownerEmail||r.ownerName)}">${avChar(r.ownerName)}</span>
    <div><div style="font-weight:600">${esc(r.ownerName||"-")}</div><span class="hint">${esc(r.ownerEmail||"")}</span></div></div>`;
+}
+function listFiltered(){
+  const kw=val("q_kw").trim(),yy=val("q_year"),st=val("q_st");
+  return RECS.filter(r=>(!st||r.status===st)&&(!yy||String(r.year||"")===yy)&&(!kw||JSON.stringify(r).includes(kw)));
 }
 function renderList(){
   const t=el("tblist");if(!t)return;
-  const kw=val("q_kw").trim(),yy=val("q_year"),st=val("q_st");
-  const l=RECS.filter(r=>(!st||r.status===st)&&(!yy||String(r.year||"")===yy)&&(!kw||JSON.stringify(r).includes(kw)));
-  const tot=l.reduce((s,r)=>s+num(r.total),0);
-  const ok=l.filter(r=>r.status==="ok").length,wait=l.filter(r=>r.status==="wait").length;
-  el("listSum").innerHTML=`
-    <div class="sumpill">${yy?"ปีงบประมาณ "+esc(yy):"ทุกปีงบประมาณ"}<b>${l.length} เอกสาร</b></div>
+  const yy=val("q_year"),l=listFiltered(),tot=l.reduce((s,r)=>s+num(r.total),0);
+  el("listSum").innerHTML=`<div class="sumpill">${yy?"ปีงบประมาณ "+esc(yy):"ทุกปีงบประมาณ"}<b>${l.length} เอกสาร</b></div>
     <div class="sumpill">มูลค่ารวม<b style="color:var(--sec)">${fm(tot)} บาท</b></div>
-    <div class="sumpill">อนุมัติแล้ว<b style="color:var(--ok)">${ok}</b></div>
-    <div class="sumpill">รออนุมัติ<b style="color:var(--warn)">${wait}</b></div>`;
+    <div class="sumpill">อนุมัติแล้ว<b style="color:var(--ok)">${l.filter(r=>r.status==="ok").length}</b></div>
+    <div class="sumpill">รออนุมัติ<b style="color:var(--warn)">${l.filter(r=>r.status==="wait").length}</b></div>`;
   let h='<tr><th>ครั้งที่</th><th>วันที่โอน</th><th>ส่วนราชการ</th><th>ปีงบ</th><th class="center">ข้อ</th><th class="center">รายการ</th><th class="right">รวมเงิน</th><th>ผู้บันทึก</th><th class="center">สถานะ</th><th class="center">จัดการ</th></tr>';
   h+=l.length?l.map(r=>{const s=STLget(r.status),mine=r.ownerUid===ME.uid||isAdmin();
-    return `<tr><td><b>${esc(r.tSeq||"—")}</b></td><td>${r.tDate?thDateEn(r.tDate):"—"}</td>
-    <td>${esc(r.dept)}</td><td>${esc(r.year)}</td>
-    <td class="center"><span class="chip">ข้อ ${esc(r.mode||"26")}</span></td>
-    <td class="center">${r.items.length}</td><td class="right"><b>${fm(r.total)}</b></td>
-    <td>${ownerCell(r)}</td><td class="center"><span class="badge ${s[1]}">${s[0]}</span></td>
-    <td class="center" style="white-space:nowrap">
-    <button type="button" class="btn sec sm" data-act="doc" data-id="${r.id}">เอกสาร</button>
-    ${mine?`<button type="button" class="btn gh sm" data-act="edit" data-id="${r.id}">แก้ไข</button>
-    <button type="button" class="btn dg sm" data-act="del" data-id="${r.id}">ลบ</button>`:""}</td></tr>`;
+    return `<tr><td><b>${esc(r.tSeq||"—")}</b></td><td>${r.tDate?thDateEn(r.tDate):"—"}</td><td>${esc(r.dept)}</td><td>${esc(r.year)}</td>
+    <td class="center"><span class="chip">ข้อ ${esc(r.mode||"26")}</span></td><td class="center">${r.items.length}</td>
+    <td class="right"><b>${fm(r.total)}</b></td><td>${ownerCell(r)}</td><td class="center"><span class="badge ${s[1]}">${s[0]}</span></td>
+    <td class="center" style="white-space:nowrap"><button type="button" class="btn sec sm" data-act="doc" data-id="${r.id}">เอกสาร</button>
+    ${mine?`<button type="button" class="btn gh sm" data-act="edit" data-id="${r.id}">แก้ไข</button> <button type="button" class="btn dg sm" data-act="del" data-id="${r.id}">ลบ</button>`:""}</td></tr>`;
   }).join(""):'<tr><td colspan="10"><div class="empty"><div class="e">🗂</div>ไม่พบเอกสารตามเงื่อนไขที่เลือก</div></td></tr>';
   t.innerHTML=h;
 }
 function renderAdmin(){
   const t=el("tbadmin");if(!t||!isAdmin())return;
   let h='<tr><th>ส่วนราชการ / ผู้บันทึก</th><th class="right">รวมเงิน</th><th style="width:100px">ครั้งที่</th><th style="width:145px">วันที่โอน</th><th style="width:135px">สถานะ</th><th>หมายเหตุ</th><th class="center">จัดการ</th></tr>';
-  h+=RECS.length?RECS.map(r=>`<tr>
-    <td><b>${esc(r.dept)}</b><div class="hint">ปีงบ ${esc(r.year)} · ข้อ ${esc(r.mode||"26")} · ${r.items.length} รายการ</div>
-    <div style="margin-top:6px">${ownerCell(r)}</div></td>
+  h+=RECS.length?RECS.map(r=>`<tr><td><b>${esc(r.dept)}</b><div class="hint">ปีงบ ${esc(r.year)} · ข้อ ${esc(r.mode||"26")} · ${r.items.length} รายการ</div><div style="margin-top:6px">${ownerCell(r)}</div></td>
     <td class="right"><b>${fm(r.total)}</b></td>
     <td><input id="a1${r.id}" value="${esc(r.tSeq||"")}" placeholder="12"></td>
     <td><input type="date" id="a2${r.id}" value="${esc(r.tDate||"")}"></td>
@@ -898,10 +961,9 @@ async function saveAdmin(id){
 function renderUsers(){
   const t=el("tbusers");if(!t||!isAdmin())return;
   let h='<tr><th class="center" style="width:40px">#</th><th>ชื่อ-นามสกุล</th><th>อีเมล</th><th>ส่วนราชการ</th><th style="width:170px">สิทธิ์</th><th class="center">จัดการ</th></tr>';
-  h+=USERS.length?USERS.map((u,i)=>{const c=avColor(u.uid||u.email),adm=u.role==="admin";
+  h+=USERS.length?USERS.map((u,i)=>{const adm=u.role==="admin";
     return `<tr><td class="center" style="color:var(--mute);font-weight:600">${i+1}</td>
-    <td><div class="owner"><span class="av" style="background:${c}">${avChar(u.name)}</span>
-    <div><b>${esc(u.name||"-")}</b>${adm?' <span class="chip">ADMIN</span>':''}</div></div></td>
+    <td><div class="owner"><span class="av" style="background:${avColor(u.uid||u.email)}">${avChar(u.name)}</span><div><b>${esc(u.name||"-")}</b>${adm?' <span class="chip">ADMIN</span>':''}</div></div></td>
     <td>${esc(u.email||"")}</td><td>${esc(u.dept||"—")}</td>
     <td><select id="r_${u.uid}"><option value="user"${!adm?" selected":""}>เจ้าหน้าที่</option><option value="admin"${adm?" selected":""}>ผู้ดูแลระบบ</option></select></td>
     <td class="center"><button type="button" class="btn ok sm" data-act="role-save" data-id="${u.uid}">✔ บันทึก</button></td></tr>`;
@@ -913,10 +975,140 @@ async function saveRole(uid){
   if(uid===ME.uid&&val("r_"+uid)!=="admin"&&!confirm("คุณกำลังลดสิทธิ์ตนเอง ยืนยันหรือไม่?"))return;
   try{await dbSetRole(uid,val("r_"+uid));alert("บันทึกสิทธิ์เรียบร้อย")}catch(e){alert("บันทึกไม่สำเร็จ: "+e.message)}
 }
-function applySettingUI(){
-  Object.keys(DEF_SET).forEach(k=>{if(k!=="garuda")setVal("s_"+k,SETTING[k])});
-  el("garudaPrev").src=SETTING.garuda||GARUDA_DEFAULT;
+
+/* ============ เทศบัญญัติ: แสดงผล ============ */
+function renderBudget(){
+  const t=el("tbbud");if(!t)return;
+  el("budAdmin").style.display=isAdmin()?"block":"none";
+  const ys=budYears(),vy=el("b_vy"),keep=vy.value;
+  vy.innerHTML=ys.length?ys.map(y=>`<option value="${esc(y)}">ปีงบประมาณ ${esc(y)}</option>`).join(""):'<option value="">— ยังไม่มีข้อมูล —</option>';
+  if(keep&&ys.includes(keep))vy.value=keep;
+  if(!val("b_year"))setVal("b_year",ys[0]||val("f_year"));
+  const y=vy.value,lines=BUDS[y]||[];
+  if(!lines.length){
+    el("bScope").textContent="ยังไม่มีฐานข้อมูลเทศบัญญัติ — "+(isAdmin()?"นำเข้าได้จากการ์ดด้านบน":"กรุณาติดต่อผู้ดูแลระบบให้นำเข้าข้อมูล");
+    el("bSum").innerHTML="";el("bFoot").textContent="";el("b_dept").innerHTML='<option value="">ทุกส่วนราชการ</option>';
+    t.innerHTML='<tr><td><div class="empty"><div class="e">📘</div>ยังไม่มีข้อมูลเทศบัญญัติ</div></td></tr>';BUDVIEW={y:"",rows:[]};return;
+  }
+  const ds=[...new Set(lines.map(l=>l.dept).filter(Boolean))].sort(),dsel=el("b_dept"),dk=dsel.value;
+  dsel.innerHTML='<option value="">ทุกส่วนราชการ</option>'+ds.map(d=>`<option value="${esc(d)}">${esc(d)}</option>`).join("");
+  if(dk&&ds.includes(dk))dsel.value=dk;
+  const dept=dsel.value,toks=val("b_kw").toLowerCase().split(/\s+/).filter(Boolean),hay=BHAY[y]||[],U=usage(y,null);
+  const rows=[];
+  lines.forEach((l,i)=>{if(dept&&l.dept!==dept)return;if(toks.length&&!toks.every(tk=>hay[i].includes(tk)))return;
+    const u=U[lk(l)]||ZU();rows.push({l,u,bal:num(l.amount)-u.dec+u.inc})});
+  BUDVIEW={y,rows};
+  const S=rows.reduce((s,r)=>({a:s.a+num(r.l.amount),d:s.d+r.u.dec,i:s.i+r.u.inc,b:s.b+r.bal,p:s.p+r.u.pdec}),{a:0,d:0,i:0,b:0,p:0});
+  const m=BMETA[y]||{};
+  el("bScope").textContent=`ปีงบประมาณ พ.ศ. ${y} · ${lines.length.toLocaleString("th-TH")} รายการ`+(m.updated?` · นำเข้าล่าสุด ${thDateEn(m.updated)}${m.by?" โดย "+m.by:""}`:"")+" · ยอดโอนนับเฉพาะเอกสารที่อนุมัติแล้ว";
+  el("bSum").innerHTML=`<div class="sumpill">รายการที่แสดง<b>${rows.length.toLocaleString("th-TH")}</b></div>
+    <div class="sumpill">งบประมาณตั้งไว้<b>${fm(S.a)}</b></div>
+    <div class="sumpill">โอนลดสะสม<b style="color:#BE185D">−${fm(S.d)}</b></div>
+    <div class="sumpill">โอนเพิ่มสะสม<b style="color:var(--pri-d)">+${fm(S.i)}</b></div>
+    <div class="sumpill">คงเหลือ<b style="color:var(--sec)">${fm(S.b)}</b></div>
+    ${S.p?`<div class="sumpill">รออนุมัติ (โอนลด)<b style="color:var(--warn)">${fm(S.p)}</b></div>`:""}`;
+  const LIM=500;
+  t.innerHTML='<tr><th>#</th><th>ส่วนราชการ</th><th>แผนงาน / งาน</th><th>งบ › หมวด › ประเภท</th><th>รายการ</th><th class="right">ตั้งไว้</th><th class="right">โอนลด</th><th class="right">โอนเพิ่ม</th><th class="right">คงเหลือ</th><th>สัดส่วนคงเหลือ</th></tr>'
+   +(rows.length?rows.slice(0,LIM).map((r,i)=>{const base=num(r.l.amount)+r.u.inc,pc=base>0?Math.max(0,Math.min(100,Math.round(r.bal/base*100))):0;
+    return `<tr><td style="color:var(--mute)">${i+1}</td><td>${esc(r.l.dept||"—")}</td>
+    <td>${esc(r.l.plan)}<div class="hint">${esc(r.l.work)}</div></td>
+    <td>${esc(r.l.bud)}<div class="hint">${esc(r.l.cat)} › ${esc(r.l.type)}</div></td>
+    <td>${esc(r.l.proj||"—")}</td>
+    <td class="right">${fm(r.l.amount)}</td>
+    <td class="right" style="color:#BE185D">${r.u.dec?"−"+fm(r.u.dec):"—"}</td>
+    <td class="right" style="color:var(--pri-d)">${r.u.inc?"+"+fm(r.u.inc):"—"}</td>
+    <td class="right"><b style="${r.bal<0?"color:var(--err)":""}">${fm(r.bal)}</b>${r.u.pdec?`<div class="hint" style="color:var(--warn)">รออนุมัติ −${fm(r.u.pdec)}</div>`:""}</td>
+    <td><div class="pbar"><i style="width:${pc}%;${r.bal<0?"background:var(--err)":pc<20?"background:var(--warn)":""}"></i></div><span class="hint">${pc}%</span></td></tr>`}).join("")
+    :'<tr><td colspan="10"><div class="empty"><div class="e">🔎</div>ไม่พบรายการตามเงื่อนไข</div></td></tr>');
+  el("bFoot").textContent=rows.length>LIM?`แสดง ${LIM} จาก ${rows.length} รายการ — ใช้ตัวกรองหรือส่งออก CSV เพื่อดูทั้งหมด`:"";
 }
+function exportBalance(){
+  if(!BUDVIEW.rows.length){alert("ไม่มีข้อมูลให้ส่งออก");return}
+  const rows=[["ส่วนราชการ","แผนงาน","งาน","งบ","หมวด","ประเภทรายจ่าย","ชื่อโครงการ/รายการ","งบประมาณตั้งไว้","โอนลด(อนุมัติ)","โอนเพิ่ม(อนุมัติ)","คงเหลือ","รออนุมัติโอนลด","รออนุมัติโอนเพิ่ม"]];
+  BUDVIEW.rows.forEach(r=>rows.push([r.l.dept,r.l.plan,r.l.work,r.l.bud,r.l.cat,r.l.type,r.l.proj,num(r.l.amount),r.u.dec,r.u.inc,r.bal,r.u.pdec,r.u.pinc]));
+  dlCSV(rows,"ยอดคงเหลือเทศบัญญัติ-ปี"+BUDVIEW.y+".csv");
+}
+
+/* ============ เทศบัญญัติ: นำเข้า ============ */
+function parseDelim(text){
+  text=String(text||"").replace(/^\uFEFF/,"");
+  const first=text.split(/\r?\n/)[0]||"",d=first.split("\t").length>first.split(",").length?"\t":",";
+  const rows=[];let row=[],f="",inQ=false;
+  for(let i=0;i<text.length;i++){const c=text[i];
+    if(inQ){if(c==='"'){if(text[i+1]==='"'){f+='"';i++}else inQ=false}else f+=c}
+    else if(c==='"')inQ=true;
+    else if(c===d){row.push(f);f=""}
+    else if(c==="\n"){row.push(f);rows.push(row);row=[];f=""}
+    else if(c!=="\r")f+=c;
+  }
+  if(f||row.length){row.push(f);rows.push(row)}
+  return rows.filter(r=>r.some(c=>String(c).trim()));
+}
+const HMAP={dept:["ส่วนราชการ","หน่วยงาน","กอง/สำนัก","กอง"],plan:["แผนงาน"],work:["งาน"],bud:["งบ","งบรายจ่าย"],cat:["หมวด","หมวดรายจ่าย"],
+  type:["ประเภทรายจ่าย","ประเภท"],proj:["ชื่อโครงการ/รายการ","โครงการ/รายการ","ชื่อโครงการ","โครงการ","รายการ"],
+  amount:["งบประมาณตั้งไว้","งบประมาณ","ตั้งไว้","จำนวนเงิน","งบประมาณที่ได้รับอนุมัติ"]};
+const hnorm=s=>String(s||"").replace(/\s+/g,"").trim();
+function mapHeader(h){const m={},hs=h.map(hnorm);
+  Object.keys(HMAP).forEach(f=>{const al=HMAP[f].map(hnorm);for(const a of al){const i=hs.indexOf(a);if(i>=0){m[f]=i;break}}});return m}
+function parseBudget(text){
+  const rows=parseDelim(text);if(!rows.length)throw new Error("ไม่พบข้อมูล");
+  let hi=-1,map=null;
+  for(let i=0;i<Math.min(rows.length,10);i++){const m=mapHeader(rows[i]);if(m.amount!=null&&m.type!=null){hi=i;map=m;break}}
+  if(hi<0)throw new Error('ไม่พบแถวหัวตาราง — ต้องมีคอลัมน์ "ประเภทรายจ่าย" และ "งบประมาณตั้งไว้"');
+  const out=new Map();let skipped=0,dup=0;
+  rows.slice(hi+1).forEach(r=>{
+    const g=f=>map[f]!=null?String(r[map[f]]||"").trim():"";
+    const l={dept:g("dept"),plan:g("plan"),work:g("work"),bud:g("bud"),cat:g("cat"),type:g("type"),proj:g("proj"),amount:num(g("amount"))};
+    if(!l.type&&!l.proj){skipped++;return}
+    if(!g("amount")){skipped++;return}
+    const k=lk(l);if(out.has(k)){out.get(k).amount+=l.amount;dup++}else out.set(k,l);
+  });
+  const missing=["dept","plan","work","bud","cat","proj"].filter(f=>map[f]==null);
+  return {lines:[...out.values()],skipped,dup,missing};
+}
+async function checkBudget(){
+  const year=val("b_year").trim();if(!year){alert("กรุณาระบุปีงบประมาณของข้อมูล");return}
+  const text=val("b_paste").trim()||BFILETXT;if(!text){alert("กรุณาเลือกไฟล์ CSV หรือวางข้อมูลจาก Excel");return}
+  try{
+    const p=parseBudget(text);PARSED={year,...p};
+    const tot=p.lines.reduce((s,l)=>s+l.amount,0);
+    const LBL={dept:"ส่วนราชการ",plan:"แผนงาน",work:"งาน",bud:"งบ",cat:"หมวด",proj:"ชื่อโครงการ/รายการ"};
+    el("bPreview").innerHTML=`<div class="okbox">✅ พร้อมนำเข้า <b>${p.lines.length.toLocaleString("th-TH")}</b> รายการ · งบประมาณรวม <b>${fm(tot)}</b> บาท · ปีงบประมาณ <b>${esc(year)}</b>
+      ${p.dup?`<br>• รวมรายการซ้ำ ${p.dup} แถว (บวกยอดเข้าด้วยกัน)`:""}${p.skipped?`<br>• ข้ามแถวที่ไม่มีประเภท/ยอดเงิน ${p.skipped} แถว`:""}
+      ${p.missing.length?`<br>• ไม่พบคอลัมน์: ${p.missing.map(f=>LBL[f]).join(", ")} (เว้นว่างได้ แต่การค้นหาจะละเอียดน้อยลง)`:""}
+      ${BUDS[year]&&BUDS[year].length?`<br>⚠ ปีนี้มีข้อมูลเดิม ${BUDS[year].length} รายการ — จะถูกแทนที่ทั้งหมด`:""}</div>
+      <div style="overflow:auto;margin-top:10px"><table class="list"><tr><th>ส่วนราชการ</th><th>แผนงาน</th><th>งาน</th><th>งบ</th><th>หมวด</th><th>ประเภท</th><th>รายการ</th><th class="right">ตั้งไว้</th></tr>
+      ${p.lines.slice(0,8).map(l=>`<tr><td>${esc(l.dept)}</td><td>${esc(l.plan)}</td><td>${esc(l.work)}</td><td>${esc(l.bud)}</td><td>${esc(l.cat)}</td><td>${esc(l.type)}</td><td>${esc(l.proj)}</td><td class="right">${fm(l.amount)}</td></tr>`).join("")}
+      </table></div>${p.lines.length>8?`<div class="hint" style="margin-top:6px">แสดงตัวอย่าง 8 รายการแรก</div>`:""}`;
+    el("bImportBtn").disabled=!p.lines.length;
+  }catch(e){PARSED=null;el("bImportBtn").disabled=true;el("bPreview").innerHTML=`<div class="warn">⚠ ${esc(e.message)}</div>`}
+}
+async function importBudget(){
+  if(!isAdmin()||!PARSED)return;
+  if(BUDS[PARSED.year]&&BUDS[PARSED.year].length&&!confirm(`แทนที่ข้อมูลเทศบัญญัติปี ${PARSED.year} เดิม ${BUDS[PARSED.year].length} รายการ ด้วยข้อมูลใหม่ ${PARSED.lines.length} รายการ?`))return;
+  const b=el("bImportBtn");b.disabled=true;b.textContent="กำลังนำเข้า...";
+  try{await dbSaveBudget(PARSED.year,PARSED.lines);
+    el("bPreview").innerHTML=`<div class="okbox">✅ นำเข้าเทศบัญญัติปี ${esc(PARSED.year)} จำนวน ${PARSED.lines.length} รายการเรียบร้อย</div>`;
+    setVal("b_paste","");BFILETXT="";el("b_file").value="";el("b_vy").value=PARSED.year;PARSED=null;renderBudget();
+  }catch(e){alert("นำเข้าไม่สำเร็จ: "+e.message);b.disabled=false}
+  finally{b.textContent="📥 ยืนยันนำเข้า"}
+}
+async function deleteBudget(){
+  if(!isAdmin())return;const y=val("b_year").trim();
+  if(!y||!BUDS[y]){alert("ไม่พบข้อมูลเทศบัญญัติปี "+(y||"-"));return}
+  if(!confirm(`ลบฐานข้อมูลเทศบัญญัติปี ${y} ทั้งหมด ${BUDS[y].length} รายการ? (เอกสารการโอนจะไม่ถูกลบ)`))return;
+  try{await dbDelBudget(y);alert("ลบเรียบร้อย")}catch(e){alert("ลบไม่สำเร็จ: "+e.message)}
+}
+function budgetTemplate(){
+  dlCSV([["ส่วนราชการ","แผนงาน","งาน","งบ","หมวด","ประเภทรายจ่าย","ชื่อโครงการ/รายการ","งบประมาณตั้งไว้"],
+    ["สำนักปลัดเทศบาล","แผนงานบริหารงานทั่วไป","งานบริหารทั่วไป","งบบุคลากร","เงินเดือน (ฝ่ายการเมือง)","เงินเดือนนายก/รองนายกองค์กรปกครองส่วนท้องถิ่น","เงินเดือนของนายกเทศมนตรี",954000],
+    ["สำนักปลัดเทศบาล","แผนงานบริหารงานทั่วไป","งานบริหารทั่วไป","งบดำเนินงาน","ค่าวัสดุ","วัสดุสำนักงาน","",150000],
+    ["กองช่าง","แผนงานเคหะและชุมชน","งานก่อสร้าง","งบลงทุน","ค่าที่ดินและสิ่งก่อสร้าง","ค่าก่อสร้างสิ่งสาธารณูปการ","โครงการก่อสร้างถนน ค.ส.ล. บ้านมั่นคง ซอย 25 บ้านเลขที่ 102 หมู่ที่ 2",118000]],
+    "แม่แบบนำเข้าเทศบัญญัติ.csv");
+}
+
+/* ============ ตั้งค่า ============ */
+function applySettingUI(){Object.keys(DEF_SET).forEach(k=>{if(k!=="garuda")setVal("s_"+k,SETTING[k])});el("garudaPrev").src=SETTING.garuda||GARUDA_DEFAULT}
 async function saveSetting(){
   if(!isAdmin()){alert("เฉพาะผู้ดูแลระบบเท่านั้น");return}
   const s={...SETTING};["p1n","p1t","pdn","pdt","p2n","p2t","p3n","p3t","p4n","p4t"].forEach(k=>s[k]=val("s_"+k));
@@ -926,152 +1118,98 @@ function onGaruda(f){
   if(f.size>350*1024){alert("ไฟล์ใหญ่เกิน 350 KB");return}
   const rd=new FileReader();
   rd.onload=async()=>{const s={...SETTING,garuda:rd.result};
-    try{await dbSaveSetting(s);SETTING=s;el("garudaPrev").src=rd.result;alert("อัปโหลดตราครุฑเรียบร้อย")}
-    catch(e){alert("อัปโหลดไม่สำเร็จ: "+e.message)}};
+    try{await dbSaveSetting(s);SETTING=s;el("garudaPrev").src=rd.result;alert("อัปโหลดตราครุฑเรียบร้อย")}catch(e){alert("อัปโหลดไม่สำเร็จ: "+e.message)}};
   rd.readAsDataURL(f);
 }
 
 /* ============ เอกสาร ============ */
 function nameOf(x,k){
-  const p=[];
-  if(x[k+"plan"])p.push(x[k+"plan"]);
-  if(x[k+"work"])p.push(x[k+"work"]);
-  if(x[k+"bud"])p.push(x[k+"bud"]);
-  if(x[k+"cat"])p.push("หมวด"+x[k+"cat"]);
-  if(x[k+"type"])p.push("ประเภท"+x[k+"type"]);
-  if(x[k+"proj"])p.push(x[k+"proj"]);
+  const p=[];if(x[k+"plan"])p.push(x[k+"plan"]);if(x[k+"work"])p.push(x[k+"work"]);if(x[k+"bud"])p.push(x[k+"bud"]);
+  if(x[k+"cat"])p.push("หมวด"+x[k+"cat"]);if(x[k+"type"])p.push("ประเภท"+x[k+"type"]);if(x[k+"proj"])p.push(x[k+"proj"]);
   return esc(p.join(" "));
 }
 const PH=t=>`<span class="ph">✎ [${t}]</span>`;
 const fill=(v,ph)=>v&&String(v).trim()?esc(v):PH(ph);
-
 function docBody(r){
-  const s=SETTING,m=(r.mode==="27")?"27":"26",n=r.items.length;
-  const g=s.garuda||GARUDA_DEFAULT;
-  /* ผู้ลงนาม: รายเอกสาร > ค่ากลาง */
-  const P1N=(r.p1n&&r.p1n.trim())||s.p1n, P1T=(r.p1t&&r.p1t.trim())||s.p1t;
-  const PDN=(r.pdn&&r.pdn.trim())||"", PDT=(r.pdt&&r.pdt.trim())||s.pdt;
+  const s=SETTING,m=(r.mode==="27")?"27":"26",n=r.items.length,g=s.garuda||GARUDA_DEFAULT;
+  const P1N=(r.p1n&&r.p1n.trim())||s.p1n,P1T=(r.p1t&&r.p1t.trim())||s.p1t,PDN=(r.pdn&&r.pdn.trim())||"",PDT=(r.pdt&&r.pdt.trim())||s.pdt;
   const noteTxt="รบ.มท.ว่าด้วยวิธีการงบประมาณของ อปท. พ.ศ.๒๕๖๓ ข้อ "+toThaiNum(m);
   const noStr=(r.no1||r.no2)?("ชม "+esc(r.no1||"")+(r.no2?" / "+esc(r.no2):"")):PH("ระบุเลขที่หนังสือ");
-  const dateStr=r.date?thDate(r.date):PH("ระบุวันที่");
-
-  const oldTxt=r.items.map(x=>(m==="27")
-    ? nameOf(x,"i")+" ไม่ได้ตั้งงบประมาณรายจ่ายไว้"
-    : nameOf(x,"i")+" งบประมาณตั้งไว้ "+fmi(x.iset)+".- บาท งบประมาณคงเหลือ "+fmi(x.ibefore)+".- บาท").join(" , ");
-  const fact=r.items.map((x,i)=>{
-    const t=(m==="27")
-      ? `รายการที่ ${toThaiNum(i+1)} ${nameOf(x,"i")} ขออนุมัติโอนตั้งจ่ายเป็นรายการใหม่ จำนวน ${fmi(x.amt)} บาท โดยโอนลดจาก ${nameOf(x,"d")} เหตุผลความจำเป็น ${x.reason?esc(x.reason):PH("ระบุเหตุผลความจำเป็น")}`
-      : `รายการที่ ${toThaiNum(i+1)} ${nameOf(x,"i")} งบประมาณตั้งไว้ ${fmi(x.iset)}.- บาท งบประมาณคงเหลือ ${fmi(x.ibefore)}.- บาท ขออนุมัติโอนเพิ่ม จำนวน ${fmi(x.amt)}.- บาท โดยโอนลดจาก ${nameOf(x,"d")} เหตุผลความจำเป็น ${x.reason?esc(x.reason):PH("ระบุเหตุผลความจำเป็น")}`;
-    return '<p class="ind2">'+t+"</p>";
-  }).join("");
-  const consider=(m==="27")
-    ? `เห็นควรให้ความเห็นชอบเพื่อเสนอสภาเทศบาลเมืองดอนแก้วพิจารณาอนุมัติโอนงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ. ${toThaiNum(r.year||"")} จำนวน ${toThaiNum(n)} รายการ รวมเป็นเงินทั้งสิ้น ${fmi(r.total)} บาท รายละเอียดดังนี้`
-    : `เพื่อให้การปฏิบัติเป็นไปตามระเบียบดังกล่าว ${esc(r.dept)} จึงขออนุมัติโอนงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ. ${toThaiNum(r.year||"")} จำนวน ${toThaiNum(n)} รายการ รวมเป็นเงินทั้งสิ้น ${fmi(r.total)} บาท รายละเอียดดังนี้`;
+  const dateStr=r.date?thDate(r.date):PH("ระบุวันที่"),Y=toThaiNum(r.year||"");
+  const oldTxt=r.items.map(x=>m==="27"?nameOf(x,"i")+" ไม่ได้ตั้งงบประมาณรายจ่ายไว้":nameOf(x,"i")+" งบประมาณตั้งไว้ "+fmi(x.iset)+".- บาท งบประมาณคงเหลือ "+fmi(x.ibefore)+".- บาท").join(" , ");
+  const rsn=x=>x.reason?esc(x.reason):PH("ระบุเหตุผลความจำเป็น");
+  const fact=r.items.map((x,i)=>'<p class="ind2">'+(m==="27"
+    ?`รายการที่ ${toThaiNum(i+1)} ${nameOf(x,"i")} ขออนุมัติโอนตั้งจ่ายเป็นรายการใหม่ จำนวน ${fmi(x.amt)} บาท โดยโอนลดจาก ${nameOf(x,"d")} เหตุผลความจำเป็น ${rsn(x)}`
+    :`รายการที่ ${toThaiNum(i+1)} ${nameOf(x,"i")} งบประมาณตั้งไว้ ${fmi(x.iset)}.- บาท งบประมาณคงเหลือ ${fmi(x.ibefore)}.- บาท ขออนุมัติโอนเพิ่ม จำนวน ${fmi(x.amt)}.- บาท โดยโอนลดจาก ${nameOf(x,"d")} เหตุผลความจำเป็น ${rsn(x)}`)+"</p>").join("");
+  const consider=m==="27"
+    ?`เห็นควรให้ความเห็นชอบเพื่อเสนอสภาเทศบาลเมืองดอนแก้วพิจารณาอนุมัติโอนงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ. ${Y} จำนวน ${toThaiNum(n)} รายการ รวมเป็นเงินทั้งสิ้น ${fmi(r.total)} บาท รายละเอียดดังนี้`
+    :`เพื่อให้การปฏิบัติเป็นไปตามระเบียบดังกล่าว ${esc(r.dept)} จึงขออนุมัติโอนงบประมาณรายจ่าย ประจำปีงบประมาณ พ.ศ. ${Y} จำนวน ${toThaiNum(n)} รายการ รวมเป็นเงินทั้งสิ้น ${fmi(r.total)} บาท รายละเอียดดังนี้`;
   const rows=r.items.map((x,i)=>{
-    const dec=nameOf(x,"d")
-      +"<br>- งบประมาณตั้งไว้ "+fmi(x.dset)+" บาท<br>- งบประมาณคงเหลือก่อนโอน "+fmi(x.dbefore)+" บาท"
-      +"<br>- โอนลด "+fmi(x.amt)+" บาท<br>- งบประมาณคงเหลือหลังโอนลด "+fmi(x.dbefore-x.amt)+" บาท";
-    const inc=(m==="27")
-      ? nameOf(x,"i")+"<br>- โอนเพิ่มตั้งจ่ายเป็นรายการใหม่ "+fmi(x.amt)+" บาท<br>- งบประมาณคงเหลือหลังตั้งจ่ายเป็นรายการใหม่ "+fmi(x.ibefore+x.amt)+" บาท"
-      : nameOf(x,"i")+"<br>- งบประมาณตั้งไว้ "+fmi(x.iset)+" บาท<br>- งบประมาณคงเหลือก่อนโอน "+fmi(x.ibefore)+" บาท<br>- โอนเพิ่ม "+fmi(x.amt)+" บาท<br>- งบประมาณคงเหลือหลังโอนเพิ่ม "+fmi(x.ibefore+x.amt)+" บาท";
+    const dec=nameOf(x,"d")+"<br>- งบประมาณตั้งไว้ "+fmi(x.dset)+" บาท<br>- งบประมาณคงเหลือก่อนโอน "+fmi(x.dbefore)+" บาท<br>- โอนลด "+fmi(x.amt)+" บาท<br>- งบประมาณคงเหลือหลังโอนลด "+fmi(x.dbefore-x.amt)+" บาท";
+    const inc=m==="27"
+      ?nameOf(x,"i")+"<br>- โอนเพิ่มตั้งจ่ายเป็นรายการใหม่ "+fmi(x.amt)+" บาท<br>- งบประมาณคงเหลือหลังตั้งจ่ายเป็นรายการใหม่ "+fmi(x.ibefore+x.amt)+" บาท"
+      :nameOf(x,"i")+"<br>- งบประมาณตั้งไว้ "+fmi(x.iset)+" บาท<br>- งบประมาณคงเหลือก่อนโอน "+fmi(x.ibefore)+" บาท<br>- โอนเพิ่ม "+fmi(x.amt)+" บาท<br>- งบประมาณคงเหลือหลังโอนเพิ่ม "+fmi(x.ibefore+x.amt)+" บาท";
     return `<tr><td class="center" style="width:4%">${toThaiNum(i+1)}.</td><td style="width:35%">${dec}</td><td style="width:35%">${inc}</td><td style="width:26%">${noteTxt}</td></tr>`;
   }).join("");
-  const mayorLine=(m==="27")
-    ? `( ${r.status==="ok"?"✓":"&nbsp;&nbsp;&nbsp;"} ) เห็นชอบ เพื่อเสนอสภาเทศบาลเมืองดอนแก้วพิจารณาอนุมัติ<br>( ${r.status==="no"?"✓":"&nbsp;&nbsp;&nbsp;"} ) ไม่เห็นชอบ เนื่องจาก ${r.remark?esc(r.remark):"........................................................."}`
-    : `( ${r.status==="ok"?"✓":"&nbsp;&nbsp;&nbsp;"} ) อนุมัติ &nbsp;&nbsp;&nbsp; ( ${r.status==="no"?"✓":"&nbsp;&nbsp;&nbsp;"} ) ไม่อนุมัติ เนื่องจาก ${r.remark?esc(r.remark):"........................................................."}`;
-  /* บล็อกความเห็นผู้อำนวยการกอง — แสดงเฉพาะเมื่อกรอกชื่อ */
-  const dirBlock=PDN?`<div class="opinion"><b>ความเห็น${esc(PDT||"ผู้อำนวยการกอง")}</b><br>( &nbsp;&nbsp;&nbsp; ) เห็นชอบ &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp; ) ไม่เห็นชอบ เนื่องจาก .........................................................
-  <div class="sig">(ลงชื่อ) ..............................................<br>( ${esc(PDN)} )<br>${esc(PDT)}</div><div class="clr"></div></div>`:"";
-
+  const ck=v=>v?"✓":"&nbsp;&nbsp;&nbsp;",rmk=r.remark?esc(r.remark):".........................................................";
+  const mayorLine=m==="27"
+    ?`( ${ck(r.status==="ok")} ) เห็นชอบ เพื่อเสนอสภาเทศบาลเมืองดอนแก้วพิจารณาอนุมัติ<br>( ${ck(r.status==="no")} ) ไม่เห็นชอบ เนื่องจาก ${rmk}`
+    :`( ${ck(r.status==="ok")} ) อนุมัติ &nbsp;&nbsp;&nbsp; ( ${ck(r.status==="no")} ) ไม่อนุมัติ เนื่องจาก ${rmk}`;
+  const opn=(title,nm,tt)=>`<div class="opinion"><b>${title}</b><br>( &nbsp;&nbsp;&nbsp; ) เห็นชอบ &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp; ) ไม่เห็นชอบ เนื่องจาก .........................................................
+  <div class="sig">(ลงชื่อ) ..............................................<br>( ${esc(nm)} )<br>${esc(tt)}</div><div class="clr"></div></div>`;
   return `<div class="sheet">
-  <div class="memo-top">
-    <img class="garuda" src="${g}" alt="ตราครุฑ">
-    <div class="ttl">บันทึกข้อความ</div>
-    <div class="pad"></div>
-  </div>
+  <div class="memo-top"><img class="garuda" src="${g}" alt="ตราครุฑ"><div class="ttl">บันทึกข้อความ</div><div class="pad"></div></div>
   <hr class="memo-rule">
-  <div class="mrow"><span class="mlb">ส่วนราชการ</span>
-    <span class="mval">${fill(r.dept,"ระบุส่วนราชการ")} เทศบาลเมืองดอนแก้ว โทร. ${esc(r.tel||"๐-๕๓๑๒-๑๕๘๕")}</span></div>
-  <div class="mrow"><span class="mlb">ที่</span><span class="mval tight">${noStr}</span>
-    <span class="mlb">วันที่</span><span class="mval">${dateStr}</span></div>
-  <div class="mrow"><span class="mlb">เรื่อง</span>
-    <span class="mval">${fill(r.subject,"ระบุเรื่อง")} ประจำปีงบประมาณ พ.ศ. ${toThaiNum(r.year||"")}${r.tSeq?" (ครั้งที่ "+toThaiNum(r.tSeq)+")":""}</span></div>
-  <div class="mrow" style="margin-top:12px"><span class="mlb">เรียน</span>
-    <span style="padding:0 6px">${fill(r.to,"ระบุผู้รับ")}</span></div>
+  <div class="mrow"><span class="mlb">ส่วนราชการ</span><span class="mval">${fill(r.dept,"ระบุส่วนราชการ")} เทศบาลเมืองดอนแก้ว โทร. ${esc(r.tel||"๐-๕๓๑๒-๑๕๘๕")}</span></div>
+  <div class="mrow"><span class="mlb">ที่</span><span class="mval tight">${noStr}</span><span class="mlb">วันที่</span><span class="mval">${dateStr}</span></div>
+  <div class="mrow"><span class="mlb">เรื่อง</span><span class="mval">${fill(r.subject,"ระบุเรื่อง")} ประจำปีงบประมาณ พ.ศ. ${Y}${r.tSeq?" (ครั้งที่ "+toThaiNum(r.tSeq)+")":""}</span></div>
+  <div class="mrow" style="margin-top:12px"><span class="mlb">เรียน</span><span style="padding:0 6px">${fill(r.to,"ระบุผู้รับ")}</span></div>
   <div class="head4">๑. เรื่องเดิม</div>
-  <p class="ind">ตามเทศบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. ${toThaiNum(r.year||"")} ${oldTxt} นั้น</p>
+  <p class="ind">ตามเทศบัญญัติงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. ${Y} ${oldTxt} นั้น</p>
   <div class="head4">๒. ข้อเท็จจริง</div>
-  <p class="ind">${esc(r.dept)} ได้ดำเนินการตรวจสอบงบประมาณรายจ่ายในส่วนของ${esc(r.dept)}${m==="27"?" พบว่ามีความจำเป็นต้องจัดหาครุภัณฑ์/รายการที่มิได้ตั้งงบประมาณรายจ่ายไว้ จึงมีความประสงค์ขออนุมัติโอนงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. ":" พบว่างบประมาณไม่เพียงพอแก่การเบิกจ่าย จึงมีความประสงค์ขออนุมัติโอนงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. "}${toThaiNum(r.year||"")} จำนวน ${toThaiNum(n)} รายการ รายละเอียดดังนี้</p>
+  <p class="ind">${esc(r.dept)} ได้ดำเนินการตรวจสอบงบประมาณรายจ่ายในส่วนของ${esc(r.dept)}${m==="27"?" พบว่ามีความจำเป็นต้องจัดหาครุภัณฑ์/รายการที่มิได้ตั้งงบประมาณรายจ่ายไว้ จึงมีความประสงค์ขออนุมัติโอนงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. ":" พบว่างบประมาณไม่เพียงพอแก่การเบิกจ่าย จึงมีความประสงค์ขออนุมัติโอนงบประมาณรายจ่ายประจำปีงบประมาณ พ.ศ. "}${Y} จำนวน ${toThaiNum(n)} รายการ รายละเอียดดังนี้</p>
   ${fact}
   <div class="head4">๓. ระเบียบ/หนังสือสั่งการ</div>
   <p class="ind2">๑. ${esc(r.rule||(m==="27"?RULE27:RULE26))}</p>
   <div class="head4">๔. ข้อพิจารณา</div>
   <p class="ind">${consider}</p>
-  <table class="doc"><tr><th style="width:4%">ที่</th><th style="width:35%">รายการโอนลด</th>
-  <th style="width:35%">รายการโอนเพิ่ม/ตั้งจ่ายเป็นรายการใหม่</th><th style="width:26%">หมายเหตุ</th></tr>${rows}</table>
+  <table class="doc"><tr><th style="width:4%">ที่</th><th style="width:35%">รายการโอนลด</th><th style="width:35%">รายการโอนเพิ่ม/ตั้งจ่ายเป็นรายการใหม่</th><th style="width:26%">หมายเหตุ</th></tr>${rows}</table>
   <p class="ind" style="margin-top:10px">จึงเรียนมาเพื่อโปรดพิจารณา</p>
   <div class="sig">(ลงชื่อ) ..............................................<br>( ${esc(P1N)} )<br>${esc(P1T)}</div><div class="clr"></div>
-  ${dirBlock}
-  <div class="opinion"><b>ความเห็นผู้อำนวยการกองคลัง</b><br>( &nbsp;&nbsp;&nbsp; ) เห็นชอบ &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp; ) ไม่เห็นชอบ เนื่องจาก .........................................................
-  <div class="sig">(ลงชื่อ) ..............................................<br>( ${esc(s.p2n)} )<br>${esc(s.p2t)}</div><div class="clr"></div></div>
-  <div class="opinion"><b>ความเห็นเจ้าหน้าที่งบประมาณ</b><br>( &nbsp;&nbsp;&nbsp; ) เห็นชอบ &nbsp;&nbsp;&nbsp; ( &nbsp;&nbsp;&nbsp; ) ไม่เห็นชอบ เนื่องจาก .........................................................
-  <div class="sig">(ลงชื่อ) ..............................................<br>( ${esc(s.p3n)} )<br>${esc(s.p3t)}</div><div class="clr"></div></div>
+  ${PDN?opn("ความเห็น"+esc(PDT||"ผู้อำนวยการกอง"),PDN,PDT):""}
+  ${opn("ความเห็นผู้อำนวยการกองคลัง",s.p2n,s.p2t)}
+  ${opn("ความเห็นเจ้าหน้าที่งบประมาณ",s.p3n,s.p3t)}
   <div class="opinion"><b>ความเห็นนายกเทศมนตรีเมืองดอนแก้ว</b><br>${mayorLine}<br>
   ${r.tDate?"โอนงบประมาณรายจ่าย ครั้งที่ "+toThaiNum(r.tSeq||"-")+" &nbsp; วันที่ "+thDate(r.tDate):""}
   <div class="sig">(ลงชื่อ) ..............................................<br>( ${esc(s.p4n)} )<br>${esc(s.p4t)}</div><div class="clr"></div></div>
   </div>`;
 }
-function previewNow(){
-  const r=readForm();
-  if(!r.items.length){alert("กรุณาเพิ่มรายการโอนก่อน");return}
-  buildDoc({...r,status:"wait",tSeq:r.seq,tDate:"",remark:""});
-}
+function previewNow(){const r=readForm();if(!r.items.length){alert("กรุณาเพิ่มรายการโอนก่อน");return}buildDoc({...r,status:"wait",tSeq:r.seq,tDate:"",remark:""})}
 function showDoc(id){const r=RECS.find(x=>x.id===id);if(r)buildDoc(r)}
 function closeDoc(){document.body.classList.remove("present");el("docWrap").style.display="none";qa(".tabpane").forEach(p=>p.style.display="")}
-function buildDoc(r){
-  curDoc=r;el("doc").innerHTML=docBody(r);
-  qa(".tabpane").forEach(p=>p.style.display="none");
-  el("docWrap").style.display="block";window.scrollTo(0,0);
-}
-function togglePresent(){
-  document.body.classList.toggle("present");
-  const b=q('[data-act="present"]');
-  if(b)b.textContent=document.body.classList.contains("present")?"⤢ ออกจากโหมดนำเสนอ":"🖥 โหมดนำเสนอ";
-}
+function buildDoc(r){curDoc=r;el("doc").innerHTML=docBody(r);qa(".tabpane").forEach(p=>p.style.display="none");el("docWrap").style.display="block";window.scrollTo(0,0)}
+function togglePresent(){document.body.classList.toggle("present");const b=q('[data-act="present"]');if(b)b.textContent=document.body.classList.contains("present")?"⤢ ออกจากโหมดนำเสนอ":"🖥 โหมดนำเสนอ"}
 function dl(name,blob){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},900)}
+function dlCSV(rows,name){dl(name,new Blob(["\uFEFF"+rows.map(r=>r.map(c=>'"'+String(c==null?"":c).replace(/"/g,'""')+'"').join(",")).join("\n")],{type:"text/csv;charset=utf-8"}))}
 function exportWord(){
   if(!curDoc){alert("กรุณาเปิดเอกสารก่อน");return}
   const r=curDoc;
-  const css=
-   "@page Section1{size:21cm 29.7cm;mso-page-orientation:portrait;margin:1.5cm 2cm 1.5cm 3cm;}"
-  +"div.Section1{page:Section1;}"
-  +"body,p,td,th,div,span{font-family:'TH SarabunIT๙','TH SarabunIT9','TH SarabunPSK',sans-serif;font-size:16pt;}"
-  +"body{line-height:1.2;color:#000;margin:0}"
-  +".ttl{font-size:29pt;font-weight:bold;letter-spacing:3pt;text-align:center}"
-  +".memo-rule{border:0;border-top:1pt solid #000;margin:2pt 0 8pt}"
-  +".mlb{font-weight:bold;font-size:18pt}"
-  +".ph{border:1pt dashed #F0A030;color:#B8792B;padding:0 4pt}"
-  +".ind{text-indent:2.5cm;text-align:justify;margin:0 0 2pt}"
-  +".ind2{text-indent:1.5cm;text-align:justify;margin:0 0 2pt}"
-  +".head4{font-weight:bold;margin:5pt 0 0}"
-  +"table.doc{width:100%;border-collapse:collapse;font-size:14pt;margin-top:5pt}"
-  +"table.doc th,table.doc td{border:1pt solid #000;padding:2pt 4pt;vertical-align:top;font-size:14pt}"
-  +"table.doc th{text-align:center;font-weight:bold}"
-  +".sig{margin-top:20pt;text-align:center;width:50%;float:right;line-height:1.15}"
-  +".clr{clear:both}.opinion{margin-top:10pt}.center{text-align:center}";
+  const css="@page Section1{size:21cm 29.7cm;mso-page-orientation:portrait;margin:1.5cm 2cm 1.5cm 3cm;}div.Section1{page:Section1;}"
+  +"body,p,td,th,div,span{font-family:'TH SarabunIT๙','TH SarabunIT9','TH SarabunPSK',sans-serif;font-size:16pt;}body{line-height:1.2;color:#000;margin:0}"
+  +".ttl{font-size:29pt;font-weight:bold;letter-spacing:3pt;text-align:center}.memo-rule{border:0;border-top:1pt solid #000;margin:2pt 0 8pt}"
+  +".mlb{font-weight:bold;font-size:18pt}.ph{border:1pt dashed #F0A030;color:#B8792B;padding:0 4pt}"
+  +".ind{text-indent:2.5cm;text-align:justify;margin:0 0 2pt}.ind2{text-indent:1.5cm;text-align:justify;margin:0 0 2pt}.head4{font-weight:bold;margin:5pt 0 0}"
+  +"table.doc{width:100%;border-collapse:collapse;font-size:14pt;margin-top:5pt}table.doc th,table.doc td{border:1pt solid #000;padding:2pt 4pt;vertical-align:top;font-size:14pt}"
+  +"table.doc th{text-align:center;font-weight:bold}.sig{margin-top:20pt;text-align:center;width:50%;float:right;line-height:1.15}.clr{clear:both}.opinion{margin-top:10pt}.center{text-align:center}";
   let body=docBody(r);
   body=body.replace(/<div class="memo-top">[\s\S]*?<\/div>\s*<hr class="memo-rule">/,
-    `<table style="width:100%;border-collapse:collapse"><tr>
-     <td style="width:1.6cm;vertical-align:middle"><img src="${SETTING.garuda||GARUDA_DEFAULT}" style="width:1.5cm;height:1.5cm"></td>
-     <td style="text-align:center;vertical-align:middle"><span class="ttl">บันทึกข้อความ</span></td>
-     <td style="width:1.6cm"></td></tr></table><hr class="memo-rule">`);
+    `<table style="width:100%;border-collapse:collapse"><tr><td style="width:1.6cm;vertical-align:middle"><img src="${SETTING.garuda||GARUDA_DEFAULT}" style="width:1.5cm;height:1.5cm"></td>
+     <td style="text-align:center;vertical-align:middle"><span class="ttl">บันทึกข้อความ</span></td><td style="width:1.6cm"></td></tr></table><hr class="memo-rule">`);
   body=body.replace(/<div class="mrow"[^>]*>([\s\S]*?)<\/div>(?=\s*<div|\s*<p|\s*<table|\s*<hr)/g,(mm,inner)=>{
-    const parts=inner.split(/(?=<span class="mlb">)/).filter(z=>z.trim());
-    const tds=parts.map(c=>{
+    const tds=inner.split(/(?=<span class="mlb">)/).filter(z=>z.trim()).map(c=>{
       const lb=(c.match(/<span class="mlb">([\s\S]*?)<\/span>/)||[,""])[1];
-      const v=(c.match(/<span class="mval[^"]*"[^>]*>([\s\S]*?)<\/span>/)||c.match(/<span style="padding:0 6px">([\s\S]*?)<\/span>/)||[,""])[1];
-      return `<td style="white-space:nowrap;padding-right:5pt;vertical-align:bottom"><span class="mlb">${lb}</span></td>`
-           +`<td style="border-bottom:1pt dotted #666;vertical-align:bottom;padding:0 4pt">${v}</td>`;
+      const v=(c.match(/<span class="mval[^"]*"[^>]*>([\s\S]*?)<\/span>(?![\s\S]*<span class="mval)/)||c.match(/<span style="padding:0 6px">([\s\S]*?)<\/span>/)||[,""])[1];
+      return `<td style="white-space:nowrap;padding-right:5pt;vertical-align:bottom"><span class="mlb">${lb}</span></td><td style="border-bottom:1pt dotted #666;vertical-align:bottom;padding:0 4pt">${v}</td>`;
     }).join("");
     return `<table style="width:100%;border-collapse:collapse;margin-bottom:5pt"><tr>${tds}</tr></table>`;
   });
@@ -1083,22 +1221,22 @@ function exportWord(){
      new Blob(["\ufeff"+html],{type:"application/msword;charset=utf-8"}));
 }
 function exportCSV(){
-  const yy=val("q_year"),st=val("q_st"),kw=val("q_kw").trim();
-  const l=RECS.filter(r=>(!st||r.status===st)&&(!yy||String(r.year||"")===yy)&&(!kw||JSON.stringify(r).includes(kw)));
+  const yy=val("q_year"),l=listFiltered();
   const rows=[["ครั้งที่","วันที่โอน","ข้อ","สถานะ","ผู้บันทึก","ผู้เสนอ","ตำแหน่งผู้เสนอ","ผู้อำนวยการกอง","ตำแหน่ง ผอ.กอง","ส่วนราชการ","ปีงบ","ลำดับ","โอนลด-แผนงาน","โอนลด-งาน","โอนลด-งบ","โอนลด-หมวด","โอนลด-ประเภท","โอนลด-โครงการ","ตั้งไว้","คงเหลือก่อน","จำนวนโอน","คงเหลือหลัง","โอนเพิ่ม-แผนงาน","โอนเพิ่ม-งาน","โอนเพิ่ม-งบ","โอนเพิ่ม-หมวด","โอนเพิ่ม-ประเภท","โอนเพิ่ม-โครงการ","ตั้งไว้","คงเหลือก่อน","คงเหลือหลัง","เหตุผล"]];
   l.forEach(r=>r.items.forEach((x,i)=>rows.push([r.tSeq||"",r.tDate||"",r.mode||"26",STLget(r.status)[0],r.ownerName||"",r.p1n||"",r.p1t||"",r.pdn||"",r.pdt||"",r.dept,r.year,i+1,x.dplan,x.dwork,x.dbud,x.dcat,x.dtype,x.dproj||"",x.dset,x.dbefore,x.amt,x.dbefore-x.amt,x.iplan,x.iwork,x.ibud,x.icat,x.itype,x.iproj||"",x.iset,x.ibefore,x.ibefore+x.amt,x.reason])));
-  dl("ทะเบียนโอนงบประมาณ"+(yy?"-ปี"+yy:"")+".csv",new Blob(["\uFEFF"+rows.map(r=>r.map(c=>'"'+String(c==null?"":c).replace(/"/g,'""')+'"').join(",")).join("\n")],{type:"text/csv;charset=utf-8"}));
+  dlCSV(rows,"ทะเบียนโอนงบประมาณ"+(yy?"-ปี"+yy:"")+".csv");
 }
-function backup(){dl("backup-โอนงบประมาณ-"+new Date().toISOString().slice(0,10)+".json",new Blob([JSON.stringify({data:RECS,setting:SETTING},null,1)],{type:"application/json"}))}
+function backup(){dl("backup-โอนงบประมาณ-"+new Date().toISOString().slice(0,10)+".json",new Blob([JSON.stringify({data:RECS,setting:SETTING,budgets:BUDS},null,1)],{type:"application/json"}))}
 
 /* ============ EVENTS ============ */
 function gotoTab(name){
   qa("nav button").forEach(x=>x.classList.toggle("on",x.getAttribute("data-tab")===name));
   qa(".tabpane").forEach(p=>{p.classList.toggle("on",p.id==="tab-"+name);p.style.display=""});
-  closeDoc();if(name==="dash")renderDash();if(name==="list")renderList();
+  closeDoc();if(name==="dash")renderDash();if(name==="list")renderList();if(name==="budget")renderBudget();
 }
 document.addEventListener("click",e=>{
   try{
+    qa(".dbs .res.on").forEach(r=>{if(!r.parentElement.contains(e.target))r.classList.remove("on")});
     const gt=up(e.target,"[data-gt]");if(gt){setGateMode(gt.getAttribute("data-gt"));return}
     if(up(e.target,"#gBtn")){doAuth();return}
     const nb=up(e.target,"nav button[data-tab]");if(nb){gotoTab(nb.getAttribute("data-tab"));return}
@@ -1107,12 +1245,19 @@ document.addEventListener("click",e=>{
     const act=b.getAttribute("data-act"),id=b.getAttribute("data-id");
     if(act==="add")addItem();
     else if(act==="del-item"){const it=up(b,".item");if(it){it.remove();renum();calc()}}
+    else if(act==="db-pick"){const it=up(b,".item");if(it&&it._dbres)dbPick(it,b.getAttribute("data-k"),it._dbres[+b.getAttribute("data-i")])}
+    else if(act==="db-apply"){const it=up(b,".item");if(it)dbApply(it,b.getAttribute("data-k"))}
     else if(act==="save-draft")saveRec("draft");
     else if(act==="save-wait")saveRec("wait");
     else if(act==="preview")previewNow();
     else if(act==="reset")resetForm();
     else if(act==="csv")exportCSV();
     else if(act==="backup")backup();
+    else if(act==="b-check")checkBudget();
+    else if(act==="b-import")importBudget();
+    else if(act==="b-delete")deleteBudget();
+    else if(act==="b-template")budgetTemplate();
+    else if(act==="b-export")exportBalance();
     else if(act==="admin-save")saveAdmin(id);
     else if(act==="role-save")saveRole(id);
     else if(act==="save-setting")saveSetting();
@@ -1141,24 +1286,41 @@ document.addEventListener("change",e=>{
     if(t.id==="f_note")applyMode();
     if(t.id==="d_year")renderDash();
     if(t.id==="q_st"||t.id==="q_year")renderList();
-    if(t.id==="f_year")refreshYearPickers();
+    if(t.id==="b_vy"||t.id==="b_dept")renderBudget();
+    if(t.id==="f_year"){refreshYearPickers();calc()}
+    if(t.id==="b_file"&&t.files&&t.files[0]){const rd=new FileReader();rd.onload=()=>{BFILETXT=String(rd.result||"");el("bPreview").innerHTML=`<div class="hint" style="margin-top:10px">📄 โหลดไฟล์ ${esc(t.files[0].name)} แล้ว — กด "ตรวจสอบข้อมูล"</div>`};rd.readAsText(t.files[0],"utf-8")}
     if(t.id==="garudaFile"&&t.files&&t.files[0]){onGaruda(t.files[0]);t.value=""}
   }catch(err){showErr("change: "+err.message)}
 },false);
 document.addEventListener("input",e=>{
-  const t=e.target,f=t.getAttribute&&t.getAttribute("data-f");
+  const t=e.target;
+  if(t.hasAttribute&&t.hasAttribute("data-dbq")){const it=up(t,".item");if(it)dbSearch(it,t.getAttribute("data-dbq"),t.value);return}
+  const f=t.getAttribute&&t.getAttribute("data-f");
   if(f&&up(t,".item")&&/(set|before|amt|planX|workX|typeX|proj)$/.test(f))calc();
   if(t.id==="q_kw")renderList();
+  if(t.id==="b_kw")renderBudget();
+  if(t.id==="b_paste"){PARSED=null;el("bImportBtn").disabled=true}
 },false);
 document.addEventListener("keydown",e=>{
-  if(e.key==="Enter"&&(e.target.id==="g_pw"||e.target.id==="g_email")){e.preventDefault();doAuth()}
+  const t=e.target;
+  if(t.hasAttribute&&t.hasAttribute("data-dbq")){
+    const it=up(t,".item"),k=t.getAttribute("data-dbq"),box=q(`[data-dbr="${k}"]`,it);
+    if(e.key==="Escape"){box.classList.remove("on");return}
+    const opts=qa(".opt[data-i]",box);if(!opts.length||!box.classList.contains("on"))return;
+    let i=opts.findIndex(o=>o.classList.contains("act"));
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();
+      i=e.key==="ArrowDown"?Math.min(i+1,opts.length-1):Math.max(i-1,0);
+      opts.forEach(o=>o.classList.remove("act"));opts[i].classList.add("act");opts[i].scrollIntoView({block:"nearest"})}
+    else if(e.key==="Enter"){e.preventDefault();dbPick(it,k,it._dbres[i<0?0:i])}
+    return;
+  }
+  if(e.key==="Enter"&&(t.id==="g_pw"||t.id==="g_email")){e.preventDefault();doAuth()}
   if(e.key==="Escape"&&document.body.classList.contains("present"))togglePresent();
 },false);
 
 const d0=el("f_date");if(d0&&!d0.value)d0.value=new Date().toISOString().slice(0,10);
 applyMode();applySettingUI();refreshYearPickers();
-el("garudaPrev").src=SETTING.garuda||GARUDA_DEFAULT;
-if(!USE_CLOUD)setGateMode("in");
+if(!USE_CLOUD){loadLocalBudgets();setGateMode("in")}
 </script>
 </body>
 </html>
