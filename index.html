@@ -1219,102 +1219,25 @@ document.addEventListener("input",e=>{
   const f=t.getAttribute&&t.getAttribute("data-f");
   if(f&&up(t,".item")&&/(set|before|amt|planX|workX|typeX|proj)$/.test(f))calc();
   if(t.id==="q_kw")renderList();if(t.id==="b_kw")renderBudget();
-  if(t.id==="b_paste"){PARคุณอัปโหลดรายงานงบประมาณคงเหลือจากระบบ e-LAAS ได้ทั้งไฟล์ได้เลยครับ ไม่ต้องแก้หรือจัดคอลัมน์ใหม่ ผมเพิ่มระบบนำเข้าไฟล์นี้ให้แล้ว และระบบจะคำนวณยอดคงเหลือแต่ละรายการจากการเบิกจ่าย การกันเงินไว้แล้ว (ผูกพัน) การโอนลด และการโอนเพิ่ม
+  if(t.id==="b_paste"){PARSED=null;el("bImportBtn").disabled=true}
+  if(t.id==="r_paste"){PREP=null;el("rImportBtn").disabled=true}
+},false);
+document.addEventListener("keydown",e=>{
+  const t=e.target;
+  if(t.hasAttribute&&t.hasAttribute("data-dbq")){const it=up(t,".item"),k=t.getAttribute("data-dbq"),box=q(`[data-dbr="${k}"]`,it);
+    if(e.key==="Escape"){box.classList.remove("on");return}
+    const opts=qa(".opt[data-i]",box);if(!opts.length||!box.classList.contains("on"))return;
+    let i=opts.findIndex(o=>o.classList.contains("act"));
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();i=e.key==="ArrowDown"?Math.min(i+1,opts.length-1):Math.max(i-1,0);
+      opts.forEach(o=>o.classList.remove("act"));opts[i].classList.add("act");opts[i].scrollIntoView({block:"nearest"})}
+    else if(e.key==="Enter"){e.preventDefault();dbPick(it,k,it._dbres[i<0?0:i])}return}
+  if(e.key==="Enter"&&(t.id==="g_pw"||t.id==="g_email")){e.preventDefault();doAuth()}
+  if(e.key==="Escape"&&document.body.classList.contains("present"))togglePresent();
+},false);
 
-## สิ่งที่พบในไฟล์ของคุณ
-
-| ข้อมูล | รายละเอียด |
-|---|---|
-| **ข้อมูลหัวรายงาน** | วันที่พิมพ์ 12/10/2569 · ประจำเดือนตุลาคม · ปีงบประมาณ 2570 ระบบอ่านค่าเหล่านี้เองได้ |
-| **แถวรายการ** | 295 แถว มีรหัสงบประมาณ 16 หลักครบทุกแถว |
-| **แถวยอดรวม** | 96 แถว เช่น "รวมค่าใช้สอย" ระบบข้ามให้เอง |
-| **คอลัมน์** | งาน · รายจ่าย (หมวด) · ประเภทรายจ่าย · โครงการ · รหัส · งบอนุมัติ · โอนเพิ่ม · โอนลด · ผูกพัน · เบิกจ่าย · คงเหลือ |
-| **สูตรคงเหลือ** | งบอนุมัติ + โอนเพิ่ม − โอนลด − ผูกพัน − เบิกจ่าย ผมลองคำนวณกับหลายแถวแล้วตรงกับในรายงาน เช่น 680,000 − 504,480 = 175,520 |
-| **ข้อมูลที่ไม่มีในไฟล์** | แผนงาน งบ และส่วนราชการ ระบบหาแผนงานจากหลักที่ 4–7 ของรหัส (0011 = บริหารงานทั่วไป, 0021 = การศึกษา ฯลฯ) และหางบจากหมวด ส่วนส่วนราชการหาไม่ได้ |
-
-## วิธีคำนวณยอดคงเหลือ
-
-ปัญหาคือการโอนที่อนุมัติในระบบนี้ อาจถูกบันทึกใน e-LAAS ไปแล้วหรือยังก็ได้ ถ้าหักทั้งสองที่จะหักซ้ำ ระบบจึงเลือกใช้ยอดที่มากกว่าระหว่างสองแหล่ง
-
-- **โอนลดที่ใช้คำนวณ** = ยอดที่มากกว่า ระหว่างโอนลดใน e-LAAS กับโอนลดที่อนุมัติแล้วในระบบนี้
-- **โอนเพิ่มที่ใช้คำนวณ** = หลักเดียวกัน
-- **คงเหลือ** = งบอนุมัติ + โอนเพิ่ม − โอนลด − ผูกพัน − เบิกจ่าย
-
-ถ้า e-LAAS บันทึกการโอนแล้ว ตัวเลขจะเท่ากันและไม่ถูกหักซ้ำ ถ้ายังไม่ได้บันทึก ระบบใช้ตัวเลขจากระบบนี้แทน และขึ้นป้าย "ยังไม่ปรากฏใน e-LAAS" ให้ตามไปบันทึก
-
-**ข้อจำกัด:** ถ้ารายการเดียวกันมีทั้งการโอนที่ทำนอกระบบนี้ และการโอนในระบบนี้ที่ e-LAAS ยังไม่ได้บันทึก ยอดโอนจะนับขาดไปส่วนหนึ่ง ทางแก้คือนำเข้ารายงานฉบับล่าสุดอยู่เสมอ
-
-ถ้ายังไม่ได้นำเข้าเทศบัญญัติ ระบบใช้รายงานนี้แทนได้เลย ช่องค้นหาในฟอร์มโอนก็ใช้ได้ทันที
-
----
-
-## ตั้งค่ากฎ Firestore ทีละขั้น
-
-ตอบคำถามเรื่องกฎ Firestore ที่ค้างไว้ด้วยครับ ระหว่างทำผมเจอช่องโหว่ 2 จุดในกฎเดิม จึงแก้ไว้ในชุดใหม่นี้แล้ว
-- ใครก็ตามสมัครสมาชิกแล้วตั้งตัวเองเป็นผู้ดูแลระบบได้
-- เจ้าหน้าที่เปลี่ยนสถานะเอกสารของตัวเองเป็น "อนุมัติแล้ว" ได้
-
-**ขั้นตอน**
-1. เข้า [console.firebase.google.com](https://console.firebase.google.com) แล้วคลิกเลือกโปรเจกต์ของคุณ
-2. ที่เมนูซ้าย กด **Build** แล้วกด **Firestore Database**
-3. ด้านบนของหน้ามีแท็บ **Data · Rules · Indexes · Usage** ให้กดแท็บ **Rules**
-4. คลิกในกล่องโค้ด กด **Ctrl+A** (Mac ใช้ ⌘+A) เพื่อเลือกโค้ดเดิมทั้งหมด แล้วกด **Delete**
-5. คัดลอกกฎด้านล่างทั้งหมดไปวางแทน
-6. กดปุ่ม **Publish** ด้านบน ถ้ามีตัวอักษรสีแดงแปลว่าวางไม่ครบ ให้ทำขั้นที่ 4–5 ใหม่
-7. รอประมาณ 1 นาทีให้กฎใหม่ทำงาน แล้วรีเฟรชหน้าเว็บ
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-    function signedIn(){ return request.auth != null; }
-    function isAdmin(){
-      return signedIn() &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
-    }
-
-    // ผู้ใช้: สมัครได้เฉพาะสิทธิ์เจ้าหน้าที่ ยกเว้นผู้ใช้คนแรกของระบบ
-    match /users/{uid} {
-      allow read: if signedIn();
-      allow create: if signedIn() && request.auth.uid == uid &&
-        (request.resource.data.role == 'user' ||
-         !exists(/databases/$(database)/documents/settings/bootstrap));
-      allow update, delete: if isAdmin();
-    }
-
-    // ตั้งค่าระบบ: แก้ได้เฉพาะผู้ดูแล
-    match /settings/{docId} {
-      allow read: if signedIn();
-      allow write: if isAdmin();
-    }
-
-    // เอกสารการโอน: เจ้าของแก้ได้เฉพาะสถานะร่าง/รออนุมัติ
-    match /transfers/{docId} {
-      allow read: if signedIn();
-      allow create: if signedIn() &&
-        request.resource.data.ownerUid == request.auth.uid &&
-        request.resource.data.status in ['draft','wait'];
-      allow update: if isAdmin() ||
-        (resource.data.ownerUid == request.auth.uid &&
-         request.resource.data.ownerUid == resource.data.ownerUid &&
-         resource.data.status in ['draft','wait'] &&
-         request.resource.data.status in ['draft','wait']);
-      allow delete: if isAdmin() ||
-        (resource.data.ownerUid == request.auth.uid &&
-         resource.data.status in ['draft','wait']);
-    }
-
-    // ฐานข้อมูลเทศบัญญัติ
-    match /budgets/{docId} {
-      allow read: if signedIn();
-      allow write: if isAdmin();
-    }
-
-    // รายงานการเบิกจ่าย / งบคงเหลือ (e-LAAS)
-    match /disbursements/{docId} {
-      allow read: if signedIn();
-      allow write: if isAdmin();
-    }
-  }
-}
+const d0=el("f_date");if(d0&&!d0.value)d0.value=new Date().toISOString().slice(0,10);
+applyMode();applySettingUI();refreshYearPickers();
+if(!USE_CLOUD){loadLocal();setGateMode("in")}
+</script>
+</body>
+</html>
